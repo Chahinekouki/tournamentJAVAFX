@@ -5,8 +5,11 @@
  */
 package test;
 
-
+import entities.Categories;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import services.CategorieService;
 
 
 
@@ -24,6 +27,19 @@ public class test {
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
         // DECLATRATION
+        Categories categorie2 = new Categories();
+        CategorieService sp = new CategorieService();
+        
+        // RETRIVE DATA FROM DATABASE
+        
+        System.out.println("********* RETREVE Categorie ************");
+         try {
+            System.out.println(sp.afficheCategorie());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
         
     }
     
