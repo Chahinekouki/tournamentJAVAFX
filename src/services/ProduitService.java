@@ -91,6 +91,20 @@ public class ProduitService implements IProduits<Produit> {
         } 
 
     }
+
+    // DELETE
+    public void supprimerPrdouit(int id) {
+
+        try { 
+            String requete = "DELETE  FROM produits where id="+id;
+            PreparedStatement st = MyDB.getInstance().getConnexion().prepareStatement(requete);
+            st.executeUpdate();
+            System.out.println("produit supprimer");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
     
      
 

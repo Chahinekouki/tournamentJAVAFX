@@ -46,20 +46,32 @@ public class test {
         Produit p = new Produit(1,"ghof", "ghof",10,10,1,"test.png","#ghof","ghof",10);
         Produit p1 = new Produit(109,1,"ghof22222", "ghof",10,10,1,"test.png","#ghof","ghof",10);
         ProduitService sp1 = new ProduitService();
-        CommentaireService coment = new CommentaireService();
         
         try {
+             System.out.println(">> CREATE PRODUIT ");
              sp1.ajoutProduit(p);                                      // CREATE NEW PRODUIT
-             System.out.println(p);                                   // RETRIVE NEW PRODUIT
+             System.out.println(p);                                   
              System.out.println("Produit ajouté avec succes");
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+             System.out.println(ex.getMessage());
              System.out.println("erreur");
         }
 
-        System.out.println(">> UPDATE PRODUIT ");
+        try {
+            System.out.println(">> RETRIVE PRODUIT ");
+            System.out.println(sp1.afficheProduit());                 // RETRIVE PRODUITS
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+            System.out.println(">> UPDATE PRODUIT ");
             sp1.majProduit(p1);                                       // UPDATE PRODUIT
             System.out.println("Produit modifié avec succes"); 
+
+        System.out.println(">> DELETE PRODUIT");
+            int id1=1;
+            sp1.supprimerPrdouit(id);                                // DELETE PRODUIT
+            System.out.println("Produit supprimé avec succes");
 
 
         
