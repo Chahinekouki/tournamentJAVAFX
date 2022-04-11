@@ -22,14 +22,22 @@ import utils.MyDB;
  */
 public class CategorieService implements ICategories<Categories> {
 
-    Connection connexion;
+    CConnection connexion;
     Statement stm;
 
     public CategorieService() {
         connexion = MyDB.getInstance().getConnexion();
     }
 
-    
+    @Override
+    public void ajoutCategorie(Categories p) throws SQLException {
+        String req = "INSERT INTO `categories` (`nom` ) VALUES ( '"
+                + p.getNom()+ "') ";
+        stm = connexion.createStatement();
+        stm.executeUpdate(req);
+
+    }
+
     @Override
     public List<Categories> afficheCategorie() throws SQLException {
         List<Categories> categorie = new ArrayList<>();
@@ -39,7 +47,7 @@ public class CategorieService implements ICategories<Categories> {
         ResultSet rst = stm.executeQuery(req);
 
         while (rst.next()) {
-            Categories p = new Categories(rst.getInt("id"),
+            Categories p = new Categories(rst.getInt("id"),//or rst.getInt(1)
                     rst.getString("nom"));
             categorie.add(p);
         }
