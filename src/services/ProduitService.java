@@ -40,6 +40,32 @@ public class ProduitService implements IProduits<Produit> {
     }
 
 
+    @Override
+    public List<Produit> afficheProduit() throws SQLException {
+        List<Produit> produits = new ArrayList<>();
+        String req = "select * from produits";
+        stm = connexion.createStatement();
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Produit p = new Produit(rst.getInt("id"),//or rst.getInt(1)
+                    rst.getInt("categories_id"),
+                    rst.getString("titre"),
+                    rst.getString("description"),
+                    rst.getFloat("promo"),
+                    rst.getFloat("stock"),
+                    rst.getInt("flash"),
+                    rst.getString("image"),
+                    rst.getString("ref"),
+                    rst.getString("longdescription"),
+                    rst.getFloat("prix"));
+            produits.add(p);
+        }
+        return produits;
+    }
+    
+     
+
 }
 
 
