@@ -64,33 +64,7 @@ public class ProduitService implements IProduits<Produit> {
         return produits;
     }
 
-    // UPDATE
-    public void majProduit(Produit p) {
-
-        try {  
-
-            String requete = "UPDATE produits set categories_id =?,titre =? ,description =?,promo =?,stock =?,flash =?,image =?,ref =?,longdescription =?,prix =? WHERE id=?";
-            PreparedStatement pst = MyDB.getInstance().getConnexion().prepareStatement(requete);
-
-            pst.setInt(1, p.getCategorie());
-            pst.setString(2, p.getTitre());
-            pst.setString(3, p.getDescription());
-            pst.setFloat(4, p.getPromo());
-            pst.setFloat(5, p.getStock());
-            pst.setInt(6, p.getFlash());
-            pst.setString(7, p.getImage());
-            pst.setString(8, p.getRef());
-            pst.setString(9, p.getLongdescription());
-            pst.setFloat(10, p.getPrix());
-            pst.setInt(11, p.getId());
-            pst.executeUpdate();
-
-            System.out.println("Produits modifie");
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        } 
-
-    }
+    
     
      
 

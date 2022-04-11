@@ -50,16 +50,12 @@ public class test {
         
         try {
              sp1.ajoutProduit(p);                                      // CREATE NEW PRODUIT
-             System.out.println(p);                                   // RETRIVE NEW PRODUIT
+             System.out.println(p);
              System.out.println("Produit ajouté avec succes");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
              System.out.println("erreur");
         }
-
-        System.out.println(">> UPDATE PRODUIT ");
-            sp1.majProduit(p1);                                       // UPDATE PRODUIT
-            System.out.println("Produit modifié avec succes"); 
 
 
         
