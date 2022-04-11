@@ -14,7 +14,8 @@ import java.util.List;
  */
 public interface ICategories<T> {
     
-    public List<T> afficheCategorie() throws SQLException;
+    public void ajoutCategorie(T p) throws SQLException;    // Crud
+    public List<T> afficheCategorie() throws SQLException;  // cRud
     
     
 }

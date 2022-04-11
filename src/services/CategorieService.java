@@ -43,11 +43,11 @@ public class CategorieService implements ICategories<Categories> {
         List<Categories> categorie = new ArrayList<>();
         String req = "select * from categories";
         stm = connexion.createStatement();
-        //ensemble de resultat
+        
         ResultSet rst = stm.executeQuery(req);
 
         while (rst.next()) {
-            Categories p = new Categories(rst.getInt("id"),//or rst.getInt(1)
+            Categories p = new Categories(rst.getInt("id"),
                     rst.getString("nom"));
             categorie.add(p);
         }
