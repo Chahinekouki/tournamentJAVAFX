@@ -6,10 +6,13 @@
 package test;
 
 import entities.Categories;
+import entities.Produit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import services.PersonneService;
 import services.CategorieService;
+import services.ProduitService;
 
 
 
@@ -40,6 +43,11 @@ public class test {
         }
 
         // CRUD PRODUIT
+        Produit p = new Produit(1,"ghof", "ghof",10,10,1,"test.png","#ghof","ghof",10);
+        Produit p1 = new Produit(109,1,"ghof22222", "ghof",10,10,1,"test.png","#ghof","ghof",10);
+        ProduitService sp1 = new ProduitService();
+        CommentaireService coment = new CommentaireService();
+        
         try {
              sp1.ajoutProduit(p);                                      // CREATE NEW PRODUIT
              System.out.println(p);
@@ -48,6 +56,7 @@ public class test {
             System.out.println(ex.getMessage());
              System.out.println("erreur");
         }
+
 
         
         

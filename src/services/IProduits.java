@@ -14,8 +14,8 @@ import java.util.List;
  */
 public interface IProduits<T> {
     
-    public void ajoutProduit(T p) throws SQLException;  // Crud
-   
+    public void ajoutProduit(T p) throws SQLException;          // Crud
+    public List<T> afficheProduit() throws SQLException;       // cRud
     
     
 }
