@@ -30,14 +30,16 @@ public class test {
         Categories categorie2 = new Categories();
         CategorieService sp = new CategorieService();
         
-        // RETRIVE DATA FROM DATABASE
         
-        System.out.println("********* RETREVE Categorie ************");
+        // CRUD CATEGORIE
          try {
-            System.out.println(sp.afficheCategorie());
+            sp.ajoutCategorie(c);                       // CREATE NEW CATEGORIE
+            System.out.println(sp.afficheCategorie());  // RETRIVE DATA FROM DATABASE
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+
+        
         
         
         
