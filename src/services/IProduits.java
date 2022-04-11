@@ -16,6 +16,7 @@ public interface IProduits<T> {
     
     public void ajoutProduit(T p) throws SQLException;          // Crud
     public List<T> afficheProduit() throws SQLException;       // cRud
+    public void majProduit(T p) throws SQLException;          // crUd
     
     
 }
