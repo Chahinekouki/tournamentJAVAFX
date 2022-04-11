@@ -68,7 +68,7 @@ public class ProduitService implements IProduits<Produit> {
     public void majProduit(Produit p) {
 
         try {  
-            
+
             String requete = "UPDATE produits set categories_id =?,titre =? ,description =?,promo =?,stock =?,flash =?,image =?,ref =?,longdescription =?,prix =? WHERE id=?";
             PreparedStatement pst = MyDB.getInstance().getConnexion().prepareStatement(requete);
 
@@ -88,7 +88,7 @@ public class ProduitService implements IProduits<Produit> {
             System.out.println("Produits modifie");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
-        }
+        } 
 
     }
     

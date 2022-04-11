@@ -59,7 +59,7 @@ public class test {
 
         System.out.println(">> UPDATE PRODUIT ");
             sp1.majProduit(p1);                                       // UPDATE PRODUIT
-            System.out.println("Produit modifié avec succes");
+            System.out.println("Produit modifié avec succes"); 
 
 
         
