@@ -32,11 +32,21 @@ public class test {
         
         
         // CRUD CATEGORIE
-         try {
-            sp.ajoutCategorie(c);                       // CREATE NEW CATEGORIE
-            System.out.println(sp.afficheCategorie());  // RETRIVE DATA FROM DATABASE
+        try {
+            sp.ajoutCategorie(c);                                       // CREATE NEW CATEGORIE
+            System.out.println(sp.afficheCategorie());                 // RETRIVE DATA FROM DATABASE
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        }
+
+        // CRUD PRODUIT
+        try {
+             sp1.ajoutProduit(p);                                      // CREATE NEW PRODUIT
+             System.out.println(p);
+             System.out.println("Produit ajouté avec succes");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+             System.out.println("erreur");
         }
 
         
