@@ -89,6 +89,13 @@ public class test {
         System.out.println(">> CREATE COMMENTAIRE ");
             coment.ajoutCommentaire(c);                             // CREATE NEW COMMENTAIRE
         
+        try {
+            System.out.println(">> RETREVE CATEGORIE ");
+            System.out.println(coment.afficheCommentaire());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
         
         
         

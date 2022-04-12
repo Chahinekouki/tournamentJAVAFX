@@ -42,6 +42,24 @@ public class CommentaireService implements ICommentaire<Commentaire> {
 
     }
 
+    @Override
+    public List<Commentaire> afficheCommentaire() throws SQLException {
+        List<Commentaire> coment = new ArrayList<>();
+        String req = "select * from commentaires";
+        stm = connexion.createStatement();
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Commentaire c = new Commentaire(rst.getInt("id"),
+                    rst.getInt("user_id"),
+                    rst.getInt("produit_id"),
+                    rst.getString("message"),
+                    rst.getDate("date"));
+            coment.add(c);
+        }
+        return coment;
+    }
+
 
 }
 
