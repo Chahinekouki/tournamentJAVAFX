@@ -14,6 +14,7 @@ import java.util.List;
  */
 public interface ICommentaire<T> {
     
-    public void ajoutCommentaire(T c) throws SQLException;    
+    public void ajoutCommentaire(T c) throws SQLException;
+    public List<T> afficheCommentaire() throws SQLException;    
     
 }
