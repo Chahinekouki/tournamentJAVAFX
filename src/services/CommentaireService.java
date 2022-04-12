@@ -82,6 +82,19 @@ public class CommentaireService implements ICommentaire<Commentaire> {
 
     }
 
+    public void supprimerCommentaire(int id) {
+
+        try { 
+            String requete = "DELETE  FROM commentaires where id="+id;
+            PreparedStatement st = MyDB.getInstance().getConnexion().prepareStatement(requete);
+            st.executeUpdate();
+            System.out.println("commentaire supprimer");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+
 
 }
 
