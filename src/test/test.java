@@ -93,7 +93,7 @@ public class test {
         
         try {
             System.out.println(">> RETREVE CATEGORIE ");
-            System.out.println(coment.afficheCommentaire());
+            System.out.println(coment.afficheCommentaire());          // RETRIVE COMMENTAIRES
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -101,6 +101,11 @@ public class test {
         System.out.println(">> UPDATE COMMENTAIRE ");
             coment.majCommentaire(c1);                                // UPDATE COMMENTAIRE                                                                              
             System.out.println("Commentaire modifié avec succes"); 
+
+        System.out.println(">> DELETE PRODUIT");                       
+            int id=1;
+            sp1.supprimerCommentaire(id);                             // DELETE COMMENTAIRE
+            System.out.println("Commentaire supprimé avec succes");
  
     }
     
