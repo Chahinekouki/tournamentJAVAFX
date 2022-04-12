@@ -60,6 +60,28 @@ public class CommentaireService implements ICommentaire<Commentaire> {
         return coment;
     }
 
+    public void majCommentaire(Commentaire c) {
+
+        try {  
+
+            String requete = "UPDATE commentaires set user_id =?,produit_id =? ,message =?,date =? WHERE id=?";
+            PreparedStatement pst = MyDB.getInstance().getConnexion().prepareStatement(requete);
+
+            pst.setInt(1, c.getUser_id());
+            pst.setInt(2, c.getProduit_id());
+            pst.setString(3, c.getMessage());
+            pst.setDate(2, new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+            pst.setInt(5, c.getId());
+            pst.executeUpdate();
+
+            System.out.println("Produits modifie");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+
 
 }
 
