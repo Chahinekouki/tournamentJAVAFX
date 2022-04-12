@@ -67,17 +67,18 @@ public class test {
         try {
         System.out.println(">> RETRIVE PRODUIT ");
             System.out.println(sp1.afficheProduit());                 // RETRIVE PRODUITS
+                                                                      
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-            System.out.println(">> UPDATE PRODUIT ");
+        System.out.println(">> UPDATE PRODUIT ");
             sp1.majProduit(p1);                                       // UPDATE PRODUIT
             System.out.println("Produit modifié avec succes"); 
 
         System.out.println(">> DELETE PRODUIT");
             int id1=1;
-            sp1.supprimerPrdouit(id);                                // DELETE PRODUIT
+            sp1.supprimerPrdouit(id);                                 // DELETE PRODUIT
             System.out.println("Produit supprimé avec succes");
 
 
@@ -86,8 +87,9 @@ public class test {
         Date date = new Date();
         Timestamp date1 = new Timestamp(date.getTime()); // get current date
         Commentaire c = new Commentaire(1,1,"may",date1);
+        Commentaire c1 = new Commentaire(1,1,1,"lella",date1);
         System.out.println(">> CREATE COMMENTAIRE ");
-            coment.ajoutCommentaire(c);                             // CREATE NEW COMMENTAIRE
+            coment.ajoutCommentaire(c);                               // CREATE NEW COMMENTAIRE                                                                                                             
         
         try {
             System.out.println(">> RETREVE CATEGORIE ");
@@ -95,11 +97,11 @@ public class test {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
-        
-        
-        
-        
+
+        System.out.println(">> UPDATE COMMENTAIRE ");
+            coment.majCommentaire(c1);                                // UPDATE COMMENTAIRE                                                                              
+            System.out.println("Commentaire modifié avec succes"); 
+ 
     }
     
 }
