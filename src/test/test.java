@@ -7,12 +7,17 @@ package test;
 
 import entities.Categories;
 import entities.Produit;
+import entities.Commentaire;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import services.PersonneService;
 import services.CategorieService;
 import services.ProduitService;
+import services.CommentaireService;
 
 
 
@@ -36,19 +41,21 @@ public class test {
         
         // CRUD CATEGORIE
         try {
+        System.out.println(">> CREATE CATEGORIE ");
             sp.ajoutCategorie(c);                                       // CREATE NEW CATEGORIE
             System.out.println(sp.afficheCategorie());                 // RETRIVE DATA FROM DATABASE
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
+
         // CRUD PRODUIT
-        Produit p = new Produit(1,"ghof", "ghof",10,10,1,"test.png","#ghof","ghof",10);
-        Produit p1 = new Produit(109,1,"ghof22222", "ghof",10,10,1,"test.png","#ghof","ghof",10);
+        Produit p = new Produit(1,"titre", "description",10,10,1,"image.png","#ref","description",10);
+        Produit p1 = new Produit(109,1,"may", "virgo",10,10,1,"image.png","#ghof","ghof",10);
         ProduitService sp1 = new ProduitService();
         
         try {
-             System.out.println(">> CREATE PRODUIT ");
+        System.out.println(">> CREATE PRODUIT ");
              sp1.ajoutProduit(p);                                      // CREATE NEW PRODUIT
              System.out.println(p);                                   
              System.out.println("Produit ajouté avec succes");
@@ -58,7 +65,7 @@ public class test {
         }
 
         try {
-            System.out.println(">> RETRIVE PRODUIT ");
+        System.out.println(">> RETRIVE PRODUIT ");
             System.out.println(sp1.afficheProduit());                 // RETRIVE PRODUITS
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -74,6 +81,14 @@ public class test {
             System.out.println("Produit supprimé avec succes");
 
 
+        // CRUD COMMENTAIRE
+        CommentaireService coment = new CommentaireService();
+        Date date = new Date();
+        Timestamp date1 = new Timestamp(date.getTime()); // get current date
+        Commentaire c = new Commentaire(1,1,"may",date1);
+        System.out.println(">> CREATE COMMENTAIRE ");
+            coment.ajoutCommentaire(c);                             // CREATE NEW COMMENTAIRE
+        
         
         
         
