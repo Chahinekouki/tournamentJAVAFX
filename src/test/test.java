@@ -5,108 +5,51 @@
  */
 package test;
 
-import entities.Categories;
-import entities.Produit;
-import entities.Commentaire;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.Date;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import services.PersonneService;
-import services.CategorieService;
-import services.ProduitService;
-import services.CommentaireService;
-
-
+import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
- * @author Aymen Laroussi
+ * @author aymen
  */
-public class test {
+public class test extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+        
+            Parent parent;
+        try {
+            parent = FXMLLoader.load(getClass().getResource("/gui/categories/CategoriesFXML.fxml"));
+        
+            Scene scene = new Scene(parent);
+            primaryStage.setScene(scene);
+            primaryStage.initStyle(StageStyle.UTILITY);
+            primaryStage.show();
+            } catch (IOException ex) {
+            Logger.getLogger(testDisplay.class.getName()).log(Level.SEVERE, null, ex);
+        }}
+            
+         
+            
+         
 
     /**
      * @param args the command line arguments
      */
-    
-    
-    public static void main(String[] args) throws SQLException {
-        // TODO code application logic here
-        // DECLATRATION
-        Categories categorie2 = new Categories();
-        CategorieService sp = new CategorieService();
-        
-        
-        // CRUD CATEGORIE
-        try {
-        System.out.println(">> CREATE CATEGORIE ");
-            sp.ajoutCategorie(c);                                       // CREATE NEW CATEGORIE
-            System.out.println(sp.afficheCategorie());                 // RETRIVE DATA FROM DATABASE
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-
-        // CRUD PRODUIT
-        Produit p = new Produit(1,"titre", "description",10,10,1,"image.png","#ref","description",10);
-        Produit p1 = new Produit(109,1,"may", "virgo",10,10,1,"image.png","#ghof","ghof",10);
-        ProduitService sp1 = new ProduitService();
-        
-        try {
-        System.out.println(">> CREATE PRODUIT ");
-             sp1.ajoutProduit(p);                                      // CREATE NEW PRODUIT
-             System.out.println(p);                                   
-             System.out.println("Produit ajouté avec succes");
-        } catch (SQLException ex) {
-             System.out.println(ex.getMessage());
-             System.out.println("erreur");
-        }
-
-        try {
-        System.out.println(">> RETRIVE PRODUIT ");
-            System.out.println(sp1.afficheProduit());                 // RETRIVE PRODUITS
-                                                                      
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        System.out.println(">> UPDATE PRODUIT ");
-            sp1.majProduit(p1);                                       // UPDATE PRODUIT
-            System.out.println("Produit modifié avec succes"); 
-
-        System.out.println(">> DELETE PRODUIT");
-            int id1=1;
-            sp1.supprimerPrdouit(id);                                 // DELETE PRODUIT
-            System.out.println("Produit supprimé avec succes");
-
-
-        // CRUD COMMENTAIRE
-        CommentaireService coment = new CommentaireService();
-        Date date = new Date();
-        Timestamp date1 = new Timestamp(date.getTime()); // get current date
-        Commentaire c = new Commentaire(1,1,"may",date1);
-        Commentaire c1 = new Commentaire(1,1,1,"lella",date1);
-        System.out.println(">> CREATE COMMENTAIRE ");
-            coment.ajoutCommentaire(c);                               // CREATE NEW COMMENTAIRE                                                                                                             
-        
-        try {
-            System.out.println(">> RETREVE CATEGORIE ");
-            System.out.println(coment.afficheCommentaire());          // RETRIVE COMMENTAIRES
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        System.out.println(">> UPDATE COMMENTAIRE ");
-            coment.majCommentaire(c1);                                // UPDATE COMMENTAIRE                                                                              
-            System.out.println("Commentaire modifié avec succes"); 
-
-        System.out.println(">> DELETE PRODUIT");                       
-            int id=1;
-            sp1.supprimerCommentaire(id);                             // DELETE COMMENTAIRE
-            System.out.println("Commentaire supprimé avec succes");
- 
+    public static void main(String[] args) {
+        launch(args);
     }
     
 }
