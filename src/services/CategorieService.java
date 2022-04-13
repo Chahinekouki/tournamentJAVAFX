@@ -22,7 +22,7 @@ import utils.MyDB;
  */
 public class CategorieService implements ICategories<Categories> {
 
-    CConnection connexion;
+    Connection connexion;
     Statement stm;
 
     public CategorieService() {
@@ -52,6 +52,25 @@ public class CategorieService implements ICategories<Categories> {
             categorie.add(p);
         }
         return categorie;
+    }
+
+    public void majCategorie(Categories c) {
+
+        try {  
+
+            String requete = "UPDATE categories set nom =? WHERE id=?";
+            PreparedStatement pst = MyDB.getInstance().getConnexion().prepareStatement(requete);
+
+            pst.setString(1, c.getNom());
+            pst.setInt(2, c.getId());
+            pst.executeUpdate();
+
+            System.out.println("Categorie modifie");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
     }
     
     
