@@ -5,12 +5,22 @@
  */
 package gui.produits;
 
+import org.apache.commons.io.FileUtils;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import entities.Produit;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import utils.MyDB;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,6 +78,7 @@ public class AddProduitController implements Initializable {
   private ComboBox flash1;
   @FXML
   private ComboBox categorie;
+  String URLImage;
 
   /**
    * Initializes the controller class.
@@ -232,16 +243,29 @@ public class AddProduitController implements Initializable {
 
     @FXML
     private void Upload(ActionEvent event) {
+        
         FileChooser fc = new FileChooser();
         File selectedFile = fc.showOpenDialog(null);
         if (selectedFile != null){
+            URLImage= selectedFile.getPath();
             productImage= selectedFile.getName();
            // Image i = new Image(new FileInputStream("C:\\Users\\ACER\\OneDrive\\Bureau\\PI-DEV\\public\\front\\images\\"+productImage)); 
             //imgview.setImage(i);
             ImageFld.setText(productImage);
+            System.out.println(URLImage);
             }else {
-            System.out.println("File is not valid");
+            System.out.println("Fichier non valide");
         } 
+
+        File srcFile = new File(URLImage);
+        File destDir = new File("C:\\Pi\\public\\uploads");
+        try {
+            FileUtils.copyFileToDirectory(srcFile, destDir);
+        } catch (IOException e) {
     }
+        
+    }
+    
+   
 
 }
