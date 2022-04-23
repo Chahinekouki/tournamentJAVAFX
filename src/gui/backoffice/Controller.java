@@ -1,6 +1,7 @@
 package gui.backoffice;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -12,8 +13,15 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Controller implements Initializable {
 
@@ -181,7 +189,19 @@ public class Controller implements Initializable {
                   commandes.setVisible(false);
                   utilisateur.setVisible(false);
                   avis.setVisible(false);
-            proditsBtn.setOnMouseClicked(event -> {             
+            proditsBtn.setOnMouseClicked(event -> {   
+                Parent parent;
+           try {
+               parent = FXMLLoader.load(getClass().getResource("/gui/produits/TableView.fxml"));
+           
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+           } catch (IOException ex) {
+               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+           }
                   produits.setVisible(true);
                   jeux.setVisible(false);
                   evenements.setVisible(false);
@@ -194,7 +214,19 @@ public class Controller implements Initializable {
             
             });
             
-            utilisateursBtn.setOnMouseClicked(event -> {             
+            utilisateursBtn.setOnMouseClicked(event -> {     
+                  Parent parent;
+           try {
+               parent = FXMLLoader.load(getClass().getResource("/gui/user/tableView.fxml"));
+           
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+           } catch (IOException ex) {
+               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+           }
                   produits.setVisible(false);
                   jeux.setVisible(false);
                   evenements.setVisible(false);
@@ -230,7 +262,19 @@ public class Controller implements Initializable {
                   callback();
             
             });
-            sponsorsBtn.setOnMouseClicked(event -> {             
+            sponsorsBtn.setOnMouseClicked(event -> { 
+                    Parent parent;
+           try {
+               parent = FXMLLoader.load(getClass().getResource("/gui/sponsor/tableView.fxml"));
+           
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+           } catch (IOException ex) {
+               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+           }
                   produits.setVisible(false);
                   jeux.setVisible(false);
                   evenements.setVisible(false);
@@ -251,6 +295,18 @@ public class Controller implements Initializable {
                   commandes.setVisible(false);
                   utilisateur.setVisible(false);
                   avis.setVisible(false);
+                  Parent parent;
+           try {
+                parent = FXMLLoader.load(getClass().getResource("/gui/categories/TableView.fxml"));
+           
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+           } catch (IOException ex) {
+               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+           }
                   callback();
             
             });
@@ -263,6 +319,18 @@ public class Controller implements Initializable {
                   commandes.setVisible(false);
                   utilisateur.setVisible(false);
                   avis.setVisible(true);
+                   Parent parent;
+           try {
+                parent = FXMLLoader.load(getClass().getResource("/gui/commentaires/TableView.fxml"));
+           
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+           } catch (IOException ex) {
+               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+           }
                   callback();
             
             });
