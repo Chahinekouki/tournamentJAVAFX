@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="713.0" prefWidth="1052.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.tournoi.InscritTournoiController">
+   <children>
+      <Pane layoutX="10.0" layoutY="89.0" prefHeight="6.0" prefWidth="973.0" style="-fx-background-color: #6A2B9C;" />
+      <Text fill="#6a2b9c" layoutX="24.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font: white;" styleClass="white-background" text="Tournoi" wrappingWidth="178.68701171875">
+         <font>
+            <Font name="Bauhaus 93" size="44.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="logo1" fitHeight="74.0" fitWidth="151.0" layoutX="421.0" layoutY="15.0" preserveRatio="true">
+         <image>
+            <Image url="@../resources/logo.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="joueurs" layoutX="30.0" layoutY="105.0" prefHeight="379.0" prefWidth="931.0">
+         <children>
+            <TableView fx:id="TableJoueurs" layoutX="-1.0" layoutY="-7.0" prefHeight="614.0" prefWidth="573.0">
+               <columns>
+                  <TableColumn fx:id="idequipe" prefWidth="194.0" text="id" />
+                  <TableColumn fx:id="labelEquipe" prefWidth="194.0" text="Nom d'equipe" />
+                  <TableColumn fx:id="nomJoueurs" prefWidth="194.0" text="Joueurs" />
+               </columns>
+            </TableView>
+            <Button fx:id="refreshJ" layoutX="679.0" layoutY="65.0" mnemonicParsing="false" onAction="#refreshJ" prefHeight="37.0" prefWidth="132.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Refresh" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="updateTournoi" layoutX="679.0" layoutY="125.0" mnemonicParsing="false" onAction="#inscrireEquipe" prefHeight="37.0" prefWidth="132.0" style="-fx-background-radius: 10; -fx-background-color: #5cdb5c;" text="S'inscrire" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="AnnulerInscription" layoutX="679.0" layoutY="185.0" mnemonicParsing="false" onAction="#AnnulerInscription" prefHeight="37.0" prefWidth="132.0" style="-fx-background-radius: 10; -fx-background-color: #ff0021;" text="Se desinscrire" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

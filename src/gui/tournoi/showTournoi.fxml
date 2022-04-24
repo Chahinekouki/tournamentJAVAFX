@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="941.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.tournoi.ShowTournoiController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="488.0" prefWidth="811.0" styleClass="mainFxmlClass">
+         <stylesheets>
+            <URL value="@listjeu.css" />
+         </stylesheets>
+         <children>
+            <Pane layoutY="76.0" prefHeight="9.0" prefWidth="932.0" style="-fx-background-color: #6A2B9C;" />
+            <Text fill="#6a2b9c" layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font: white;" styleClass="white-background" text="Tournoi" wrappingWidth="178.68701171875">
+               <font>
+                  <Font name="Bauhaus 93" size="44.0" />
+               </font>
+            </Text>
+            <Button fx:id="CreateT" layoutX="135.0" layoutY="111.0" mnemonicParsing="false" onAction="#CreateTF" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Refresh" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="createTour" layoutX="23.0" layoutY="111.0" mnemonicParsing="false" onAction="#CreateTournoi" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="ajouter" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <TableView fx:id="TableTournoi" layoutX="42.0" layoutY="191.0" prefHeight="322.0" prefWidth="817.0">
+               <columns>
+                  <TableColumn fx:id="nomTournoi" prefWidth="155.0" text="Nom" />
+                  <TableColumn fx:id="nbrEquipe" prefWidth="133.0" text="nombre equipe" />
+                  <TableColumn fx:id="nbrJoueur" prefWidth="122.0" text="nombre joueur" />
+                  <TableColumn fx:id="prix" prefWidth="103.0" text="prix" />
+                  <TableColumn fx:id="DateT" prefWidth="186.0" text="Date " />
+                  <TableColumn prefWidth="117.0" text="Delete" />
+               </columns>
+            </TableView>
+            <ImageView fx:id="logo" fitHeight="74.0" fitWidth="151.0" layoutX="436.0" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/logo.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="updateTournoi" layoutX="682.0" layoutY="111.0" mnemonicParsing="false" onAction="#updateTournoi" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #5cdb5c;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="DeleteTournoi" layoutX="798.0" layoutY="111.0" mnemonicParsing="false" onAction="#DeleteTournoi" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #ff0021;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="inscription" layoutX="381.0" layoutY="111.0" mnemonicParsing="false" onAction="#iscription" prefHeight="37.0" prefWidth="151.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Inscription" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Button fx:id="mestournoi" layoutX="479.0" layoutY="533.0" mnemonicParsing="false" onAction="#mestournoi" prefHeight="37.0" prefWidth="179.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Mes tournois" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="tournoidisponible" layoutX="285.0" layoutY="533.0" mnemonicParsing="false" onAction="#tournoidisponible" prefHeight="37.0" prefWidth="179.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Tournoi disponible" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="811.0" prefWidth="1113.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.jeu.ListJeuController">
+    <stylesheets>
+        <URL value="@listjeu.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane fx:id="manePane" layoutX="1.0" layoutY="182.0" prefHeight="641.0" prefWidth="1113.0">
+         <children>
+            <TableView fx:id="TableJeu" layoutX="92.0" layoutY="8.0" prefHeight="558.0" prefWidth="950.0">
+               <columns>
+                  <TableColumn fx:id="nomJeu" prefWidth="127.0" text="Nom" />
+                  <TableColumn fx:id="createByJeu" prefWidth="100.0" text="Crée par" />
+                  <TableColumn fx:id="updateJeu" prefWidth="116.0" text="Update" />
+                  <TableColumn fx:id="deleteJeu" prefWidth="107.0" text="Delete" />
+               </columns>
+            </TableView>
+         </children></AnchorPane>
+      <Pane layoutY="78.0" prefHeight="9.0" prefWidth="1113.0" style="-fx-background-color: #6A2B9C;" />
+      <Text fill="#6a2b9c" layoutX="43.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font: white;" styleClass="white-background" text="Jeu" wrappingWidth="77.68701171875">
+         <font>
+            <Font name="Bauhaus 93" size="44.0" />
+         </font>
+      </Text>
+      <HBox layoutX="555.0" layoutY="35.0" />
+      <ImageView fx:id="logo" fitHeight="74.0" fitWidth="151.0" layoutX="507.0" layoutY="2.0" preserveRatio="true">
+         <image>
+            <Image url="@../resources/logo.png" />
+         </image>
+      </ImageView>
+      <Pane layoutY="86.0" prefHeight="91.0" prefWidth="1113.0">
+         <children>
+            <Button fx:id="DeleteJeu" layoutX="871.0" layoutY="27.0" mnemonicParsing="false" onAction="#DeleteJeu" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #d01f1f;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="UpdateJeu" layoutX="984.0" layoutY="27.0" mnemonicParsing="false" onAction="#UpdateJeu" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #41c12d;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="CreateT" layoutX="21.0" layoutY="27.0" mnemonicParsing="false" onAction="#CreateTF" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Refresh" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="CreateJeu" layoutX="141.0" layoutY="27.0" mnemonicParsing="false" onAction="#CreateJeu" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="ajouter" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
