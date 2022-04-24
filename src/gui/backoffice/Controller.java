@@ -250,18 +250,32 @@ public class Controller implements Initializable {
                   callback();
             
             });
-            jeuxBtn.setOnMouseClicked(event -> {             
-                  produits.setVisible(false);
-                  jeux.setVisible(true);
-                  evenements.setVisible(false);
-                  sponsors.setVisible(false);
-                  categories.setVisible(false);
-                  commandes.setVisible(false);
-                  utilisateur.setVisible(false);
-                  avis.setVisible(false);
-                  callback();
-            
+            jeuxBtn.setOnMouseClicked(event -> {
+                Parent parent;
+                try {
+                    parent = FXMLLoader.load(getClass().getResource("/gui/jeu/listJeu.fxml"));
+
+                    Scene scene = new Scene(parent);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.initStyle(StageStyle.UTILITY);
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                produits.setVisible(false);
+                jeux.setVisible(true);
+                evenements.setVisible(false);
+                sponsors.setVisible(false);
+                categories.setVisible(false);
+                commandes.setVisible(false);
+                utilisateur.setVisible(false);
+                avis.setVisible(false);
+                callback();
+
             });
+            
+
             sponsorsBtn.setOnMouseClicked(event -> { 
                     Parent parent;
            try {
