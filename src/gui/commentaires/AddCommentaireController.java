@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gui.commentaires;
 
 import com.jfoenix.controls.JFXTextArea;
@@ -25,7 +30,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
- * @author Aymen Laroussi
+ * @author hocin
  */
 public class AddCommentaireController implements Initializable {
 
@@ -172,7 +177,6 @@ public class AddCommentaireController implements Initializable {
            
             
             produitID =Integer.parseInt(data1);
-
             System.out.println(produitID);
         }
         } catch (Exception e) {
