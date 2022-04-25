@@ -5,6 +5,7 @@
  */
 package gui.produits;
 
+import boutique.Controller.AddCommentaireController;
 import org.apache.commons.io.FileUtils;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -33,7 +34,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -216,6 +219,19 @@ public class AddProduitController implements Initializable {
       preparedStatement.setFloat(10, prix);
 
       preparedStatement.execute();
+      
+      
+      
+      
+    FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/produits/tableview.fxml"));
+        try {
+            Parent root = (Parent) loader.load();
+        
+            TableViewController secController=loader.getController();
+            secController.refreshTable1();
+            } catch (IOException ex) {
+            Logger.getLogger(AddProduitController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     } catch (SQLException ex) {
       Logger.getLogger(AddProduitController.class.getName()).log(Level.SEVERE, null, ex);
@@ -254,7 +270,7 @@ public class AddProduitController implements Initializable {
             ImageFld.setText(productImage);
             System.out.println(URLImage);
             }else {
-            System.out.println("Fichier non valide");
+            System.out.println("File is not valid");
         } 
 
         File srcFile = new File(URLImage);

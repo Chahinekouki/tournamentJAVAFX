@@ -6,6 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ *
+ * @author Aymen Laroussi
+ */
 public class Main extends Application {
 
     public static final String CURRENCY = "$";

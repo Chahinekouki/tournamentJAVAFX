@@ -4,19 +4,17 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="403.0" spacing="12.0" styleClass="btn" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.produits.AddProduitController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="403.0" spacing="12.0" styleClass="btn" stylesheets="@tableview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.sponsor.AddSponsorController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="384.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details Produit ">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details Sponsor ">
                <font>
                   <Font name="Bauhaus 93" size="32.0" />
                </font>
@@ -33,7 +31,7 @@
                   <Font name="Century Gothic" size="21.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="titreFld" prefHeight="25.0" prefWidth="358.0" unFocusColor="#ffc23d">
+            <JFXTextField fx:id="nomFld" prefHeight="25.0" prefWidth="358.0">
                <font>
                   <Font name="Century Gothic" size="20.0" />
                </font>
@@ -50,7 +48,7 @@
                   <Font name="Century Gothic" size="18.0" />
                </font>
             </Text>
-            <JFXTextArea fx:id="descriptionFld" unFocusColor="#ffc23d" />
+            <JFXTextArea fx:id="prenomFld" />
          </children>
       </HBox>
       <HBox alignment="CENTER">
@@ -60,7 +58,7 @@
                   <Font name="Century Gothic" size="21.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="promoFld" prefHeight="25.0" prefWidth="358.0" style="-jfx-focus-color: white;" unFocusColor="#ffc23d">
+            <JFXTextField fx:id="numFld" prefHeight="25.0" prefWidth="358.0">
                <font>
                   <Font name="Century Gothic" size="20.0" />
                </font>
@@ -74,13 +72,10 @@
                   <Font name="Century Gothic" size="21.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="stockFld" prefHeight="25.0" prefWidth="358.0" style="-jfx-focus-color: white;" styleClass="label" stylesheets="@tableview.css" unFocusColor="#ffc23d">
+            <JFXTextField fx:id="budgetFld" prefHeight="25.0" prefWidth="358.0">
                <font>
                   <Font name="Century Gothic" size="20.0" />
                </font>
-               <effect>
-                  <Blend />
-               </effect>
             </JFXTextField>
          </children>
       </HBox>
@@ -91,7 +86,7 @@
                   <Font name="Century Gothic" size="21.0" />
                </font>
             </Text>
-            <ComboBox fx:id="flash1" prefHeight="31.0" prefWidth="286.0" style="-fx-background-color: gris;" />
+            <ComboBox fx:id="flash1" prefHeight="31.0" prefWidth="286.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER">
@@ -101,7 +96,11 @@
                   <Font name="Century Gothic" size="21.0" />
                </font>
             </Text>
-            <Button fx:id="ImageFld" mnemonicParsing="false" onAction="#Upload" prefHeight="31.0" prefWidth="286.0" text="Importer image" />
+            <JFXTextField fx:id="imageFld" prefHeight="25.0" prefWidth="358.0" text="tets.png">
+               <font>
+                  <Font name="Century Gothic" size="20.0" />
+               </font>
+            </JFXTextField>
          </children>
       </HBox>
       <HBox alignment="CENTER">
@@ -153,7 +152,7 @@
             <Insets top="25.0" />
          </VBox.margin>
          <children>
-            <JFXButton onMouseClicked="#save" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #4f3a52; -fx-text-fill: white;" styleClass="btn" text="Enregistrer">
+            <JFXButton onMouseClicked="#save" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #00E676;" styleClass="btn" text="Save">
                <HBox.margin>
                   <Insets right="8.0" />
                </HBox.margin>
@@ -161,7 +160,7 @@
                   <Font name="Century Gothic" size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="132.0" layoutY="19.0" onMouseClicked="#clean" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #705d72; -fx-border-color: black;" styleClass="btn" text="Rétablir">
+            <JFXButton layoutX="132.0" layoutY="19.0" onMouseClicked="#clean" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #FFFF00;" styleClass="btn" text="Clean">
                <HBox.margin>
                   <Insets left="8.0" />
                </HBox.margin>
@@ -175,5 +174,4 @@
    <padding>
       <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
    </padding>
-   
 </VBox>

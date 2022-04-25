@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package gui.commentaires;
+package boutique.Controller;
 
+import com.jfoenix.controls.JFXButton;
+import gui.commentaires.*;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import entities.Commentaire;
@@ -14,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -26,17 +24,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
- * FXML Controller class
  *
- * @author hocin
+ * @author Aymen Laroussi
  */
 public class AddCommentaireController implements Initializable {
 
-    @FXML
-    private JFXTextField nameFld;
-    
+        
     int user;
     int produitID;
     String query = null;
@@ -48,11 +45,23 @@ public class AddCommentaireController implements Initializable {
     int commentaireId;
     @FXML
     private ComboBox<?> userFld;
-    @FXML
     private ComboBox<?> produitFld;
     @FXML
     private JFXTextArea messageFld;
     private Date date;
+    @FXML
+    private JFXTextField idproduit;
+    @FXML
+    private JFXTextField rate;
+    @FXML
+    private VBox avisvbox;
+    @FXML
+    private JFXButton save;
+    
+    Connection connexion;
+    Statement stm;
+    double rate1;
+    int produit;
     
 
     /**
@@ -64,7 +73,6 @@ public class AddCommentaireController implements Initializable {
             ResultSet rs,rs1;
             connection = MyDB.getInstance().getConnexion();
             rs = connection.createStatement().executeQuery("SELECT email FROM user");
-            rs1 = connection.createStatement().executeQuery("SELECT titre FROM produits");
             ObservableList data = FXCollections.observableArrayList();
         while (rs.next()){
             data.add(new String(rs.getString(1)));
@@ -75,20 +83,7 @@ public class AddCommentaireController implements Initializable {
             e.printStackTrace();
         }
         
-         try {
-            ResultSet rs,rs1;
-            connection = MyDB.getInstance().getConnexion();
-            
-            rs1 = connection.createStatement().executeQuery("SELECT titre FROM produits");
-            ObservableList data1 = FXCollections.observableArrayList();
-        while (rs1.next()){
-            data1.add(new String(rs1.getString(1)));
-        }
-        System.out.println(data1);
-        produitFld.setItems(data1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
     }
 
     @FXML
@@ -98,7 +93,7 @@ public class AddCommentaireController implements Initializable {
         String message = messageFld.getText();
         
 
-        if (message.isEmpty()||userFld.getSelectionModel().isEmpty()||produitFld.getSelectionModel().isEmpty() ) {
+        if (message.isEmpty()||userFld.getSelectionModel().isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Remplisez tous les champs!");
@@ -107,7 +102,8 @@ public class AddCommentaireController implements Initializable {
         } else {
             getQuery();
             insert();
-            clean();
+            Stage stage = (Stage) save.getScene().getWindow();
+            stage.close();
         }
 
     }
@@ -116,7 +112,6 @@ public class AddCommentaireController implements Initializable {
     private void clean() {
         messageFld.setText(null);
         userFld.valueProperty().set(null);
-        produitFld.valueProperty().set(null);
         
         
     }
@@ -165,34 +160,32 @@ public class AddCommentaireController implements Initializable {
             e.printStackTrace();
         }
         
-        String produit = produitFld.getValue().toString();
-             try {
-            ResultSet rs1;
-            connection = MyDB.getInstance().getConnexion();
-            rs1 = connection.createStatement().executeQuery("SELECT id FROM produits where titre like '"+produit+"' ORDER BY titre DESC LIMIT 1");
-            String data1; 
-        while (rs1.next()){
-            data1=(new String(rs1.getString(1)));
-            //test
-           
-            
-            produitID =Integer.parseInt(data1);
-            System.out.println(produitID);
-        }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-            
-            
-             
-            
+        
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, user);
-            preparedStatement.setInt(2, produitID);
+            preparedStatement.setInt(2, Integer.parseInt(idproduit.getText()));
             preparedStatement.setString(3, messageFld.getText());
             preparedStatement.setTimestamp(4,date);
             
             preparedStatement.execute();
+            
+             
+            System.out.println(rate1);
+            System.out.println(produit);
+            System.out.println(user);
+            
+            query = "INSERT INTO `rating`(`rating`,`entity_code`,`user_code`) VALUES (?,?,?)";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setDouble(1, rate1);
+            preparedStatement.setInt(2, produit);
+            preparedStatement.setInt(3, user);
+            
+            preparedStatement.execute();
+            
+//            String req1 = "INSERT INTO `rating` (`rating`,`entity_code`, `user_code` ) VALUES ( '"
+//                + rate1+ "', '" + produit+ "', '"+ user+ "') ";
+//            stm = connexion.createStatement();
+//            stm.execute(req1);
 
         } catch (SQLException ex) {
             Logger.getLogger(AddCommentaireController.class.getName()).log(Level.SEVERE, null, ex);
@@ -200,19 +193,17 @@ public class AddCommentaireController implements Initializable {
 
     }
 
-    void setTextField(int id, int user_id,int produit_id,String message,Date date) {
+    
+
+   
+    
+    public void Rating(double comm,String id,String randomHex ){
+        idproduit.setText(id);
+        rate1=comm;
         
-        String user = userFld.getValue().toString();
-        String produit = produitFld.getValue().toString();
-        
-        commentaireId = id;
-        messageFld.setText(message); 
-
-    }
-
-    void setUpdate(boolean b) {
-        this.update = b;
-
+        produit=Integer.valueOf(id);
+        avisvbox.setStyle("-fx-background-color: #" + randomHex + ";\n" +
+                "    -fx-background-radius: 30;");
     }
 
 }
