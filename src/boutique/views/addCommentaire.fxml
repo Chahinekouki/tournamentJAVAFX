@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="avisvbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="371.0" style="-fx-background-color: #3a243b;" styleClass="btn" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boutique.Controller.AddCommentaireController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="384.0">
+         <children>
+            <Text fill="#705d72" strokeType="OUTSIDE" strokeWidth="0.0" text="Laisser un avis">
+               <font>
+                  <Font name="Bauhaus 93" size="32.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="114.0">
+         <VBox.margin>
+            <Insets top="17.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" lineSpacing="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilisateur" wrappingWidth="102.13671875">
+               <font>
+                  <Font name="Century Gothic Bold" size="21.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="userFld" prefHeight="31.0" prefWidth="251.0" />
+         </children>
+      </HBox>
+      <HBox disable="true" layoutX="10.0" layoutY="64.0" opacity="0.0" prefHeight="14.0" prefWidth="355.0">
+         <VBox.margin>
+            <Insets top="17.0" />
+         </VBox.margin>
+         <children>
+            <JFXTextField fx:id="idproduit" opacity="0.0" />
+            <JFXTextField fx:id="rate" opacity="0.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="350.0" prefWidth="355.0">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" lineSpacing="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message" wrappingWidth="102.13671875">
+               <font>
+                  <Font name="Century Gothic Bold" size="21.0" />
+               </font>
+            </Text>
+            <JFXTextArea fx:id="messageFld" prefHeight="223.0" prefWidth="252.0" promptText="Entrez votre message içi..." style="-fx-text-fill: white;" unFocusColor="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font></JFXTextArea>
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="89.0">
+         <VBox.margin>
+            <Insets top="17.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="62.0" prefWidth="384.0">
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+         <children>
+            <HBox alignment="CENTER" prefHeight="62.0" prefWidth="384.0">
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+         <children>
+            <JFXButton fx:id="save" onMouseClicked="#save" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #4f3a52; -fx-text-fill: white;" styleClass="btn" text="Enregistrer">
+               <HBox.margin>
+                  <Insets right="8.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="132.0" layoutY="19.0" onMouseClicked="#clean" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #705d72; -fx-border-color: black;" styleClass="btn" text="Rétablir">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+   </padding>
+</VBox>

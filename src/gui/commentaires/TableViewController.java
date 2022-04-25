@@ -63,12 +63,16 @@ public class TableViewController implements Initializable {
 
   String data3;
   String query = null;
+  String query1 = null;
   Connection connection = null;
   PreparedStatement preparedStatement = null;
   ResultSet resultSet = null;
+  PreparedStatement preparedStatement1 = null;
+  ResultSet resultSet1 = null;
   Commentaire commentaires = null;
 
   ObservableList < Commentaire > CommentaireList = FXCollections.observableArrayList();
+    ObservableList < Commentaire > CommentaireList1 = FXCollections.observableArrayList();
 
   /**
    * Initializes the controller class.
@@ -105,19 +109,20 @@ public class TableViewController implements Initializable {
     try {
       CommentaireList.clear();
 
-      query = "SELECT * FROM `commentaires`";
+      
+      query = "select u.username,c.id,c.user_id,c.message,p.titre,p.id,c.produit_id,c.date from `commentaires` c , `user` u,`produits` p where u.id=c.user_id AND p.id=c.produit_id ;";
       preparedStatement = connection.prepareStatement(query);
       resultSet = preparedStatement.executeQuery();
 
       while (resultSet.next()) {
-        int user1 = resultSet.getInt("user_id");
-
+        
         CommentaireList.add(new Commentaire(resultSet.getInt("id"),
-          resultSet.getInt("user_id"),
-
-          resultSet.getInt("produit_id"),
+          
+          resultSet.getString("username"),
+          resultSet.getString("titre"),
           resultSet.getString("message"),
           resultSet.getDate("date")));
+       
         commentairesTable.setItems(CommentaireList);
 
       }
@@ -138,9 +143,8 @@ public class TableViewController implements Initializable {
     refreshTable();
 
     idCol.setCellValueFactory(new PropertyValueFactory < > ("id"));
-
-    userCol.setCellValueFactory(new PropertyValueFactory < > ("user_id"));
-    produitCol.setCellValueFactory(new PropertyValueFactory < > ("produit_id"));
+    userCol.setCellValueFactory(new PropertyValueFactory < > ("user"));
+    produitCol.setCellValueFactory(new PropertyValueFactory < > ("produit"));
     dateCol.setCellValueFactory(new PropertyValueFactory < > ("date"));
 
     //add cell of button edit 

@@ -1,30 +1,48 @@
-/*
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
 /**
  *
- * @author macbook
+ * @author Aymen Laroussi
  */
 public class Produit {
     
     private int id;
      private int categorie;
+     private String nom;
+
+    public Produit(int id, int categorie, String nom, String titre, String description, float promo, float stock, boolean flash, String image, String ref, String longdescription, float prix) {
+        this.id = id;
+        this.categorie = categorie;
+        this.nom = nom;
+        this.titre = titre;
+        this.description = description;
+        this.promo = promo;
+        this.stock = stock;
+        this.flash = flash;
+        this.image = image;
+        this.ref = ref;
+        this.longdescription = longdescription;
+        this.prix = prix;
+    }
     private String titre;
     private String description;
     private float promo;
     private float  stock;
-    private int flash;
+    private boolean flash;
     private String image;
     private String ref;
     private String longdescription;
     private float prix;
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
     
-    public Produit(int id, int categorie, String titre, String description, float promo, float stock, int flash, String image, String ref, String longdescription, float prix) {
+    public Produit(int id, int categorie, String titre, String description, float promo, float stock, boolean flash, String image, String ref, String longdescription, float prix) {
         this.id = id;
         this.categorie = categorie;
         this.titre = titre;
@@ -35,6 +53,11 @@ public class Produit {
         this.image = image;
         this.ref = ref;
         this.longdescription = longdescription;
+        this.prix = prix;
+    }
+
+    public Produit(String titre, float prix) {
+        this.titre = titre;
         this.prix = prix;
     }
 
@@ -91,7 +114,7 @@ public class Produit {
         this.stock = stock;
     }
 
-    public int getFlash() {
+    public boolean getFlash() {
         return flash;
     }
 
@@ -99,7 +122,7 @@ public class Produit {
         this.id = id;
     }
 
-    public void setFlash(int flash) {
+    public void setFlash(boolean flash) {
         this.flash = flash;
     }
 
@@ -135,7 +158,7 @@ public class Produit {
         this.prix = prix;
     }
 
-    public Produit(String titre, String description, float promo, float stock, int flash, String image, String ref, String longdescription, float prix) {
+    public Produit(String titre, String description, float promo, float stock, boolean flash, String image, String ref, String longdescription, float prix) {
         this.titre = titre;
         this.description = description;
         this.promo = promo;
@@ -147,7 +170,7 @@ public class Produit {
         this.prix = prix;
     }
 
-    public Produit(int categorie, String titre, String description, float promo, float stock, int flash, String image, String ref, String longdescription, float prix) {
+    public Produit(int categorie, String titre, String description, float promo, float stock, boolean flash, String image, String ref, String longdescription, float prix) {
         this.categorie = categorie;
         this.titre = titre;
         this.description = description;
