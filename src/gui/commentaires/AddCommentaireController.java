@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui.commentaires;
 
 import com.jfoenix.controls.JFXTextArea;
@@ -30,7 +25,7 @@ import javafx.scene.input.MouseEvent;
 /**
  * FXML Controller class
  *
- * @author hocin
+ * @author Aymen Laroussi
  */
 public class AddCommentaireController implements Initializable {
 
@@ -142,8 +137,7 @@ public class AddCommentaireController implements Initializable {
         
         Calendar calendarInstance = Calendar.getInstance();
         
-        java.sql.Timestamp date
-            = new java.sql.Timestamp(
+        java.sql.Timestamp date = new java.sql.Timestamp(
                 calendarInstance.getTime().getTime());
         System.out.println(date);
         try {
@@ -171,14 +165,14 @@ public class AddCommentaireController implements Initializable {
             ResultSet rs1;
             connection = MyDB.getInstance().getConnexion();
             rs1 = connection.createStatement().executeQuery("SELECT id FROM produits where titre like '"+produit+"' ORDER BY titre DESC LIMIT 1");
-            ObservableList data1 = FXCollections.observableArrayList();
+            String data1; 
         while (rs1.next()){
-            data1.add(new String(rs1.getString(1)));
+            data1=(new String(rs1.getString(1)));
             //test
-            String data2=data1.toString();
-            String data3 =(data2.substring((data2).indexOf("[")+1 ,(data2).indexOf("]")));
+           
             
-            produitID =Integer.parseInt(data3);
+            produitID =Integer.parseInt(data1);
+
             System.out.println(produitID);
         }
         } catch (Exception e) {
