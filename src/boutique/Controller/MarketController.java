@@ -37,6 +37,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -62,6 +63,7 @@ public class MarketController implements Initializable {
 
     @FXML
     private GridPane grid;
+    
 
     private List<Produit> produits = new ArrayList<>();
     private Image image;
@@ -85,12 +87,44 @@ public class MarketController implements Initializable {
     String rate;
     @FXML
     private Label ProduitRefLable1;
+    @FXML
+    private Button recherche;
+    @FXML
+    private TextField rech;
     
     
     public MarketController() {
         connexion = MyDB.getInstance().getConnexion();
     }
 
+   
+      public List<Produit> afficheRecherche() throws SQLException {
+          
+        List<Produit> produits = new ArrayList<>();
+        String req = "select * from produits where titre like '%"+rech.getText()+"%' or ref like '%"+rech.getText()+"%'";
+        stm = connexion.createStatement();
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Produit p = new Produit(rst.getInt("id"),//or rst.getInt(1)
+                    rst.getInt("categories_id"),
+                    rst.getString("titre"),
+                    rst.getString("description"),
+                    rst.getFloat("promo"),
+                    rst.getFloat("stock"),
+                    rst.getBoolean("flash"),
+                    rst.getString("image"),
+                    rst.getString("ref"),
+                    rst.getString("longdescription"),
+                    rst.getFloat("prix"));
+            produits.add(p);
+        }
+        return produits;
+    }
+     
+     
+   
+    
      public List<Produit> afficheProduit() throws SQLException {
         List<Produit> produits = new ArrayList<>();
         String req = "select * from produits";
@@ -119,6 +153,7 @@ public class MarketController implements Initializable {
      
     public void afficheRating(int p) throws SQLException {
         
+        
        try{ System.out.println(produitid);
            System.out.println(p);
         String req = "SELECT AVG(rating) FROM `rating` where entity_code like "+p+"";
@@ -131,13 +166,7 @@ public class MarketController implements Initializable {
         }
        }catch (SQLException err) {
         System.out.println(err.getMessage());
-    }
-        
-        
-                    
-        
-    }
-    
+    }}
   
     static String getRandomString(){
         int r = (int) (Math.random()*5);
@@ -198,6 +227,7 @@ public class MarketController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         try {
             produits.addAll(afficheProduit());
         } catch (SQLException ex) {
@@ -228,6 +258,62 @@ public class MarketController implements Initializable {
                     row++;
                 }
 
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    @FXML
+      public void Recherche() {
+        
+        try {
+            produits.removeAll(produits);
+            produits.addAll(afficheRecherche());
+        } catch (SQLException ex) {
+            Logger.getLogger(MarketController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (produits.size() > 0) {
+            setChosenFruit(produits.get(0));
+            myListener = new MyListener() {
+                @Override
+                public void onClickListener(Produit produit) {
+                    setChosenFruit(produit);
+                }
+            };
+        }
+       
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i = 0; i < produits.size(); i++) {
+            grid.getChildren().clear();}
+            for (int i = 0; i < produits.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/boutique/views/item.fxml"));
+                AnchorPane anchorPane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(produits.get(i),myListener);
+
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+                
                 grid.add(anchorPane, column++, row); //(child,column,row)
                 //set grid width
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
