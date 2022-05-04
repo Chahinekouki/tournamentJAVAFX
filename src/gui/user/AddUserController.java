@@ -2,7 +2,7 @@ package gui.user;
 
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import entities.User;
+import entities.UserLaroussi;
 import utils.MyDB;
 import java.net.URL;
 import java.sql.Connection;
@@ -34,7 +34,7 @@ public class AddUserController implements Initializable {
     Connection connection = null;
     ResultSet resultSet = null;
     PreparedStatement preparedStatement;
-    User user = null;
+    UserLaroussi user = null;
     private boolean update;
     int userId;
     @FXML
