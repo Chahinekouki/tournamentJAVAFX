@@ -2,7 +2,7 @@ package gui.user;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import entities.User;
+import entities.UserLaroussi;
 import utils.MyDB;
 import java.io.IOException;
 import java.net.URL;
@@ -44,19 +44,19 @@ import javafx.util.Callback;
 public class TableViewController implements Initializable {
 
     @FXML
-    private TableView<User> userTable;
+    private TableView<UserLaroussi> userTable;
     @FXML
-    private TableColumn<User, String> idCol;
+    private TableColumn<UserLaroussi, String> idCol;
     @FXML
-    private TableColumn<User, String> editCol;
+    private TableColumn<UserLaroussi, String> editCol;
     
     String query = null;
     Connection connection = null ;
     PreparedStatement preparedStatement = null ;
     ResultSet resultSet = null ;
-    User user = null ;
+    UserLaroussi user = null ;
     
-    ObservableList<User>  userList = FXCollections.observableArrayList();
+    ObservableList<UserLaroussi>  userList = FXCollections.observableArrayList();
     @FXML
     private TableColumn<?, ?> usernameCol;
     @FXML
@@ -109,7 +109,7 @@ public class TableViewController implements Initializable {
             resultSet = preparedStatement.executeQuery();
             
             while (resultSet.next()){
-                userList.add(new  User(
+                userList.add(new  UserLaroussi(
                     resultSet.getInt("id"),//or rst.getInt(1)
                     resultSet.getString("username"),
                     resultSet.getString("email"),
@@ -145,9 +145,9 @@ public class TableViewController implements Initializable {
         
         
         //add cell of button edit 
-         Callback<TableColumn<User, String>, TableCell<User, String>> cellFoctory = (TableColumn<User, String> param) -> {
+         Callback<TableColumn<UserLaroussi, String>, TableCell<UserLaroussi, String>> cellFoctory = (TableColumn<UserLaroussi, String> param) -> {
             // make cell containing buttons
-            final TableCell<User, String> cell = new TableCell<User, String>() {
+            final TableCell<UserLaroussi, String> cell = new TableCell<UserLaroussi, String>() {
                 @Override
                 public void updateItem(String item, boolean empty) {
                     super.updateItem(item, empty);

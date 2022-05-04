@@ -55,7 +55,7 @@
       </HBox>
       <HBox alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TEL" wrappingWidth="102.13671875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TEL" wrappingWidth="101.13671875">
                <font>
                   <Font name="Century Gothic" size="21.0" />
                </font>
