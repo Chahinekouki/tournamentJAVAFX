@@ -215,7 +215,9 @@ public class Controller implements Initializable {
         TITLE.setText("TOURNAMENT LEGACY/ADMIN/TABLEAU DE BOARD");
     }
 
+
     
     }
+
    
 

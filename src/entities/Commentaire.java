@@ -1,9 +1,3 @@
-/*
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entities;
 
 import java.util.Date;
@@ -16,9 +10,72 @@ public class Commentaire {
 
     private int id;
     private int user_id;
+    private String user; 
     private int produit_id;
+    private String produit;
     private String message;
     private Date  date;
+    private float rating;
+
+    public Commentaire(int id, String user, String message, Date date, float rating) {
+        this.id = id;
+        this.user = user;
+        this.message = message;
+        this.date = date;
+        this.rating = rating;
+    }
+
+    public Commentaire(String user, String message, Date date, float rating) {
+        this.user = user;
+        this.message = message;
+        this.date = date;
+        this.rating = rating;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public Commentaire(String user) {
+        this.user = user;
+    }
+
+    public Commentaire(int id, int user_id, String user, int produit_id, String message, Date date) {
+        this.id = id;
+        this.user_id = user_id;
+        this.user = user;
+        this.produit_id = produit_id;
+        this.message = message;
+        this.date = date;
+    }
+
+    public Commentaire(int id, String user, String produit, String message, Date date) {
+        this.id = id;
+        this.user = user;
+        this.produit = produit;
+        this.message = message;
+        this.date = date;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getProduit() {
+        return produit;
+    }
+
+    public void setProduit(String produit) {
+        this.produit = produit;
+    }
 
     public Commentaire(int id, int user_id, int produit_id, String message, Date date) {
         this.id = id;
@@ -34,6 +91,27 @@ public class Commentaire {
         this.message = message;
         this.date = date;
     }
+
+    public Commentaire(int id, int user_id, String user, int produit_id, String produit, String message, Date date) {
+        this.id = id;
+        this.user_id = user_id;
+        this.user = user;
+        this.produit_id = produit_id;
+        this.produit = produit;
+        this.message = message;
+        this.date = date;
+    }
+
+    public Commentaire(int user_id, String user, int produit_id, String produit, String message, Date date) {
+        this.user_id = user_id;
+        this.user = user;
+        this.produit_id = produit_id;
+        this.produit = produit;
+        this.message = message;
+        this.date = date;
+    }
+
+   
 
     public int getId() {
         return id;
