@@ -11,26 +11,31 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="452.0" prefWidth="641.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="gui.produits.TableViewController">
+<AnchorPane id="AnchorPane" prefHeight="771.0" prefWidth="977.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.produits.TableViewController">
     <stylesheets>
         <URL value="@tableview.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="produitsTable" layoutX="34.0" layoutY="157.0" prefHeight="265.0" prefWidth="574.0">
+      <TableView fx:id="produitsTable" layoutX="34.0" layoutY="157.0" prefHeight="601.0" prefWidth="888.0">
         <columns>
           <TableColumn fx:id="idCol" maxWidth="70.0" prefWidth="70.0" style="-fx-alignment: center;" text="ID" />
+          <TableColumn fx:id="catCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="CATEGORIE" />
           <TableColumn fx:id="titreCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="TITRE" />
           <TableColumn fx:id="refCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="REFERENCE" />
           <TableColumn fx:id="stockCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="STOQUE" />
           <TableColumn fx:id="flashCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="VEDETTE" />
           <TableColumn fx:id="prixCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="PRIX" />
-          <TableColumn fx:id="promoCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="PROMO" />
+          <TableColumn fx:id="promoCol" maxWidth="100.0" prefWidth="95.0" style="-fx-alignment: center;" text="PROMO" />
                
-            <TableColumn fx:id="editCol" maxWidth="64.0" prefWidth="64.0" style="-fx-alignment: center;" text="ACTION" />
+            <TableColumn fx:id="editCol" maxWidth="165.0" prefWidth="157.0" style="-fx-alignment: center;" text="ACTION" />
         </columns>
+         <stylesheets>
+            <URL value="@tableview.css" />
+            <URL value="@../backoffice/dark-theme.css" />
+         </stylesheets>
       </TableView>
       <Pane layoutY="59.0" prefHeight="3.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Text layoutX="26.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produits Details" wrappingWidth="245.13671875">
+      <Text fill="#ff8e00" layoutX="26.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produits Details" wrappingWidth="245.13671875">
          <font>
             <Font name="Bauhaus 93" size="32.0" />
          </font>
