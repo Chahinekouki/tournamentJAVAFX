@@ -31,7 +31,7 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label fx:id="userLabel" prefHeight="49.0" prefWidth="183.0" text="Cherry">
+                              <Label fx:id="userLabel" prefHeight="49.0" prefWidth="183.0" text="user">
                                  <font>
                                     <Font name="Cambria" size="24.0" />
                                  </font>
@@ -43,7 +43,7 @@
                   </HBox>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label fx:id="dateLabel" prefHeight="49.0" prefWidth="101.0" text="\$0.99">
+                        <Label fx:id="dateLabel" prefHeight="49.0" prefWidth="101.0" text="date">
                            <font>
                               <Font name="Cambria Bold" size="18.0" />
                            </font>
@@ -57,7 +57,7 @@
             </HBox>
          </children>
       </VBox>
-      <Label fx:id="messageLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="171.0" layoutY="115.0" prefHeight="112.0" prefWidth="320.0" text="Cherry">
+      <Label fx:id="messageLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="171.0" layoutY="115.0" prefHeight="112.0" prefWidth="320.0" text="message">
          <font>
             <Font name="Cambria" size="24.0" />
          </font>
