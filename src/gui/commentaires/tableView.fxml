@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="771.0" prefWidth="977.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.commentaires.TableViewController">
+    <stylesheets>
+        <URL value="@tableview.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="commentairesTable" layoutX="34.0" layoutY="157.0" prefHeight="601.0" prefWidth="888.0">
+        <columns>
+          <TableColumn fx:id="idCol" maxWidth="70.0" prefWidth="70.0" style="-fx-alignment: center;" text="ID" />
+          <TableColumn fx:id="userCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="UTILISATEUR" />
+          <TableColumn fx:id="produitCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="PRODUIT" />
+          <TableColumn fx:id="dateCol" maxWidth="100.0" prefWidth="100.0" style="-fx-alignment: center;" text="DATE" />
+               
+            <TableColumn fx:id="editCol" maxWidth="165.0" prefWidth="157.0" style="-fx-alignment: center;" text="ACTION" />
+        </columns>
+         <stylesheets>
+            <URL value="@tableview.css" />
+            <URL value="@../backoffice/dark-theme.css" />
+         </stylesheets>
+      </TableView>
+      <Pane layoutY="59.0" prefHeight="3.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Text fill="#ff8e00" layoutX="26.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produits Details" wrappingWidth="245.13671875">
+         <font>
+            <Font name="Bauhaus 93" size="32.0" />
+         </font>
+      </Text>
+      <HBox alignment="CENTER" layoutX="602.0" layoutY="-1.0" prefHeight="36.0" prefWidth="37.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FontAwesomeIconView glyphName="CLOSE" onMouseClicked="#close" size="20" styleClass="btn" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="34.0" layoutY="73.0" prefHeight="76.0" prefWidth="200.0">
+         <children>
+            <FontAwesomeIconView fill="#2196f3" glyphName="PLUS" onMouseClicked="#getAddView" size="45" styleClass="btn">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <FontAwesomeIconView fill="#00e676" glyphName="REFRESH" layoutX="10.0" layoutY="65.0" onMouseClicked="#refreshTable" size="45" styleClass="btn">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+                </children>
+      </HBox>
+   </children>
+</AnchorPane>
+
