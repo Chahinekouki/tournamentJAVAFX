@@ -4,11 +4,10 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -17,257 +16,195 @@
         <URL value="@sample.css" />
     </stylesheets>
    <children>
-      <AnchorPane fx:id="pane1" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #171a21;" />
-      <AnchorPane prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: #6541a5;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <ImageView fx:id="exit" fitHeight="32.0" fitWidth="29.0" layoutX="763.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/exit.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="menu" fitHeight="32.0" fitWidth="29.0" layoutX="7.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/burger.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutY="46.0" prefHeight="454.0" prefWidth="44.0" style="-fx-background-color: #0f1015;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-         <children>
-            <VBox alignment="TOP_CENTER" prefHeight="235.0" prefWidth="44.0" spacing="16.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="borderpane" layoutY="-7.0" prefHeight="823.0" prefWidth="1165.0">
+         <left>
+            <AnchorPane prefHeight="714.0" prefWidth="229.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="54.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/home.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="utilisateursIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/add.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="jeuxIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/home.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="evenementsIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/home.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="sponsorsIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/home.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="categoriesIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/home.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="produitsIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/home.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="avisIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/home.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="commandesIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/home.png" />
-                     </image>
-                  </ImageView>
+                  <AnchorPane fx:id="pane2" layoutX="51.0" layoutY="5.0" prefHeight="770.0" prefWidth="178.0" style="-fx-background-color: #0f1015;" AnchorPane.bottomAnchor="2.0" AnchorPane.topAnchor="5.0">
+                     <children>
+                        <VBox prefHeight="510.0" prefWidth="178.0" spacing="10.0">
+                           <children>
+                              <JFXButton alignment="BASELINE_LEFT" minHeight="38.0" prefHeight="97.0" prefWidth="178.0" text="Aymen" textFill="#ff8e00">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="25.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="utilisateursBtn1" alignment="BASELINE_LEFT" minHeight="38.0" onAction="#dashboard" prefHeight="46.0" prefWidth="178.0" text="DASHBOARD" textFill="WHITE">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="utilisateursBtn" alignment="BASELINE_LEFT" minHeight="38.0" onAction="#utilisaterur" prefWidth="179.0" text="UTILISATEURS" textFill="WHITE">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="jeuxBtn" alignment="BASELINE_LEFT" minHeight="38.0" onAction="#jeux" prefWidth="179.0" text="JEUX" textFill="WHITE">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="evenementsBtn" alignment="BASELINE_LEFT" minHeight="38.0" onAction="#event" prefWidth="179.0" text="EVENEMENTS" textFill="WHITE">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="sponsorsBtn" alignment="BASELINE_LEFT" minHeight="38.0" onAction="#sponsors" prefWidth="179.0" text="SPONSORS" textFill="WHITE">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="categoriesBtn" alignment="BASELINE_LEFT" minHeight="38.0" onAction="#categorie" prefWidth="179.0" text="CATEGORIES" textFill="WHITE">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="proditsBtn" alignment="BASELINE_LEFT" minHeight="38.0" onAction="#produits" prefWidth="179.0" text="PRODUITS" textFill="WHITE">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="avisBtn" alignment="BASELINE_LEFT" minHeight="38.0" onAction="#avis" prefWidth="179.0" text="AVIS" textFill="WHITE">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="commandeBtn" alignment="BASELINE_LEFT" minHeight="38.0" prefWidth="179.0" text="COMMENADES" textFill="WHITE">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                        </VBox>
+                        <JFXButton fx:id="commandesBtn" alignment="BASELINE_LEFT" layoutY="723.0" minHeight="38.0" onAction="#boutique" prefWidth="179.0" text="ACCUEIL" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="commandesBtn1" alignment="BASELINE_LEFT" layoutY="673.0" minHeight="38.0" onAction="#site" prefWidth="179.0" text="WEBSITE" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="commandesBtn11" alignment="BASELINE_LEFT" layoutX="-2.0" layoutY="609.0" minHeight="38.0" onAction="#facebook" prefWidth="179.0" text="PAGE FACEBOOK" textFill="WHITE">
+                           <font>
+                              <Font name="Berlin Sans FB Demi Bold" size="16.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+                  <VBox alignment="TOP_CENTER" layoutX="-3.0" layoutY="5.0" prefHeight="772.0" prefWidth="54.0" spacing="16.0" style="-fx-background-color: black;" AnchorPane.topAnchor="5.0">
+                     <children>
+                        <ImageView fitHeight="72.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Avtar/4.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="54.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/7088343.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="utilisateursIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/7088388.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="jeuxIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/7088342.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="evenementsIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/7088351.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="sponsorsIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/7088361.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="categoriesIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/7088436.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="produitsIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/7088336.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="avisIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/7088440.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="commandesIcon" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/7088338.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="248.0" prefWidth="54.0" spacing="16.0" style="-fx-background-color: black;">
+                           <children>
+                              <ImageView fx:id="produitsIcon1" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="commandesIcon1" fitHeight="58.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/facebook.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="commandesIcon12" fitHeight="41.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/web.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="commandesIcon11" fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/7088339.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="53.0" layoutY="56.0" prefHeight="454.0" prefWidth="757.0" stylesheets="@dark-theme.css">
-         <children>
-            <AnchorPane fx:id="utilisateur" prefHeight="454.0" prefWidth="757.0" stylesheets="@dark-theme.css">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
+         </left>
+         <top>
+            <AnchorPane prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: #5c16c5;" BorderPane.alignment="CENTER">
                <children>
-                  <TableView layoutY="65.0" prefHeight="389.0" prefWidth="757.0">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                     </columns>
-                  </TableView>
-                  <Label layoutX="34.0" layoutY="8.0" prefHeight="49.0" prefWidth="201.0" text="Utilisateurs" textFill="WHITE">
+                  <ImageView fx:id="menu" fitHeight="32.0" fitWidth="29.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/burger.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="heure" layoutX="53.0" layoutY="11.0" prefHeight="31.0" prefWidth="251.0" text="HEURE" textFill="WHITE">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="33.0" />
+                        <Font name="System Bold" size="21.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="exit11" fitHeight="32.0" fitWidth="29.0" layoutX="235.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/exit.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="jeux" prefHeight="454.0" prefWidth="757.0" stylesheets="@dark-theme.css">
-               <children>
-                  <TableView layoutY="65.0" prefHeight="389.0" prefWidth="757.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                  </TableView>
-                  <Label layoutX="34.0" layoutY="8.0" prefHeight="49.0" prefWidth="201.0" text="Jeux" textFill="WHITE">
+                  <Label fx:id="TITLE" alignment="CENTER" contentDisplay="CENTER" layoutX="275.0" layoutY="11.0" prefHeight="31.0" prefWidth="616.0" text="TOURNAMENT LEGACY " textFill="WHITE">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="33.0" />
+                        <Font name="System Bold" size="21.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="exit1" fitHeight="32.0" fitWidth="29.0" layoutX="235.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/exit.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="evenements" prefHeight="454.0" prefWidth="757.0" stylesheets="@dark-theme.css">
-               <children>
-                  <TableView layoutY="65.0" prefHeight="389.0" prefWidth="757.0">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                     </columns>
-                  </TableView>
-                  <Label layoutX="34.0" layoutY="8.0" prefHeight="49.0" prefWidth="201.0" text="EVENEMENTS" textFill="WHITE">
+                  <Label fx:id="TITLE1" alignment="CENTER" contentDisplay="CENTER" layoutX="976.0" layoutY="11.0" prefHeight="31.0" prefWidth="189.0" style="-fx-graphic-text-gap: BLACK;" text="DECONNEXION" textFill="RED">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="33.0" />
+                        <Font name="System Bold" size="21.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="exit11" fitHeight="32.0" fitWidth="29.0" layoutX="235.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/exit.png" />
-                     </image>
-                  </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="sponsors" prefHeight="454.0" prefWidth="757.0" stylesheets="@dark-theme.css">
-               <children>
-                  <TableView layoutY="65.0" prefHeight="389.0" prefWidth="757.0">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                     </columns>
-                  </TableView>
-                  <Label layoutX="34.0" layoutY="8.0" prefHeight="49.0" prefWidth="201.0" text="Sponsors" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="33.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="exit111" fitHeight="32.0" fitWidth="29.0" layoutX="235.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/exit.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="categories" prefHeight="454.0" prefWidth="757.0" stylesheets="@dark-theme.css">
-               <children>
-                  <TableView layoutY="65.0" prefHeight="389.0" prefWidth="757.0">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                     </columns>
-                  </TableView>
-                  <Label layoutX="34.0" layoutY="8.0" prefHeight="49.0" prefWidth="201.0" text="Categoriess" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="33.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="exit112" fitHeight="32.0" fitWidth="29.0" layoutX="235.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/exit.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="produits" prefHeight="454.0" prefWidth="757.0" stylesheets="@dark-theme.css">
-               <children>
-                  <TableView layoutY="65.0" prefHeight="389.0" prefWidth="757.0">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                     </columns>
-                  </TableView>
-                  <Label layoutX="34.0" layoutY="8.0" prefHeight="49.0" prefWidth="201.0" text="Produits" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="33.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="exit113" fitHeight="32.0" fitWidth="29.0" layoutX="235.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/exit.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="avis" prefHeight="454.0" prefWidth="757.0" stylesheets="@dark-theme.css">
-               <children>
-                  <TableView layoutY="65.0" prefHeight="389.0" prefWidth="757.0">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                     </columns>
-                  </TableView>
-                  <Label layoutX="34.0" layoutY="8.0" prefHeight="49.0" prefWidth="201.0" text="Avis" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="33.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="exit1111" fitHeight="32.0" fitWidth="29.0" layoutX="235.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/exit.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="commandes" prefHeight="454.0" prefWidth="757.0" stylesheets="@dark-theme.css">
-               <children>
-                  <TableView layoutY="65.0" prefHeight="389.0" prefWidth="757.0">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
-                     </columns>
-                  </TableView>
-                  <Label layoutX="34.0" layoutY="8.0" prefHeight="49.0" prefWidth="201.0" text="Commandes" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="33.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="exit1121" fitHeight="32.0" fitWidth="29.0" layoutX="235.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/exit.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="pane2" layoutX="40.0" layoutY="46.0" prefHeight="454.0" prefWidth="182.0" style="-fx-background-color: #0f1015;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="46.0">
-         <children>
-            <VBox prefHeight="454.0" prefWidth="178.0" spacing="10.0">
-               <children>
-                  <JFXButton alignment="BASELINE_LEFT" minHeight="38.0" prefWidth="196.0" text="TABLEAU DE BOARD" textFill="WHITE" />
-                  <JFXButton fx:id="utilisateursBtn" alignment="BASELINE_LEFT" minHeight="38.0" prefWidth="179.0" text="UTILISATEURS" textFill="WHITE" />
-                  <JFXButton fx:id="jeuxBtn" alignment="BASELINE_LEFT" minHeight="38.0" prefWidth="179.0" text="JEUX" textFill="WHITE" />
-                  <JFXButton fx:id="evenementsBtn" alignment="BASELINE_LEFT" minHeight="38.0" prefWidth="179.0" text="EVENEMENTS" textFill="WHITE" />
-                  <JFXButton fx:id="sponsorsBtn" alignment="BASELINE_LEFT" minHeight="38.0" prefWidth="179.0" text="SPONSORS" textFill="WHITE" />
-                  <JFXButton fx:id="categoriesBtn" alignment="BASELINE_LEFT" minHeight="38.0" prefWidth="179.0" text="CATEGORIES" textFill="WHITE" />
-                  <JFXButton fx:id="proditsBtn" alignment="BASELINE_LEFT" minHeight="38.0" prefWidth="179.0" text="PRODUITS" textFill="WHITE" />
-                  <JFXButton fx:id="avisBtn" alignment="BASELINE_LEFT" minHeight="38.0" prefWidth="179.0" text="AVIS" textFill="WHITE" />
-                  <JFXButton fx:id="commandesBtn" alignment="BASELINE_LEFT" minHeight="38.0" prefWidth="179.0" text="COMMANDES" textFill="WHITE" />
-               </children>
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
-            </VBox>
-         </children>
-      </AnchorPane>
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>

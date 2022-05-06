@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui.produits;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -43,9 +38,8 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 /**
- * FXML Controller class
  *
- * @author hocin
+ * @author  Aymen Laroussi
  */
 public class TableViewController implements Initializable {
 
@@ -75,6 +69,9 @@ public class TableViewController implements Initializable {
     private TableColumn<?, ?> prixCol;
     @FXML
     private TableColumn<?, ?> promoCol;
+    @FXML
+    private TableColumn<?, ?> catCol;
+    
 
     /**
      * Initializes the controller class.
@@ -111,7 +108,7 @@ public class TableViewController implements Initializable {
         try {
             ProduitList.clear();
             
-            query = "SELECT * FROM `produits`";
+            query = "SELECT p.id,p.categories_id,p.titre,p.description,p.promo,p.stock,p.flash,p.image,p.ref,p.longdescription,p.prix,c.id,c.nom FROM `produits` p,`categories` c where c.id=p.categories_id";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             
@@ -121,6 +118,7 @@ public class TableViewController implements Initializable {
                     resultSet.getInt("categories_id"),
                     resultSet.getString("titre"),
                     resultSet.getString("description"),
+                    resultSet.getString("nom"),
                     resultSet.getFloat("promo"),
                     resultSet.getFloat("stock"),
                     resultSet.getBoolean("flash"),
@@ -149,6 +147,7 @@ public class TableViewController implements Initializable {
         refreshTable();
         
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        catCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
         titreCol.setCellValueFactory(new PropertyValueFactory<>("titre"));
         refCol.setCellValueFactory(new PropertyValueFactory<>("ref"));
         stockCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
@@ -254,5 +253,10 @@ public class TableViewController implements Initializable {
         editCol.setCellFactory(cellFoctory);
         produitsTable.setItems(ProduitList);
             
+    }
+    
+    public void refreshTable1() {
+        refreshTable();   
+        System.out.println("done!");
     }
 }
