@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -26,20 +27,41 @@ import javafx.stage.StageStyle;
  */
 public class test extends Application {
     
+    public static final String CURRENCY = "$";
+//    @Override
+//    public void start(Stage primaryStage)throws Exception {
+//        
+//            Parent parent;
+//        try {
+//            //parent = FXMLLoader.load(getClass().getResource("/gui/backoffice/Backoffice.fxml"));
+//            parent = FXMLLoader.load(getClass().getResource("/boutique/views/market.fxml"));
+//            //parent = FXMLLoader.load(getClass().getResource("/sample/sample.fxml"));
+//            
+//            Scene scene = new Scene(parent);
+//            primaryStage.setScene(scene);
+//            
+//            primaryStage.show();
+//            } catch (IOException ex) {
+//            Logger.getLogger(testDisplay.class.getName()).log(Level.SEVERE, null, ex);
+//        }}
+    
+    
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception{
         
-            Parent parent;
+       Parent parent;
         try {
-            parent = FXMLLoader.load(getClass().getResource("/gui/categories/CategoriesFXML.fxml"));
-        
+           // parent = FXMLLoader.load(getClass().getResource("/gui/backoffice/Backoffice.fxml"));
+           //parent = FXMLLoader.load(getClass().getResource("/boutique/views/market.fxml"));
+            parent = FXMLLoader.load(getClass().getResource("/gui/produits/TableView.fxml"));
             Scene scene = new Scene(parent);
             primaryStage.setScene(scene);
-            primaryStage.initStyle(StageStyle.UTILITY);
+            
             primaryStage.show();
             } catch (IOException ex) {
             Logger.getLogger(testDisplay.class.getName()).log(Level.SEVERE, null, ex);
-        }}
+        }
+    }
             
          
             

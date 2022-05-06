@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package services;
 
 import entities.Produit;
@@ -54,7 +49,7 @@ public class ProduitService implements IProduits<Produit> {
                     rst.getString("description"),
                     rst.getFloat("promo"),
                     rst.getFloat("stock"),
-                    rst.getInt("flash"),
+                    rst.getBoolean("flash"),
                     rst.getString("image"),
                     rst.getString("ref"),
                     rst.getString("longdescription"),
@@ -77,7 +72,7 @@ public class ProduitService implements IProduits<Produit> {
             pst.setString(3, p.getDescription());
             pst.setFloat(4, p.getPromo());
             pst.setFloat(5, p.getStock());
-            pst.setInt(6, p.getFlash());
+            pst.setBoolean(6, p.getFlash());
             pst.setString(7, p.getImage());
             pst.setString(8, p.getRef());
             pst.setString(9, p.getLongdescription());
