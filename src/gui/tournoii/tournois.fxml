@@ -32,9 +32,6 @@
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
-                     <children>
-                        <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
-                     </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -45,49 +42,57 @@
                            <children>
                               <Pane prefHeight="100.0" prefWidth="161.0">
                                  <children>
-                                    <Button fx:id="createTour" layoutX="23.0" layoutY="32.0" mnemonicParsing="false" onAction="#CreateTournoi" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="ajouter" textFill="WHITE">
+                                    <Button fx:id="createTour" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#CreateTournoi" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="ajouter" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
                                     </Button>
                                  </children>
                               </Pane>
-                              <Pane prefHeight="100.0" prefWidth="181.0">
+                              <Pane prefHeight="100.0" prefWidth="151.0">
                                  <children>
-                                    <Button fx:id="CreateT" layoutX="33.0" layoutY="32.0" mnemonicParsing="false" onAction="#CreateTF" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Refresh" textFill="WHITE">
+                                    <Button fx:id="CreateT" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#CreateTF" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Refresh" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
                                     </Button>
                                  </children>
                               </Pane>
-                              <Pane prefHeight="100.0" prefWidth="207.0">
+                              <Pane prefHeight="100.0" prefWidth="341.0">
                                  <children>
-                                    <Button fx:id="InscrireTournoi" layoutX="37.0" layoutY="32.0" mnemonicParsing="false" onAction="#InscrireTournoi" prefHeight="37.0" prefWidth="151.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Inscription" textFill="WHITE">
+                                    <Button fx:id="tournoidisponible" layoutX="32.0" layoutY="50.0" mnemonicParsing="false" onAction="#tournoidisponible" opacity="0.77" prefHeight="50.0" prefWidth="125.0" style="-fx-background-color: #E50A3A;" styleClass="add-btn" stylesheets="@../values/style.css" text="Pret a jouer" textFill="WHITE">
                                        <font>
-                                          <Font name="System Bold" size="16.0" />
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="mestournoi" layoutX="157.0" layoutY="50.0" mnemonicParsing="false" onAction="#mestournoi" prefHeight="50.0" prefWidth="135.0" styleClass="add-btn" stylesheets="@../values/style.css" text="mes tournois" textFill="#828282">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Button>
                                  </children>
                               </Pane>
-                              <Pane prefHeight="100.0" prefWidth="207.0">
+                              <Pane prefHeight="100.0" prefWidth="178.0">
                                  <children>
-                                    <Button fx:id="DeleteTournoi" layoutX="95.0" layoutY="32.0" mnemonicParsing="false" onAction="#DeleteTournoi" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #ff0021;" text="Delete" textFill="WHITE">
+                                    <Button fx:id="updateTournoi" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#updateTournoi" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #5cdb5c;" text="Update" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
                                     </Button>
                                  </children>
                               </Pane>
-                              <Pane prefHeight="100.0" prefWidth="175.0">
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="148.0" styleClass="free-delivery-card" stylesheets="@../boutique/values/style.css">
                                  <children>
-                                    <Button fx:id="updateTournoi" layoutX="33.0" layoutY="32.0" mnemonicParsing="false" onAction="#updateTournoi" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #5cdb5c;" text="Update" textFill="WHITE">
+                                    <Button fx:id="DeleteTournoi" depthTest="ENABLE" mnemonicParsing="false" onAction="#DeleteTournoi" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #ff0021;" styleClass="add-btn" stylesheets="@../boutique/values/style.css" text="Delete" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets bottom="33.0" />
+                                       </HBox.margin>
                                     </Button>
                                  </children>
-                              </Pane>
+                              </HBox>
                            </children>
                         </HBox>
                      </children>
@@ -203,7 +208,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button fx:id="InscrireTournoi" mnemonicParsing="false" onAction="#InscrireTournoi" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="Voir détails" textFill="#828282">
+                        <Button fx:id="InscrireTournoi" mnemonicParsing="false" onAction="#InscrireTournoi" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="S'inscrire" textFill="#828282">
                            <VBox.margin>
                               <Insets bottom="20.0" top="30.0" />
                            </VBox.margin>

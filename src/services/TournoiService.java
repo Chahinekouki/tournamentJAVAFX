@@ -66,14 +66,14 @@ public class TournoiService {
         System.out.println(id);
         }
         
-//        String requser= "SELECT id FROM user WHERE username LIKE '"+SessionUser.getInstance().getUsername()+"'";
-//        stm=connexion.createStatement();
-//        ResultSet rst2 = stm.executeQuery(requser);
-        int idu = 9;
-//        while (rst2.next()) {
-//        idu = rst2.getInt("id");
-//        System.out.println(idu);
-//        }
+        String requser= "SELECT id FROM user WHERE username LIKE '"+SessionUser.getInstance().getUsername()+"'";
+       stm=connexion.createStatement();
+        ResultSet rst2 = stm.executeQuery(requser);
+        int idu = 0;
+       while (rst2.next()) {
+        idu = rst2.getInt("id");
+        System.out.println(idu);
+        }
         
         
         String req = "INSERT INTO `tournoi` (`nom`, `nbr_equipes`,`nbr_joueur_eq`,`prix`,`discord_channel`,`time`,`jeu_id`,`organisateur_id`) VALUES ( '"
@@ -138,7 +138,7 @@ public class TournoiService {
         }
         return tournois;
     }
-    public List<Tournoi> affichermestournoi(String userName) throws SQLException {
+    public List<Tournoi> affichermestournoi() throws SQLException {
         List<Tournoi> tournois = new ArrayList<>();
              String req2= "SELECT id FROM user WHERE username LIKE '"+SessionUser.getInstance().getUsername()+"'";
               stm = connexion.createStatement();
@@ -149,6 +149,7 @@ public class TournoiService {
             idUser=rst1.getInt("id");              
          }
              System.out.println(idUser+"ceci l'id du tournoi");
+             System.out.println(SessionUser.getInstance().getUsername());
         
         String req = "select * from tournoi where organisateur_id="+idUser;
         stm = connexion.createStatement();
@@ -168,8 +169,9 @@ public class TournoiService {
                     
 
             tournois.add(t);
-            System.out.println(t);
+           
         }
+        System.out.println("vos tournois sont"+tournois+"******");
         return tournois;
     }
     

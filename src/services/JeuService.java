@@ -27,7 +27,9 @@ import javax.swing.JOptionPane;
 public class JeuService {
     Connection connexion;
     Statement stm;
-
+    Statement stm1;
+    int id ;
+     String jeu ;
     public JeuService() {
         connexion = MyDB.getInstance().getConnexion();
     }
@@ -117,6 +119,28 @@ ObservableList<Jeu> jeuxlist = FXCollections.observableArrayList();
             System.err.println(ex.getMessage());
         }
 
+    }
+    public String getJeuParId(int identifier) throws SQLException{
+   
+                          String req1 = "select jeu_id from tournoi WHERE id='"+identifier+"'";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req1);
+        while (rst.next()) {
+            id=rst.getInt("jeu_id");
+            System.out.println("id="+id);
+         }
+      String req = "select nom from jeu WHERE id='"+id+"'";
+        stm1 = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst1 = stm1.executeQuery(req);
+        while (rst1.next()) {
+            jeu=rst1.getString("nom");              
+         }
+        System.out.println("jeu"+jeu);
+        return jeu;
+       
+                    
     }
     
 }

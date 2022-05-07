@@ -14,6 +14,8 @@ import gui.tournoii.TournoiController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +48,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
+import services.JeuService;
 import services.TournoiService;
 
 /**
@@ -78,13 +81,15 @@ public class TournoisController implements Initializable {
     @FXML
     private Button CreateT;
     @FXML
-    private Button inscription;
-    @FXML
     private Button DeleteTournoi;
     @FXML
     private Button updateTournoi;
     @FXML
     private Button InscrireTournoi;
+    @FXML
+    private Button tournoidisponible;
+    @FXML
+    private Button mestournoi;
      @FXML
     private void searchact2(KeyEvent event) {
     }
@@ -98,6 +103,7 @@ public class TournoisController implements Initializable {
  private Listener listener;
  List<Tournoi> tournois = new ArrayList<>();   
   TournoiService ts = new TournoiService();
+    JeuService js= new JeuService();
   Tournoi tournoi;
       
     /**
@@ -105,6 +111,7 @@ public class TournoisController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+            tournois.clear();
         try {
             refresh();
             // TODO
@@ -114,16 +121,38 @@ public class TournoisController implements Initializable {
     }    
 
  public void refresh () throws SQLException {
-      tournois=ts.affichertournoi();
-      System.out.println(tournois);
-      if (tournois.size() > 0) {
+     grid.getChildren().clear();
+     if(!mesTournoi){
+         tournois.clear(); 
+         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+         LocalDateTime now = LocalDateTime.now().now();
+        String dt =dtf.format(now);
+         for(Tournoi t : ts.affichertournoi()){
+                 
+                String dtt = (t.getTime().substring(0,19));
+                 
+                 if(dtt.compareTo(dt)>0){
+                     System.out.println(dt);
+                   
+                     System.out.println("*******"+t.getId());
+                     
+              tournois.add(t);
+                     System.out.println("tournois"+tournois);
+                 }
+                 
+    }
+     if (tournois.size() > 0) {
           setChosenTournoi(tournois.get(0));
           listener = new Listener() {
               public Tournoi tournoi;
               @Override
               public void OnClickListener(Tournoi tournoi) {
                   System.out.println("Nom"+tournoi.getNom());
-                  setChosenTournoi(tournoi);
+                  try {
+                      setChosenTournoi(tournoi);
+                  } catch (SQLException ex) {
+                      Logger.getLogger(TournoisController.class.getName()).log(Level.SEVERE, null, ex);
+                  }
                   
               }
               
@@ -132,9 +161,12 @@ public class TournoisController implements Initializable {
           
           
       }
+      
+      
       int column = 0;
       int row = 1;
       try {
+          System.out.println("solution finale "+tournois+"********************");
           for (int i = 0; i < tournois.size(); i++) {
               FXMLLoader fxmlLoader = new FXMLLoader();
               fxmlLoader.setLocation(getClass().getResource("/gui/tournoii/tour.fxml"));
@@ -162,16 +194,85 @@ public class TournoisController implements Initializable {
           }
       } catch (IOException e) {
           e.printStackTrace();
+      }   
+   
+     }
+     
+     if(mesTournoi){
+          tournois.clear();
+         
+         tournois=ts.affichermestournoi();
+         System.out.println("tournois======"+tournois);
+         if (tournois.size() > 0) {
+          setChosenTournoi(tournois.get(0));
+          listener = new Listener() {
+              public Tournoi tournoi;
+              @Override
+              public void OnClickListener(Tournoi tournoi) {
+                  System.out.println("Nom"+tournoi.getNom());
+                  try {
+                      setChosenTournoi(tournoi);
+                  } catch (SQLException ex) {
+                      Logger.getLogger(TournoisController.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+              }
+              
+          };
+          
+          
+          
       }
+      
+      
+      int column = 0;
+      int row = 1;
+      try {
+          System.out.println("solution finale "+tournois+"********************");
+          for (int i = 0; i < tournois.size(); i++) {
+              FXMLLoader fxmlLoader = new FXMLLoader();
+              fxmlLoader.setLocation(getClass().getResource("/gui/tournoii/tour.fxml"));
+              AnchorPane anchorPane = fxmlLoader.load();
+              TourController tourController = fxmlLoader.getController();
+              tourController.setData(tournois.get(i),listener);
+              
+              if (column == 3) {
+                  column = 0;
+                  row++;
+              }
+              
+              grid.add(anchorPane, column++, row); //(child,column,row)
+              //set grid width
+              grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+              grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+              grid.setMaxWidth(Region.USE_PREF_SIZE);
+              
+              //set grid height
+              grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+              grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+              grid.setMaxHeight(Region.USE_PREF_SIZE);
+              
+              GridPane.setMargin(anchorPane, new Insets(23));
+              
+          }
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+     }
+ 
+     
+      
 // TODO
 
  }
  
-  private void setChosenTournoi(Tournoi tournoi) {
+  private void setChosenTournoi(Tournoi tournoi) throws SQLException {
       this.tournoi=tournoi;
+      tournoi.setJeu(js.getJeuParId(tournoi.getId()));
         TournoiNameLable.setText(tournoi.getNom());
         jeuNameLable1.setText(tournoi.getJeu());
-        dateNameLable1.setText(tournoi.getTime());
+        
+        dateNameLable1.setText(tournoi.getTime().substring(0, 10));
     
     }
 
@@ -192,9 +293,6 @@ public class TournoisController implements Initializable {
           refresh();
     }
 
-    @FXML
-    private void iscription(ActionEvent event) {
-    }
 
   @FXML
     private void DeleteTournoi(ActionEvent event) throws SQLException, IOException {
@@ -308,6 +406,18 @@ public class TournoisController implements Initializable {
            else {
                 JOptionPane.showMessageDialog(null, "Veuillez s'inscrire a partir de la liste des tournois disponibles"); 
            }
+    }
+
+    @FXML
+    private void tournoidisponible(ActionEvent event) throws SQLException {
+        mesTournoi=false;
+        refresh();
+    }
+
+    @FXML
+    private void mestournoi(ActionEvent event) throws SQLException {
+          mesTournoi=true;
+        refresh();
     }
   
   
