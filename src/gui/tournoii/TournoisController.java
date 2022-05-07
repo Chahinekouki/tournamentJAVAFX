@@ -44,6 +44,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -90,6 +92,8 @@ public class TournoisController implements Initializable {
     private Button tournoidisponible;
     @FXML
     private Button mestournoi;
+    @FXML
+    private Button Close;
      @FXML
     private void searchact2(KeyEvent event) {
     }
@@ -98,7 +102,7 @@ public class TournoisController implements Initializable {
     private void btnsearch(ActionEvent event) {
     }
 
-    
+     MediaPlayer mediaplayer;
     Boolean mesTournoi=false;
  private Listener listener;
  List<Tournoi> tournois = new ArrayList<>();   
@@ -111,6 +115,10 @@ public class TournoisController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Media musicFile = new Media ("file:///D:/Assassin.mp3");
+       mediaplayer = new MediaPlayer(musicFile);
+       mediaplayer.setAutoPlay(true);
+       mediaplayer.setVolume(0.1);
             tournois.clear();
         try {
             refresh();
@@ -418,6 +426,12 @@ public class TournoisController implements Initializable {
     private void mestournoi(ActionEvent event) throws SQLException {
           mesTournoi=true;
         refresh();
+    }
+
+    @FXML
+    private void Close(ActionEvent event) {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                stage.close();
     }
   
   

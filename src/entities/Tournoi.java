@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entites;
+package entities;
 
 import javafx.scene.control.Button;
 
@@ -25,6 +25,8 @@ public class Tournoi {
     private String jeu;
     private Button update;
     private Button delete;
+    private String color ;
+   
 
     public Tournoi(int id, String nom, int nbr_equipes, int nbr_joueur_eq, float prix, String image, String discord_channel, String time) {
         this.id = id;
@@ -163,6 +165,11 @@ public class Tournoi {
 
     public void setUpdate(Button update) {
         this.update = update;
+    }
+
+    @Override
+    public String toString() {
+        return "Tournoi{" + "id=" + id + ", nom=" + nom + ", nbr_equipes=" + nbr_equipes + ", nbr_joueur_eq=" + nbr_joueur_eq + ", prix=" + prix + ", image=" + image + ", discord_channel=" + discord_channel + ", time=" + time + ", timeEnd=" + timeEnd + ", jeu=" + jeu + ", update=" + update + ", delete=" + delete + ", color=" + color + '}';
     }
 
 
