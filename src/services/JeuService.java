@@ -6,8 +6,8 @@
 package services;
 
 import utils.MyDB;
-import entites.Jeu;
-import entites.Tournoi;
+import entities.Jeu;
+import entities.Tournoi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

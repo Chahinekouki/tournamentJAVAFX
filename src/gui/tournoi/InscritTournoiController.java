@@ -5,9 +5,10 @@
  */
 package gui.tournoi;
 
-import entites.Equipe;
-import entites.Jeu;
-import entites.Tournoi;
+import entities.Equipe;
+import entities.Jeu;
+import entities.Tournoi;
+import entities.SessionUser;
 import services.JeuService;
 import services.TournoiService;
 import java.net.URL;
@@ -36,7 +37,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javax.swing.JOptionPane;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -65,6 +70,8 @@ public class InscritTournoiController implements Initializable {
      TournoiService ts = new TournoiService();
     @FXML
     private Button AnnulerInscription;
+    
+    String s="";
 
     /**
      * Initializes the controller class.
@@ -88,6 +95,7 @@ public class InscritTournoiController implements Initializable {
          List<Equipe> jrs = ts.afficherJoueurs(id);
         TableJoueurs.getItems().clear();
         TableJoueurs.getItems().addAll(jrs);
+        
     }
    void setTextField( int id) {
 
@@ -106,59 +114,96 @@ public class InscritTournoiController implements Initializable {
          ButtonType okButtonType = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         ButtonType cancelButtonType = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
   if (TableJoueurs.getSelectionModel().getSelectedItem() != null) {
-        Dialog<ButtonType> dialog = new Dialog<>();
-         dialog.setContentText("Voulez vous rejoindre cette equipe  !!!");
-        dialog.getDialogPane().getButtonTypes().add(okButtonType);
-        dialog.getDialogPane().getButtonTypes().add(cancelButtonType);
-
-        Optional<ButtonType> result = dialog.showAndWait();
-        if (result.isPresent() && result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
-          
-              
-      
+       List<Equipe> jrs = ts.afficherJoueurs(id);
+      for(Equipe e:jrs){
+            e.getJoueurs();
+            s = s.concat(e.getJoueurs());
+      }
+            
+        
+       if ( s.contains(SessionUser.getInstance().getUsername()) ){
+           JOptionPane.showMessageDialog(null, "vous etes déja inscrit !! ");
+       } else {
+           Dialog<ButtonType> dialog = new Dialog<>();
+           dialog.setContentText("Voulez vous rejoindre cette equipe  !!!");
+           dialog.getDialogPane().getButtonTypes().add(okButtonType);
+           dialog.getDialogPane().getButtonTypes().add(cancelButtonType);
+           
+           Optional<ButtonType> result = dialog.showAndWait();
+           if (result.isPresent() && result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
                ts.inscrireJoueur(TableJoueurs.getSelectionModel().getSelectedItem());
-         
-//        TableTournoi.getItems().clear();
-//        TableTournoi.getItems().addAll(tournois);
-             JOptionPane.showMessageDialog(null, "succes");
-              refresh();
+               s="";
+               refresh();
+              String tilte = SessionUser.getInstance().getUsername()+" inscrit avec succes";
+              // notification bundle 
+            String message = SessionUser.getInstance().getUsername();
+               TrayNotification tray = new TrayNotification();
+               AnimationType type = AnimationType.POPUP;
+        
+            tray.setAnimationType(type);
+            tray.setTitle(tilte);
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.SUCCESS);
+            tray.showAndDismiss(Duration.millis(3000));
+               
+               // sms bundle 
+              ts.envoyerSMS(id);
+               
+           }                      
+       
+
             }
            
-  }
-       else {
+  
+  } else {
                 JOptionPane.showMessageDialog(null, "Veuillez selectionner le tournoi à s'inscrire");    
             }
     }
 
     @FXML
     private void AnnulerInscription(ActionEvent event) throws SQLException {
-          ButtonType okButtonType = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
+   
+    
+      ButtonType okButtonType = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
         ButtonType cancelButtonType = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
   if (TableJoueurs.getSelectionModel().getSelectedItem() != null) {
-        Dialog<ButtonType> dialog = new Dialog<>();
-         dialog.setContentText("Voulez vous se desinscrire de cette equipe  !!!");
-        dialog.getDialogPane().getButtonTypes().add(okButtonType);
-        dialog.getDialogPane().getButtonTypes().add(cancelButtonType);
-
-        Optional<ButtonType> result = dialog.showAndWait();
-        if (result.isPresent() && result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
-          
-              
-      
-               ts.desinscrireJoueur(TableJoueurs.getSelectionModel().getSelectedItem());
-         
-//        TableTournoi.getItems().clear();
-//        TableTournoi.getItems().addAll(tournois);
-             JOptionPane.showMessageDialog(null, "succes");
-             refresh();
-            }
+       List<Equipe> jrs = ts.afficherJoueurs(id);
+      for(Equipe e:jrs){
+            e.getJoueurs();
+            s = s.concat(e.getJoueurs());
+      }
             
-  }
-       else {
-                JOptionPane.showMessageDialog(null, "Veuillez selectionner le jeu à supprimer");    
-            }
-    }
+        
+       if ( s.contains(SessionUser.getInstance().getUsername()) ){
+           Dialog<ButtonType> dialog = new Dialog<>();
+           dialog.setContentText("Voulez vous se desinscrire de cette equipe  !!!");
+           dialog.getDialogPane().getButtonTypes().add(okButtonType);
+           dialog.getDialogPane().getButtonTypes().add(cancelButtonType);
+           
+           Optional<ButtonType> result = dialog.showAndWait();
+           if (result.isPresent() && result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
+               ts.desinscrireJoueur(TableJoueurs.getSelectionModel().getSelectedItem());
+               s="";
+               refresh();
+               JOptionPane.showMessageDialog(null, "Joueur desinscrit");
+               
+          // envoyersms     
+               
+               
+           }                      
+       
 
+            }else {
+           
+          JOptionPane.showMessageDialog(null, "vous etes n'etes pas inscrit !! "); 
+}
+       
+           
+  } else {
+                JOptionPane.showMessageDialog(null, "Veuillez selectionner le tournoi à se désinscrire");    
+            }
+
+}
 }
       
      

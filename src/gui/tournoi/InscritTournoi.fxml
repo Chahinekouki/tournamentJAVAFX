@@ -20,7 +20,7 @@
       </Text>
       <ImageView fx:id="logo1" fitHeight="74.0" fitWidth="151.0" layoutX="421.0" layoutY="15.0" preserveRatio="true">
          <image>
-            <Image url="@../resources/logo.png" />
+            <Image url="@../../resources/logo.png" />
          </image>
       </ImageView>
       <AnchorPane fx:id="joueurs" layoutX="30.0" layoutY="105.0" prefHeight="379.0" prefWidth="931.0">

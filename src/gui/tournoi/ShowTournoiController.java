@@ -5,14 +5,18 @@
  */
 package gui.tournoi;
 
-import entites.Jeu;
-import entites.Tournoi;
+import entities.Jeu;
+import entities.Tournoi;
+import entities.SessionUser;
 import services.JeuService;
 import services.TournoiService;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -43,6 +47,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
@@ -92,12 +98,23 @@ public class ShowTournoiController implements Initializable {
     @FXML
     private Button tournoidisponible;
     
+    int idUser;
+    Statement stm;
+    Connection connexion;
+    MediaPlayer mediaplayer;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         // TODO
+        Media musicFile = new Media ("file:///D:/Assassin.mp3");
+       mediaplayer = new MediaPlayer(musicFile);
+       mediaplayer.setAutoPlay(true);
+       mediaplayer.setVolume(0.1);
+       
         nomTournoi.setCellValueFactory(new PropertyValueFactory<>("nom"));
         nbrEquipe.setCellValueFactory(new PropertyValueFactory<>("nbr_equipes"));
         nbrJoueur.setCellValueFactory(new PropertyValueFactory<>("nbr_joueur_eq"));
@@ -133,11 +150,15 @@ public class ShowTournoiController implements Initializable {
     }
          }
          else{
-              tournois =  ts.affichermestournoi(2);
+            
+               
+             tournois= ts.affichermestournoi(SessionUser.getInstance().getUsername());
+             
          }
          
         TableTournoi.getItems().clear();
         TableTournoi.getItems().addAll(tournois);
+    
     }
 
     @FXML

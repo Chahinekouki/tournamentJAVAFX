@@ -7,9 +7,12 @@ package services;
 
 
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
 import utils.MyDB;
-import entites.Equipe;
-import entites.Tournoi;
+import entities.Equipe;
+import entities.Tournoi;
+import entities.SessionUser;
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
@@ -37,6 +40,10 @@ public class TournoiService {
     Statement stm;
     ArrayList<String> joueursList = new ArrayList<>();
     Equipe e;
+    int idUser;
+    String discord;
+ public static final String ACCOUNT_SID = System.getenv("AC18acd991efe08e7ffb2fcd3059bfacb2");
+    public static final String AUTH_TOKEN = System.getenv("6777c1a55cfc4eb944cc0712d3ab3311");
 
     public TournoiService() {
         connexion = MyDB.getInstance().getConnexion();
@@ -45,26 +52,33 @@ public class TournoiService {
 
     public void ajoutert(Tournoi t,String time1, String time2) throws SQLException, ParseException {
        
-    System.out.println("java.sql.Timestamp time: " + time1+" "+ time2+ t.getTime());
     
        java.sql.Timestamp sqlTS = java.sql.Timestamp.valueOf(t.getTime()+" "+time1+":"+time2+":00.888");
-       
-        System.out.println("java.sql.Timestamp time: " + sqlTS);
-        
-        
+              
         String reqjeu= "SELECT id FROM jeu WHERE nom LIKE '"+t.getJeu()+"'";
         System.out.println(reqjeu);
         stm=connexion.createStatement();
         ResultSet rst = stm.executeQuery(reqjeu);
+       
         int id = 0;
         while (rst.next()) {
         id = rst.getInt("id");
         System.out.println(id);
         }
         
+//        String requser= "SELECT id FROM user WHERE username LIKE '"+SessionUser.getInstance().getUsername()+"'";
+//        stm=connexion.createStatement();
+//        ResultSet rst2 = stm.executeQuery(requser);
+//        int idu = 0;
+//        while (rst2.next()) {
+//        idu = rst2.getInt("id");
+//        System.out.println(idu);
+//        }
+        
+        
         String req = "INSERT INTO `tournoi` (`nom`, `nbr_equipes`,`nbr_joueur_eq`,`prix`,`discord_channel`,`time`,`jeu_id`,`organisateur_id`) VALUES ( '"
                 + t.getNom() + "', '" + t.getNbr_equipes() + "','" + t.getNbr_joueur_eq() + "','" + t.getPrix()+ "','" + t.getDiscord_channel()
-                + "','" + sqlTS + "', '" + id + "','" + 2 + "')";
+                + "','" + sqlTS + "', '" + id + "','" + 8 + "')";
         
       
         stm = connexion.createStatement();
@@ -124,10 +138,19 @@ public class TournoiService {
         }
         return tournois;
     }
-    public List<Tournoi> affichermestournoi(int id) throws SQLException {
+    public List<Tournoi> affichermestournoi(String userName) throws SQLException {
         List<Tournoi> tournois = new ArrayList<>();
+             String req2= "SELECT id FROM user WHERE username LIKE '"+SessionUser.getInstance().getUsername()+"'";
+              stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst1 = stm.executeQuery(req2);
         
-        String req = "select * from tournoi where organisateur_id="+id;
+        while (rst1.next()) {
+            idUser=rst1.getInt("id");              
+         }
+             System.out.println(idUser+"ceci l'id du tournoi");
+        
+        String req = "select * from tournoi where organisateur_id="+idUser;
         stm = connexion.createStatement();
         //ensemble de resultat
         ResultSet rst = stm.executeQuery(req);
@@ -145,6 +168,7 @@ public class TournoiService {
                     
 
             tournois.add(t);
+            System.out.println(t);
         }
         return tournois;
     }
@@ -224,14 +248,13 @@ JOptionPane.showMessageDialog(null, "update");
     }
     
     public void inscrireJoueur(Equipe e){
-           
+         
         try {  
-            System.out.println(e.getJoueurs());
-            System.out.println(e.getId());
+          
             // rechercher l'index de mot vide
 //            int index = e.getJoueurs().indexOf("Vide-");
 //            //remplacer vide par ACTIVE
-            String test = e.getJoueurs().replaceFirst("vide", "ACTIVE");
+            String test = e.getJoueurs().replaceFirst("vide",SessionUser.getInstance().getUsername());
             System.out.println(test);
             String requete = "UPDATE `equipe` set joueurs =? WHERE id=?";
             PreparedStatement pst = MyDB.getInstance().getConnexion().prepareStatement(requete);
@@ -241,8 +264,9 @@ JOptionPane.showMessageDialog(null, "update");
           
             pst.executeUpdate();
 
-            System.out.println("Joueur inscrit");
-JOptionPane.showMessageDialog(null, "Joueur inscrit");
+            
+
+
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
             JOptionPane.showMessageDialog(null, "error");
@@ -252,12 +276,11 @@ JOptionPane.showMessageDialog(null, "Joueur inscrit");
      public void desinscrireJoueur(Equipe e){
            
         try {  
-            System.out.println(e.getJoueurs());
-            System.out.println(e.getId());
+          
             // rechercher l'index de mot vide
 //            int index = e.getJoueurs().indexOf("Vide-");
 //            //remplacer vide par ACTIVE
-            String test = e.getJoueurs().replaceFirst("ACTIVE", "vide");
+            String test = e.getJoueurs().replaceFirst(SessionUser.getInstance().getUsername(), "vide");
             System.out.println(test);
             String requete = "UPDATE `equipe` set joueurs =? WHERE id=?";
             PreparedStatement pst = MyDB.getInstance().getConnexion().prepareStatement(requete);
@@ -267,14 +290,42 @@ JOptionPane.showMessageDialog(null, "Joueur inscrit");
           
             pst.executeUpdate();
 
-            System.out.println("Joueur inscrit");
-JOptionPane.showMessageDialog(null, "Joueur inscrit");
+            
+
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
-            JOptionPane.showMessageDialog(null, "error");
+          
         }    
     
 }
+      public void envoyerSMS (int id) throws SQLException{
+            // Find your Account SID and Auth Token at twilio.com/console
+    // and set the environment variables. See http://twil.io/secure
+      
+      
+      String reqDiscord= "SELECT discord_channel FROM tournoi WHERE id=" +id;
+     Statement st = connexion.createStatement();
+            
+            ResultSet rs = st.executeQuery(reqDiscord);
+            while (rs.next()) {
+              
+                   discord= rs.getString("discord_channel");
+                  
+                  
+                  System.out.println(discord);  
+
+           
+            }
+        Twilio.init("ACc583b8e83c97756aeae9b82088c7067e", "6a80034bb7cf578d75b0d0030eeab70c");
+        Message message = Message.creator(
+                new com.twilio.type.PhoneNumber("+21653053094"),
+                new com.twilio.type.PhoneNumber("+19705175089"),
+                "Vous etes inscrit avec l'equipe1:"  +" et voici  chaine discor"+discord).create();
+
+        System.out.println(message.getSid());
+    }
+  
+
 }
 
 

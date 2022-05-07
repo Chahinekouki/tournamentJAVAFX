@@ -6,7 +6,7 @@
 package gui.jeu;
 
 
-import entites.Jeu;
+import entities.Jeu;
 import services.JeuService;
 
 import java.io.IOException;

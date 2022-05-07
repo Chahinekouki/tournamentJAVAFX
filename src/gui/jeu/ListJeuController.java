@@ -6,8 +6,8 @@
 package gui.jeu;
 
 import utils.MyDB;
-import entites.Jeu;
-import entites.Tournoi;
+import entities.Jeu;
+import entities.Tournoi;
 import services.JeuService;
 
 import java.io.IOException;
