@@ -130,10 +130,14 @@ public class Controller implements Initializable {
 
     @FXML
     private void event(ActionEvent event) {
+        loadUI("/gui/evenement/tableviewevent.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/EVENEMENT");
     }
 
     @FXML
     private void sponsors(ActionEvent event) {
+         loadUI("/gui/sponsor/tableView.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/SPONSORS");
     }
 
     @FXML
