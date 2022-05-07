@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="713.0" prefWidth="1052.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.tournoi.InscritTournoiController">
+<AnchorPane id="AnchorPane" prefHeight="713.0" prefWidth="1052.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.tournoii.InscritTournoiController">
    <children>
       <Pane layoutX="10.0" layoutY="89.0" prefHeight="6.0" prefWidth="973.0" style="-fx-background-color: #6A2B9C;" />
       <Text fill="#6a2b9c" layoutX="24.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font: white;" styleClass="white-background" text="Tournoi" wrappingWidth="178.68701171875">

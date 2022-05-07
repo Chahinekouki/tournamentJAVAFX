@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.tournoi;
+package gui.tournoii;
 
+import gui.tournoii.*;
 import utils.MyDB;
 
 import entities.Jeu;
@@ -29,6 +30,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -80,7 +82,7 @@ public class TournoiController implements Initializable {
     private ComboBox<String> heure;
     @FXML
     private ComboBox<String> minute;
-    private boolean update;
+    private boolean update =false;
      int id;
     
    private void executeQuery(String query) {
@@ -146,13 +148,17 @@ public class TournoiController implements Initializable {
             Tournoi tournoi = new Tournoi(id,nom,nbreq,nbrj,pr,dc,date,jeu);
             TournoiService tournoiService = new TournoiService();
             tournoiService.majTournoi(tournoi);
+             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                stage.close();
            
             
 
         } else if (update == false) {
             Tournoi tournoi = new Tournoi(nom,nbreq,nbrj,pr,dc,date,jeu);
-            TournoiService tournoiService = new TournoiService();
+                TournoiService tournoiService = new TournoiService();
             tournoiService.ajoutert(tournoi,time1,time2);
+             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                stage.close();
             
         }
         
@@ -164,7 +170,7 @@ public class TournoiController implements Initializable {
     LocalDate d = time.getValue();
     System.out.println(d.toString());
     }
-     void setUpdate(boolean b) {
+     public void setUpdate(boolean b) {
         this.update = b;
 
     }

@@ -22,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -83,7 +84,7 @@ public class JeuController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Please Fill All DATA");
             alert.showAndWait();
-
+       
         } else {
             if (update == true){
             Jeu jeu = new Jeu(id,name);
@@ -99,6 +100,9 @@ public class JeuController implements Initializable {
             
         }
             
+               Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                stage.close();
+  
     }
     }
 
@@ -112,5 +116,6 @@ public class JeuController implements Initializable {
         nomjeu.setText(name);
 
     }
+
     
 }

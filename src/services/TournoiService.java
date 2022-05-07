@@ -69,7 +69,7 @@ public class TournoiService {
 //        String requser= "SELECT id FROM user WHERE username LIKE '"+SessionUser.getInstance().getUsername()+"'";
 //        stm=connexion.createStatement();
 //        ResultSet rst2 = stm.executeQuery(requser);
-//        int idu = 0;
+        int idu = 9;
 //        while (rst2.next()) {
 //        idu = rst2.getInt("id");
 //        System.out.println(idu);
@@ -78,7 +78,7 @@ public class TournoiService {
         
         String req = "INSERT INTO `tournoi` (`nom`, `nbr_equipes`,`nbr_joueur_eq`,`prix`,`discord_channel`,`time`,`jeu_id`,`organisateur_id`) VALUES ( '"
                 + t.getNom() + "', '" + t.getNbr_equipes() + "','" + t.getNbr_joueur_eq() + "','" + t.getPrix()+ "','" + t.getDiscord_channel()
-                + "','" + sqlTS + "', '" + id + "','" + 8 + "')";
+                + "','" + sqlTS + "', '" + id + "','" + idu + "')";
         
       
         stm = connexion.createStatement();
