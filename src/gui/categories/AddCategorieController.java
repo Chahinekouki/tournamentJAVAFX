@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui.categories;
 
 import com.jfoenix.controls.JFXTextField;
 import entities.Categories;
+import static gui.produits.AddProduitController.showSuccessAlert;
 import utils.MyDB;
 import java.net.URL;
 import java.sql.Connection;
@@ -22,9 +18,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 
 /**
- * FXML Controller class
  *
- * @author hocin
+ * @author Aymen Laroussi
  */
 public class AddCategorieController implements Initializable {
 
@@ -98,7 +93,8 @@ public class AddCategorieController implements Initializable {
             preparedStatement.setString(1, nameFld.getText());
             
             preparedStatement.execute();
-
+ String content = "Categorie insérer!";
+        showSuccessAlert(content);
         } catch (SQLException ex) {
             Logger.getLogger(AddCategorieController.class.getName()).log(Level.SEVERE, null, ex);
         }

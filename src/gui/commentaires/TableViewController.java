@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui.commentaires;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -42,9 +37,8 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 /**
- * FXML Controller class
  *
- * @author hocin
+ * @author Aymen Laroussi
  */
 public class TableViewController implements Initializable {
 
@@ -63,12 +57,16 @@ public class TableViewController implements Initializable {
 
   String data3;
   String query = null;
+  String query1 = null;
   Connection connection = null;
   PreparedStatement preparedStatement = null;
   ResultSet resultSet = null;
+  PreparedStatement preparedStatement1 = null;
+  ResultSet resultSet1 = null;
   Commentaire commentaires = null;
 
   ObservableList < Commentaire > CommentaireList = FXCollections.observableArrayList();
+    ObservableList < Commentaire > CommentaireList1 = FXCollections.observableArrayList();
 
   /**
    * Initializes the controller class.
@@ -105,19 +103,20 @@ public class TableViewController implements Initializable {
     try {
       CommentaireList.clear();
 
-      query = "SELECT * FROM `commentaires`";
+      
+      query = "select u.username,c.id,c.user_id,c.message,p.titre,p.id,c.produit_id,c.date from `commentaires` c , `user` u,`produits` p where u.id=c.user_id AND p.id=c.produit_id ;";
       preparedStatement = connection.prepareStatement(query);
       resultSet = preparedStatement.executeQuery();
 
       while (resultSet.next()) {
-        int user1 = resultSet.getInt("user_id");
-
+        
         CommentaireList.add(new Commentaire(resultSet.getInt("id"),
-          resultSet.getInt("user_id"),
-
-          resultSet.getInt("produit_id"),
+          
+          resultSet.getString("username"),
+          resultSet.getString("titre"),
           resultSet.getString("message"),
           resultSet.getDate("date")));
+       
         commentairesTable.setItems(CommentaireList);
 
       }
@@ -138,9 +137,8 @@ public class TableViewController implements Initializable {
     refreshTable();
 
     idCol.setCellValueFactory(new PropertyValueFactory < > ("id"));
-
-    userCol.setCellValueFactory(new PropertyValueFactory < > ("user_id"));
-    produitCol.setCellValueFactory(new PropertyValueFactory < > ("produit_id"));
+    userCol.setCellValueFactory(new PropertyValueFactory < > ("user"));
+    produitCol.setCellValueFactory(new PropertyValueFactory < > ("produit"));
     dateCol.setCellValueFactory(new PropertyValueFactory < > ("date"));
 
     //add cell of button edit 
@@ -185,7 +183,7 @@ public class TableViewController implements Initializable {
               if (result.orElse(oui) == non) {
                 try {
                   commentaires = commentairesTable.getSelectionModel().getSelectedItem();
-                  query = "DELETE FROM `produits` WHERE id  =" + commentaires.getId();
+                  query = "DELETE FROM `commentaires` WHERE id  =" + commentaires.getId();
                   connection = MyDB.getInstance().getConnexion();
                   preparedStatement = connection.prepareStatement(query);
                   preparedStatement.execute();
