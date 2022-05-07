@@ -30,6 +30,7 @@
                                     <Font name="Berlin Sans FB Demi Bold" size="16.0" />
                                  </font>
                               </Label>
+
                               <JFXButton fx:id="utilisateursBtn1" alignment="BASELINE_LEFT" minHeight="38.0" onAction="#dashboard" prefHeight="46.0" prefWidth="178.0" text="DASHBOARD" textFill="WHITE">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="16.0" />
@@ -203,6 +204,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
+
                </children>
             </AnchorPane>
          </top>
