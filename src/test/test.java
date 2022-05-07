@@ -53,7 +53,7 @@ public class test extends Application {
         try {
            // parent = FXMLLoader.load(getClass().getResource("/gui/backoffice/Backoffice.fxml"));
            //parent = FXMLLoader.load(getClass().getResource("/boutique/views/market.fxml"));
-            parent = FXMLLoader.load(getClass().getResource("/gui/produits/TableView.fxml"));
+            parent = FXMLLoader.load(getClass().getResource("/gui/user/LoginPFXML.fxml"));
             Scene scene = new Scene(parent);
             primaryStage.setScene(scene);
             

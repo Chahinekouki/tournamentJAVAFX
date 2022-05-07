@@ -74,7 +74,8 @@ public class FXMLforgotpasswordController implements Initializable {
         System.out.println(u);
         if(tfverificationcode.getText().equals(String.valueOf(n)) && pfconfirm.getText().equals(pfnew_password.getText())){
             u.setPassword(pfnew_password.getText());
-            us.modifier(u.getId(), u);
+            us.modifier(u.getEmail(), u);
+            JOptionPane.showMessageDialog(null, "Votre mot de passe a été modifié");
             try {
                 Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
 
@@ -91,6 +92,10 @@ public class FXMLforgotpasswordController implements Initializable {
             } catch (IOException ex) {
                 
             }
+        } else if(!tfverificationcode.getText().equals(String.valueOf(n))) {
+            JOptionPane.showMessageDialog(null, "Le code entré est incorrect");
+        } else if(!pfconfirm.getText().equals(pfnew_password.getText())) {
+            JOptionPane.showMessageDialog(null, "Les deux mots de passe ne correspondent pas");
         }
     }
 
@@ -113,7 +118,7 @@ public class FXMLforgotpasswordController implements Initializable {
     
     @FXML
     private void retourLogin(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/LoginPFXML.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/user/LoginPFXML.fxml"));
         try {
             Parent root = loader.load();
             Stage mainStage=new Stage();

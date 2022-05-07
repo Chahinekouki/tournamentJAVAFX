@@ -1,6 +1,7 @@
 package gui.backoffice;
 
 import com.jfoenix.controls.JFXButton;
+import entities.SessionUser;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,10 +22,13 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -40,14 +44,6 @@ public class Controller implements Initializable {
     private ImageView menu;
     @FXML
     private AnchorPane pane2;
-
-   
-    
-
-  
-
-    
-
     boolean menuAnim =true ;
     private JFXButton produitbtn;
     @FXML
@@ -87,6 +83,8 @@ public class Controller implements Initializable {
     @FXML
     private JFXButton commandesBtn;
     @FXML
+    private JFXButton username_session;
+    @FXML
     private JFXButton utilisateursBtn1;
     @FXML
     private JFXButton commandeBtn;
@@ -105,23 +103,27 @@ public class Controller implements Initializable {
     @FXML
     private Label heure;
     @FXML
-    private Label TITLE;
-
-    
-   Stage primaryStage;
+    private Label user1;
     @FXML
-    private Label TITLE1;
+    private Label TITLE;
+    
+    Stage primaryStage;
+    @FXML
+    private Button deconnexion;
+    
     @Override
     
     public void initialize(URL location, ResourceBundle resources) {
         Timenow();
-        
+        set_usr();
         loadUI("/gui/backoffice/dashboard.fxml");
         TITLE.setText("TOURNAMENT LEGACY/ADMIN/TABLEAU DE BOARD");
+        
    }
     @FXML
     private void utilisaterur(ActionEvent event) {
-        
+        loadUI("/gui/user/GestionUsersFXML.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/USER");
     }
 
     @FXML
@@ -132,6 +134,11 @@ public class Controller implements Initializable {
     private void event(ActionEvent event) {
         loadUI("/gui/evenement/tableviewevent.fxml");
         TITLE.setText("TOURNAMENT LEGACY/ADMIN/EVENEMENT");
+    }
+    
+    @FXML
+    private void username_session(ActionEvent event) {
+        username_session.setText(SessionUser.getInstance().getUsername().toString());
     }
 
     @FXML
@@ -193,6 +200,28 @@ public class Controller implements Initializable {
     clock.setCycleCount(Animation.INDEFINITE);
     clock.play();
 }
+    
+    private void set_usr() {
+        user1.setText(SessionUser.getInstance().getUsername());
+    }
+    
+    @FXML
+    private void deconnexion(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/user/LoginPFXML.fxml"));
+        try {
+            Parent root = loader.load();
+            Stage mainStage=new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+            mainStage.setTitle("Connexion");
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     public static void ouvriLien(String url) {
     try {
     Desktop.getDesktop().browse(new URL(url).toURI());

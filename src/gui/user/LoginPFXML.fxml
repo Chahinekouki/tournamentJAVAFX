@@ -2,43 +2,57 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginFXMLController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="633.0" style="-fx-background-color: #e1ebf2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.user.LoginFXMLController">
    <children>
-      <Text layoutX="254.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connexion">
+      <Text layoutX="399.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="61.13671875">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Arial" size="20.0" />
          </font>
       </Text>
-      <Text layoutX="275.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="49.13671875">
+      <TextField fx:id="tfEmail" layoutX="349.0" layoutY="150.0" />
+      <Text layoutX="363.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe">
          <font>
-            <Font size="18.0" />
+            <Font name="Arial" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="tfEmail" layoutX="226.0" layoutY="127.0" />
-      <Text layoutX="246.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe">
+      <Button layoutX="357.0" layoutY="259.0" mnemonicParsing="false" onAction="#buttonLogin" style="-fx-background-color: #105791;" text="Se connecter" textFill="WHITE">
          <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Button layoutX="246.0" layoutY="243.0" mnemonicParsing="false" onAction="#buttonLogin" style="-fx-background-color: #0fea88;" text="Se connecter" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="Arial Bold" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="233.0" layoutY="354.0" mnemonicParsing="false" onAction="#pasEncoreInscrit" style="-fx-background-color: #0fea88;" text="Pas encore inscrit ?" textFill="WHITE">
+      <Button layoutX="234.0" layoutY="353.0" mnemonicParsing="false" onAction="#pasEncoreInscrit" prefHeight="32.0" prefWidth="165.0" style="-fx-background-color: #4babeb;" text="Pas encore inscrit ?" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="Arial Bold" size="15.0" />
          </font></Button>
-      <PasswordField fx:id="tfPassword" layoutX="226.0" layoutY="200.0" />
-      <Button layoutX="224.0" layoutY="288.0" mnemonicParsing="false" onAction="#mdpOublier" style="-fx-background-color: #9E7369;" text="Mot de passe oublié ?">
+      <PasswordField fx:id="tfPassword" layoutX="349.0" layoutY="220.0" />
+      <Button layoutX="423.0" layoutY="353.0" mnemonicParsing="false" onAction="#mdpOublier" prefHeight="32.0" prefWidth="177.0" style="-fx-background-color: #4babeb;" text="Mot de passe oublié ?" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
+      <ImageView fitHeight="420.0" fitWidth="213.0" layoutX="-3.0">
+         <image>
+            <Image url="@images/background.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="245.0" fitWidth="284.0" layoutX="-38.0" layoutY="88.0">
+         <image>
+            <Image url="@images/logo.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="212.0" layoutY="68.0" prefHeight="9.0" prefWidth="422.0" style="-fx-background-color: #1067a1;" />
+      <Text layoutX="361.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connexion" wrappingWidth="123.99609375">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
