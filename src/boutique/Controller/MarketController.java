@@ -12,21 +12,18 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import boutique.main.Main;
 import boutique.main.MyListener;
 import entities.Produit;
 import java.io.File;
 import java.io.IOException;
-import java.math.RoundingMode;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +33,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
@@ -83,6 +79,7 @@ public class MarketController implements Initializable {
     @FXML
     private Rating rating;
     String produitid;
+    int produitidd;
     String randomHex;
     String rate;
     @FXML
@@ -91,6 +88,7 @@ public class MarketController implements Initializable {
     private Button recherche;
     @FXML
     private TextField rech;
+    float qte;
     
     
     public MarketController() {
@@ -132,7 +130,7 @@ public class MarketController implements Initializable {
         ResultSet rst = stm.executeQuery(req);
 
         while (rst.next()) {
-            Produit p = new Produit(rst.getInt("id"),//or rst.getInt(1)
+            Produit p = new Produit(rst.getInt("id"),
                     rst.getInt("categories_id"),
                     rst.getString("titre"),
                     rst.getString("description"),
@@ -154,18 +152,15 @@ public class MarketController implements Initializable {
     public void afficheRating(int p) throws SQLException {
         
         
-       try{ System.out.println(produitid);
-           System.out.println(p);
+       try{ 
         String req = "SELECT AVG(rating) FROM `rating` where entity_code like "+p+"";
         stm = connexion.createStatement();
         ResultSet rst1 = stm.executeQuery(req);
         if(rst1.next()){
          double add1 = rst1.getDouble(1);
-           System.out.println(add1);
         rating.setRating((int)add1);
         }
        }catch (SQLException err) {
-        System.out.println(err.getMessage());
     }}
   
     static String getRandomString(){
@@ -177,6 +172,8 @@ public class MarketController implements Initializable {
         
         
             produitid=(Integer.toString(produit.getId()));
+            qte=(produit.getStock());
+             produitidd=Integer.valueOf(produitid);
             try {
             afficheRating(produit.getId());
             } catch (SQLException ex) {
@@ -211,7 +208,6 @@ public class MarketController implements Initializable {
             }
             fruitPriceLabel.setText( total1+" TND");
             fruitPromoLabel.setText(produit.getPrix()+"TND");
-            System.out.println(total+" TND");
             descriptionLable.setText(produit.getDescription());
             
             String A = "C:\\Pi\\public\\uploads\\"+produit.getImage();
@@ -258,8 +254,7 @@ public class MarketController implements Initializable {
                     row++;
                 }
 
-                grid.add(anchorPane, column++, row); //(child,column,row)
-                //set grid width
+                grid.add(anchorPane, column++, row); 
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
                 grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
                 grid.setMaxWidth(Region.USE_PREF_SIZE);
@@ -277,7 +272,6 @@ public class MarketController implements Initializable {
     }
     
     
-    @FXML
       public void Recherche() {
         
         try {
@@ -335,6 +329,33 @@ public class MarketController implements Initializable {
     @FXML
     private void ajoutPanier(MouseEvent event) {
         //FARES
+        if (qte!=0){
+        qte=qte--;
+        
+       
+         try {  
+
+            String requete = "UPDATE produits set stock =?,produit_id =? ,message =?,date =? WHERE id=?";
+            PreparedStatement pst = MyDB.getInstance().getConnexion().prepareStatement(requete);
+
+            pst.setFloat(1, qte);
+            pst.setInt(2, produitidd);
+            pst.executeUpdate();
+
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());}
+        }else{
+
+            Alert alert = new Alert(AlertType.ERROR);
+
+        alert.setTitle("Désolé");
+        alert.setHeaderText("Produit n'est plus dans notre boutique");
+        alert.setContentText("The 'abc' user does not exists!");
+
+        alert.showAndWait();
+        
+        }
     }
 
     @FXML
@@ -350,14 +371,7 @@ public class MarketController implements Initializable {
     @FXML
     private void Commenter1(MouseEvent event) {
         
-        
-        
-        
-        
-        
-        
-        
-        
+      
      
     }
 
@@ -371,7 +385,6 @@ public class MarketController implements Initializable {
             AddCommentaireController secController=loader.getController();
             
             secController.Rating(rating.getRating(),produitid,randomHex);
-            System.out.println(rating.getRating());
 
             Stage stage=new Stage();
             stage.setScene(new Scene(root));

@@ -16,6 +16,7 @@ public class SessionUser {
     String username;
     String password;
     String email;
+    String roles;
     
     public static SessionUser instance = null;
     public static SessionUser getInstance() {
@@ -29,10 +30,11 @@ public class SessionUser {
        //
     }
 
-    public void SetSessionUser(int id, String username, String email) {
+    public void SetSessionUser(int id, String username, String email, String roles) {
         this.id = id;
         this.username = username;
         this.email = email;
+        this.roles = roles;
     }
 
     public int getId() {
@@ -42,7 +44,14 @@ public class SessionUser {
     public void setId(int id) {
         this.id = id;
     }
-
+    
+    public String getRoles() {
+        return roles;
+    }
+    
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
     public String getUsername() {
         return username;
     }
@@ -76,5 +85,5 @@ public class SessionUser {
     public SessionUser(int id, String username) {
         this.id = id;
         this.username = username;
-    }   
+    }
 }

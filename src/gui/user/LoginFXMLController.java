@@ -82,6 +82,7 @@ public class LoginFXMLController implements Initializable {
         ResultSet rs = null;
         String username = "";
         String email = "";
+        String roles = "";
         Connection cnx = MyDB.getInstance().getConnexion();
         String sql = "select * from user where email = ? and password = ?";
         
@@ -97,23 +98,31 @@ public class LoginFXMLController implements Initializable {
                     JOptionPane.showMessageDialog(null, "Votre compte est suspendu");
                 } else {
                     logged = rs.getInt("id");
-                    try {
-                     Parent root  = FXMLLoader.load(getClass().getResource("/gui/user/GestionUsersFXML.fxml"));
-                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                     scene = new Scene(root);
-                     stage.setScene(scene);
-                     stage.setTitle("Gérer les utilisateurs");
-                     stage.show();
-                     } catch(IOException e) {
-                           System.out.println(e);
-                       }
+     
                     username = rs.getString("username");
                     SessionUser.getInstance().setUsername(username);
 
                     email = rs.getString("email");
                     SessionUser.getInstance().setEmail(email);
+                    
+                    roles = rs.getString("roles");
+                    SessionUser.getInstance().setRoles(roles);
+                    
+                    if(roles.equals("ADMIN")) {
+                        try {
+                            Parent root  = FXMLLoader.load(getClass().getResource("/gui/backoffice/Backoffice.fxml"));
+                            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setTitle("Gérer les utilisateurs");
+                            stage.show();
+                            } catch(IOException e) {
+                                System.out.println(e);
+                              }
+                    } else if(roles.equals("USER")) {
+                        System.out.println("user");
+                    }
                 }
-                //  System.out.println("username: " + username);
             } else {
                 JOptionPane.showMessageDialog(null, "Les informations de connexion sont incorrects.");
                 tfPassword.clear();

@@ -1,9 +1,10 @@
 package gui.backoffice;
 
 import com.jfoenix.controls.JFXButton;
+import entities.SessionUser;
+import java.awt.Desktop;
 import java.io.IOException;
-import javafx.animation.FadeTransition;
-import javafx.animation.TranslateTransition;
+import java.net.URISyntaxException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -11,14 +12,23 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -28,22 +38,12 @@ import javafx.stage.StageStyle;
  */
 public class Controller implements Initializable {
 
-    @FXML
     private AnchorPane pane1;
-    @FXML
     private ImageView exit;
     @FXML
     private ImageView menu;
     @FXML
     private AnchorPane pane2;
-
-   
-    
-
-  
-
-    
-
     boolean menuAnim =true ;
     private JFXButton produitbtn;
     @FXML
@@ -77,296 +77,180 @@ public class Controller implements Initializable {
     @FXML
     private JFXButton avisBtn;
     @FXML
+    
+   
+    private BorderPane borderpane;
+    @FXML
     private JFXButton commandesBtn;
     @FXML
-    private AnchorPane utilisateur;
+    private JFXButton username_session;
     @FXML
-    private ImageView exit11;
+    private JFXButton utilisateursBtn1;
     @FXML
-    private AnchorPane jeux;
+    private JFXButton commandeBtn;
     @FXML
-    private ImageView exit1;
+    private JFXButton commandesBtn1;
     @FXML
-    private AnchorPane evenements;
+    private JFXButton commandesBtn11;
     @FXML
-    private AnchorPane sponsors;
+    private ImageView produitsIcon1;
     @FXML
-    private ImageView exit111;
+    private ImageView commandesIcon1;
     @FXML
-    private AnchorPane categories;
+    private ImageView commandesIcon12;
     @FXML
-    private ImageView exit112;
+    private ImageView commandesIcon11;
     @FXML
-    private AnchorPane produits;
+    private Label heure;
     @FXML
-    private ImageView exit113;
+    private Label user1;
     @FXML
-    private AnchorPane avis;
-    @FXML
-    private ImageView exit1111;
-    @FXML
-    private AnchorPane commandes;
-    @FXML
-    private ImageView exit1121;
-
+    private Label TITLE;
     
-     public void callback(){
-        menuAnim=Boolean.TRUE;
-                    FadeTransition fadeTransition1=new FadeTransition(Duration.seconds(0.5),pane1);
-            fadeTransition1.setFromValue(0.15);
-            fadeTransition1.setToValue(0);
-            fadeTransition1.play();
-
-            fadeTransition1.setOnFinished(event1 -> {
-                pane1.setVisible(false);
-            });
-
-
-            TranslateTransition translateTransition1=new TranslateTransition(Duration.seconds(0.5),pane2);
-            translateTransition1.setByX(-600);
-            translateTransition1.play();
-          
-             
-     }
+    Stage primaryStage;
+    @FXML
+    private Button deconnexion;
+    
     @Override
     
     public void initialize(URL location, ResourceBundle resources) {
-
-       exit.setOnMouseClicked(event -> {
-            System.exit(0);
-        });
-
-        pane1.setVisible(false);
-        produits.setVisible(false);
-        FadeTransition fadeTransition=new FadeTransition(Duration.seconds(0.5),pane1);
-        fadeTransition.setFromValue(1);
-        fadeTransition.setToValue(0);
-        fadeTransition.play();
-
-        TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(0.5),pane2);
-        translateTransition.setByX(-600);
-        translateTransition.play();
+        Timenow();
+        set_usr();
+        loadUI("/gui/backoffice/dashboard.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/TABLEAU DE BOARD");
         
-        menu.setOnMouseClicked(event -> {
-             if ( menuAnim){
-                 menuAnim =Boolean.FALSE;
-              
-            pane1.setVisible(true);
-
-            FadeTransition fadeTransition1=new FadeTransition(Duration.seconds(0.5),pane1);
-            fadeTransition1.setFromValue(0);
-            fadeTransition1.setToValue(0.15);
-            fadeTransition1.play();
-
-            TranslateTransition translateTransition1=new TranslateTransition(Duration.seconds(0.5),pane2);
-            translateTransition1.setByX(+600);
-            translateTransition1.play();
-            
-             }
-             else {
-                 menuAnim=Boolean.TRUE;
-                    FadeTransition fadeTransition1=new FadeTransition(Duration.seconds(0.5),pane1);
-            fadeTransition1.setFromValue(0.15);
-            fadeTransition1.setToValue(0);
-            fadeTransition1.play();
-
-            fadeTransition1.setOnFinished(event1 -> {
-                pane1.setVisible(false);
-            });
-
-
-            TranslateTransition translateTransition1=new TranslateTransition(Duration.seconds(0.5),pane2);
-            translateTransition1.setByX(-600);
-            translateTransition1.play();
-          
-             }
-        });
-        
-        
-        produits.setVisible(false);
-                  jeux.setVisible(false);
-                  evenements.setVisible(false);
-                  sponsors.setVisible(false);
-                  categories.setVisible(false);
-                  produits.setVisible(false);
-                  commandes.setVisible(false);
-                  utilisateur.setVisible(false);
-                  avis.setVisible(false);
-            proditsBtn.setOnMouseClicked(event -> {   
-                Parent parent;
-           try {
-               parent = FXMLLoader.load(getClass().getResource("/gui/produits/TableView.fxml"));
-           
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-           } catch (IOException ex) {
-               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-           }
-                  produits.setVisible(true);
-                  jeux.setVisible(false);
-                  evenements.setVisible(false);
-                  sponsors.setVisible(false);
-                  categories.setVisible(false);
-                  commandes.setVisible(false);
-                  utilisateur.setVisible(false);
-                  avis.setVisible(false);
-                  callback();
-            
-            });
-            
-            utilisateursBtn.setOnMouseClicked(event -> {     
-                  Parent parent;
-           try {
-               parent = FXMLLoader.load(getClass().getResource("/gui/user/tableView.fxml"));
-           
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-           } catch (IOException ex) {
-               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-           }
-                  produits.setVisible(false);
-                  jeux.setVisible(false);
-                  evenements.setVisible(false);
-                  sponsors.setVisible(false);
-                  categories.setVisible(false);
-                  commandes.setVisible(false);
-                  utilisateur.setVisible(true);
-                  avis.setVisible(false);
-                  callback();
-            
-            });
-            evenementsBtn.setOnMouseClicked(event -> {             
-                  produits.setVisible(false);
-                  jeux.setVisible(false);
-                  evenements.setVisible(true);
-                  sponsors.setVisible(false);
-                  categories.setVisible(false);
-                  commandes.setVisible(false);
-                  utilisateur.setVisible(false);
-                  avis.setVisible(false);
-                  callback();
-            
-            });
-            jeuxBtn.setOnMouseClicked(event -> {             
-                  produits.setVisible(false);
-                  jeux.setVisible(true);
-                  evenements.setVisible(false);
-                  sponsors.setVisible(false);
-                  categories.setVisible(false);
-                  commandes.setVisible(false);
-                  utilisateur.setVisible(false);
-                  avis.setVisible(false);
-                  callback();
-            
-            });
-            sponsorsBtn.setOnMouseClicked(event -> { 
-                    Parent parent;
-           try {
-               parent = FXMLLoader.load(getClass().getResource("/gui/sponsor/tableView.fxml"));
-           
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-           } catch (IOException ex) {
-               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-           }
-                  produits.setVisible(false);
-                  jeux.setVisible(false);
-                  evenements.setVisible(false);
-                  sponsors.setVisible(true);
-                  categories.setVisible(false);
-                  commandes.setVisible(false);
-                  utilisateur.setVisible(false);
-                  avis.setVisible(false);
-                  callback();
-            
-            });
-            categoriesBtn.setOnMouseClicked(event -> {             
-                  produits.setVisible(false);
-                  jeux.setVisible(false);
-                  evenements.setVisible(false);
-                  sponsors.setVisible(false);
-                  categories.setVisible(true);
-                  commandes.setVisible(false);
-                  utilisateur.setVisible(false);
-                  avis.setVisible(false);
-                  Parent parent;
-           try {
-                parent = FXMLLoader.load(getClass().getResource("/gui/categories/TableView.fxml"));
-           
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-           } catch (IOException ex) {
-               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-           }
-                  callback();
-            
-            });
-            avisBtn.setOnMouseClicked(event -> {             
-                  produits.setVisible(false);
-                  jeux.setVisible(false);
-                  evenements.setVisible(false);
-                  sponsors.setVisible(false);
-                  categories.setVisible(false);
-                  commandes.setVisible(false);
-                  utilisateur.setVisible(false);
-                  avis.setVisible(true);
-                   Parent parent;
-           try {
-                parent = FXMLLoader.load(getClass().getResource("/gui/commentaires/TableView.fxml"));
-           
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-           } catch (IOException ex) {
-               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-           }
-                  callback();
-            
-            });
-            commandesBtn.setOnMouseClicked(event -> {             
-                  produits.setVisible(false);
-                  jeux.setVisible(false);
-                  evenements.setVisible(false);
-                  sponsors.setVisible(false);
-                  categories.setVisible(false);
-                  commandes.setVisible(true);
-                  utilisateur.setVisible(false);
-                  avis.setVisible(false);
-                  callback();
-            
-            });
-//        pane1.setOnMouseClicked(event -> {
-//
-//
-//
-//            FadeTransition fadeTransition1=new FadeTransition(Duration.seconds(0.5),pane1);
-//            fadeTransition1.setFromValue(0.15);
-//            fadeTransition1.setToValue(0);
-//            fadeTransition1.play();
-//
-//            fadeTransition1.setOnFinished(event1 -> {
-//                pane1.setVisible(false);
-//            });
-//
-//
-//            TranslateTransition translateTransition1=new TranslateTransition(Duration.seconds(0.5),pane2);
-//            translateTransition1.setByX(-600);
-//            translateTransition1.play();
-//        });
    }
-   
+    @FXML
+    private void utilisaterur(ActionEvent event) {
+        loadUI("/gui/user/GestionUsersFXML.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/USER");
+    }
+
+    @FXML
+    private void jeux(ActionEvent event) {
+    }
+
+    @FXML
+    private void event(ActionEvent event) {
+        loadUI("/gui/evenement/tableviewevent.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/EVENEMENT");
+    }
+    
+    @FXML
+    private void username_session(ActionEvent event) {
+        username_session.setText(SessionUser.getInstance().getUsername().toString());
+    }
+
+    @FXML
+    private void sponsors(ActionEvent event) {
+         loadUI("/gui/sponsor/tableView.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/SPONSORS");
+    }
+
+    @FXML
+    private void categorie(ActionEvent event) {
+        loadUI("/gui/categories/TableView.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/CATEGORIES");
+    }
+
+    @FXML
+    private void produits(ActionEvent event) {
+        loadUI("/gui/produits/TableView.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/PRODUITS");
+    }
+
+    @FXML
+    private void avis(ActionEvent event) {
+        loadUI("/gui/commentaires/tableView.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/AVIS");
+    }
+
+    @FXML
+    private void boutique(ActionEvent event) {
+        
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/boutique/views/market.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void loadUI(String ui) {
+    Parent root = null;
+    try{
+        root = FXMLLoader.load(getClass().getResource(ui));
+        
+   } catch (IOException ex) {
+               Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+           }
+    borderpane.setCenter(root);
+    }
+    
+    private void Timenow(){
+     Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e ->  
+         heure.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+    ),
+         new KeyFrame(Duration.seconds(1))
+    );
+    clock.setCycleCount(Animation.INDEFINITE);
+    clock.play();
 }
+    
+    private void set_usr() {
+        user1.setText(SessionUser.getInstance().getUsername());
+    }
+    
+    @FXML
+    private void deconnexion(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/user/LoginPFXML.fxml"));
+        try {
+            Parent root = loader.load();
+            Stage mainStage=new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+            mainStage.setTitle("Connexion");
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void ouvriLien(String url) {
+    try {
+    Desktop.getDesktop().browse(new URL(url).toURI());
+} catch (IOException e) {
+    e.printStackTrace();
+} catch (URISyntaxException e) {
+    e.printStackTrace();
+}
+}
+
+    @FXML
+    private void site(ActionEvent event) {
+        ouvriLien("http://127.0.0.1:8000/home");
+    }
+
+    @FXML
+    private void facebook(ActionEvent event) {
+        ouvriLien("https://www.facebook.com/Tournament.Legacy.Esport/");
+    }
+
+    @FXML
+    private void dashboard(ActionEvent event) {
+        loadUI("/gui/backoffice/dashboard.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/TABLEAU DE BOARD");
+    }
+
+
+    
+    }
+
+   
+

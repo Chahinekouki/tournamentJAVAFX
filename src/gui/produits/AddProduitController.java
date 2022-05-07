@@ -2,39 +2,27 @@ package gui.produits;
 
 import java.util.Properties;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import boutique.Controller.AddCommentaireController;
 import org.apache.commons.io.FileUtils;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import entities.Produit;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import utils.MyDB;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,6 +32,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -132,12 +121,18 @@ public class AddProduitController implements Initializable {
     String longdescription = longFld.getText();
     String prix = prixFld.getText();
 
-    if (titre.isEmpty() || description.isEmpty() || promo.isEmpty() || stock.isEmpty() || image.isEmpty() || longdescription.isEmpty() || prix.isEmpty()) {
+    if (titre.isEmpty() || description.isEmpty() || stock.isEmpty() || image.isEmpty() || longdescription.isEmpty() || prix.isEmpty()) {
+      
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setHeaderText(null);
       alert.setContentText("Remplissez les champs!");
       alert.showAndWait();
-
+     if ((Integer.parseInt(prix)<0)|| (promo!=null)&&(Integer.parseInt(promo)<0)){
+        
+        alert.setHeaderText(null);
+        alert.setContentText("nombre doit etre positive!");
+        alert.showAndWait();   
+      } 
     } else {
       getQuery();
       insert();
@@ -153,7 +148,7 @@ public class AddProduitController implements Initializable {
     descriptionFld.setText(null);
     promoFld.setText(null);
     stockFld.setText(null);
-    ImageFld.setText(null);
+    ImageFld.setText("Importer image");
     prixFld.setText(null);
     longFld.setText(null);
     refFld.setText(null);
@@ -246,7 +241,11 @@ public class AddProduitController implements Initializable {
             } catch (Exception ex) {
                  Logger.getLogger(AddProduitController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+           String content = "Produit insérer!";
+        showSuccessAlert(content);
+    }
+    
+        
       } catch (Exception e) {
         e.printStackTrace();
       }
@@ -272,7 +271,13 @@ public class AddProduitController implements Initializable {
     }
 
   }
-
+public static void showSuccessAlert(String content)
+{
+    Platform.runLater(() -> {
+        Alert a = new Alert(Alert.AlertType.INFORMATION, content, ButtonType.OK);
+        a.show();
+    });
+        }
   void setTextField(int categorie, int id, String titre, String description, float promo, float stock, boolean flash, String image, String ref, String longdescription, float prix) {
 
     produitId = id;
@@ -313,6 +318,7 @@ public class AddProduitController implements Initializable {
             FileUtils.copyFileToDirectory(srcFile, destDir);
         } catch (IOException e) {
     }
+         
         
     }
       
@@ -757,7 +763,7 @@ public class AddProduitController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(AddProduitController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+     return null;
     }
 
     

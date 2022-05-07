@@ -1,24 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
 /**
  *
- * @author aicha
+ * @author user
  */
 public class Sponsor {
     private int id;
     private String nom;
-    private String prenom;
     private int num;
     private float budget;
     private String image;
 
-    public Sponsor(String nom, String prenom, int num, float budget, String image) {
+    public Sponsor(int id, String nom, int num, float budget, String image) {
+        this.id = id;
         this.nom = nom;
-        this.prenom = prenom;
         this.num = num;
         this.budget = budget;
         this.image = image;
     }
+
+    public Sponsor(String nom, int num, float budget, String image) {
+        this.nom = nom;
+        this.num = num;
+        this.budget = budget;
+        this.image = image;
+    }
+
+    
 
     public Sponsor(String image) {
         this.image = image;
@@ -40,14 +53,7 @@ public class Sponsor {
         this.nom = nom;
     }
 
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
+   
     public int getNum() {
         return num;
     }
@@ -72,18 +78,11 @@ public class Sponsor {
         this.image = image;
     }
 
-    public Sponsor(int id, String nom, String prenom, int num, float budget, String image) {
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.num = num;
-        this.budget = budget;
-        this.image = image;
-    }
+    
 
     @Override
     public String toString() {
-        return "Sponsor{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", num=" + num + ", budget=" + budget + ", image=" + image + '}';
+        return "Sponsor{" + "id=" + id + ", nom=" + nom + ", num=" + num + ", budget=" + budget + ", image=" + image + '}';
     }
 
     
