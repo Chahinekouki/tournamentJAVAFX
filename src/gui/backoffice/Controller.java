@@ -158,6 +158,11 @@ public class Controller implements Initializable {
         loadUI("/gui/produits/TableView.fxml");
         TITLE.setText("TOURNAMENT LEGACY/ADMIN/PRODUITS");
     }
+    @FXML
+    private void commande(ActionEvent event) {
+        loadUI("/gui/back/Commandee.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/COMMANDES");
+    }
 
     @FXML
     private void avis(ActionEvent event) {
