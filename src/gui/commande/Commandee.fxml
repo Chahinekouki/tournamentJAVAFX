@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.back.CommandeeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.commande.CommandeeController">
    <children>
       <AnchorPane layoutX="14.0" layoutY="1.0" onMouseClicked="#refreshTable" prefHeight="560.0" prefWidth="875.0" stylesheets="@../../Values/style.css">
          <children>

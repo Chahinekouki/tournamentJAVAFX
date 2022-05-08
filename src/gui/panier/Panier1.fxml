@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.front.Panier1Controller">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.panier.Panier1Controller">
    <children>
-      <AnchorPane id="AnchorPane" layoutY="-2.0" prefHeight="708.0" prefWidth="1225.0">
+      <AnchorPane id="AnchorPane" layoutX="-176.0" layoutY="-9.0" prefHeight="708.0" prefWidth="1225.0">
          <children>
             <ImageView fx:id="imagee" fitHeight="157.0" fitWidth="978.0" layoutX="212.0" layoutY="10.0" pickOnBounds="true" smooth="false" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="10.0">
                <image>
@@ -90,7 +90,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../img/printer.png" />
+                        <Image url="@images/printer.png" />
                      </image>
                   </ImageView>
                </graphic></Button>

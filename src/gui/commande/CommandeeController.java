@@ -1,9 +1,8 @@
-package gui.back;
+package gui.commande;
 
 import animatefx.animation.*;
 import entities.Cart;
 import entities.Commande;
-import gui.ListReservationController;
 import java.io.IOException;
 //import entities.Produit;
 import services.commandeService;
@@ -179,7 +178,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -194,7 +192,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -210,7 +207,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -224,7 +220,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -238,7 +233,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -252,7 +246,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -266,7 +259,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -280,7 +272,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -294,7 +285,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -308,7 +298,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -322,7 +311,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -336,7 +324,6 @@ ObservableList<Commande>  commandeList = FXCollections.observableArrayList();
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(ListReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     
