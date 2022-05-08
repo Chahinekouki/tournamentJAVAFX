@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="403.0" spacing="12.0" styleClass="btn" stylesheets="@tableview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.sponsor.AddSponsorController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="403.0" spacing="12.0" styleClass="btn" stylesheets="@tableview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.sponsor.AddSponsorController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="384.0">
          <children>
@@ -26,7 +24,7 @@
       </HBox>
       <HBox alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" wrappingWidth="102.13671875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NOM" wrappingWidth="102.13671875">
                <font>
                   <Font name="Century Gothic" size="21.0" />
                </font>
@@ -41,19 +39,10 @@
             <Insets top="30.0" />
          </VBox.margin>
       </HBox>
+      
       <HBox alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="102.13671875">
-               <font>
-                  <Font name="Century Gothic" size="18.0" />
-               </font>
-            </Text>
-            <JFXTextArea fx:id="prenomFld" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Promo" wrappingWidth="102.13671875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NUM" wrappingWidth="102.13671875">
                <font>
                   <Font name="Century Gothic" size="21.0" />
                </font>
@@ -67,7 +56,7 @@
       </HBox>
       <HBox alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stock" wrappingWidth="102.13671875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="BUDGET" wrappingWidth="102.13671875">
                <font>
                   <Font name="Century Gothic" size="21.0" />
                </font>
@@ -79,16 +68,7 @@
             </JFXTextField>
          </children>
       </HBox>
-      <HBox alignment="CENTER">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Flash" wrappingWidth="102.13671875">
-               <font>
-                  <Font name="Century Gothic" size="21.0" />
-               </font>
-            </Text>
-            <ComboBox fx:id="flash1" prefHeight="31.0" prefWidth="286.0" />
-         </children>
-      </HBox>
+      <HBox alignment="CENTER" />
       <HBox alignment="CENTER">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image" wrappingWidth="102.13671875">
@@ -96,57 +76,15 @@
                   <Font name="Century Gothic" size="21.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="imageFld" prefHeight="25.0" prefWidth="358.0" text="tets.png">
+            <JFXTextField fx:id="imageFld" prefHeight="25.0" prefWidth="358.0" text="image.png">
                <font>
                   <Font name="Century Gothic" size="20.0" />
                </font>
             </JFXTextField>
          </children>
       </HBox>
-      <HBox alignment="CENTER">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ref" wrappingWidth="102.13671875">
-               <font>
-                  <Font name="Century Gothic" size="21.0" />
-               </font>
-            </Text>
-            <JFXTextField fx:id="refFld" prefHeight="25.0" prefWidth="358.0">
-               <font>
-                  <Font name="Century Gothic" size="20.0" />
-               </font>
-            </JFXTextField>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Long" wrappingWidth="102.13671875">
-               <font>
-                  <Font name="Century Gothic" size="21.0" />
-               </font>
-            </Text>
-            <JFXTextArea fx:id="longFld" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" wrappingWidth="102.13671875">
-               <font>
-                  <Font name="Century Gothic" size="21.0" />
-               </font>
-            </Text>
-            <JFXTextArea fx:id="prixFld" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie" wrappingWidth="114.13671875">
-               <font>
-                  <Font name="Century Gothic" size="21.0" />
-               </font>
-            </Text>
-            <ComboBox fx:id="categorie" prefHeight="31.0" prefWidth="275.0" />
-         </children>
-      </HBox>
+      <HBox alignment="CENTER" />
+      <HBox alignment="CENTER" />
       <HBox alignment="CENTER" prefHeight="62.0" prefWidth="384.0">
          <VBox.margin>
             <Insets top="25.0" />

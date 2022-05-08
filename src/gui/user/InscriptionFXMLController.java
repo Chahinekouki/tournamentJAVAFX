@@ -40,7 +40,7 @@ public class InscriptionFXMLController implements Initializable {
     @FXML
     private TextField temail;
     @FXML
-    private TextField tmdp;
+    private TextField tmdp1;
     @FXML
     private Label lusername;
     @FXML
@@ -70,10 +70,13 @@ public class InscriptionFXMLController implements Initializable {
 
     @FXML
     private void btnSinscrire(ActionEvent event) {
-            if(ValiderTextField(tusername) && ValiderTextField(temail) && ValiderTextField(tmdp)) {
+        System.out.println("Mot de passe avant : " + tmdp1.getText());
+            if(ValiderTextField(tusername) && ValiderTextField(temail) && ValiderTextField(tmdp1)) {
                 if(validateEmail(temail.getText())) {
-                        User p = new User(tusername.getText(), temail.getText(), tmdp.getText());
+                        User p = new User(tusername.getText(), temail.getText(), tmdp1.getText());
                         UserService ps = new UserService();
+                        System.out.println("Mot de passe après : " + tmdp1);
+                        System.out.println("Mot de passe avant : " + p.getPassword());
                         try {
                             ps.ajouterUser(p);
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

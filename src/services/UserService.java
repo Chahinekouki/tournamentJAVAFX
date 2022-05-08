@@ -59,20 +59,21 @@ public class UserService implements IUser<User> {
     @Override
     public void ajouterUser(User p) throws SQLException {
         String req = "INSERT INTO `user` (`username`, `email`,`password`, `roles`) VALUES ( '"
-                + p.getUsername()+ "', '" + p.getEmail()+ "', '" + p.getPassword()+"', 'ROLE_ADMIN') ";
+                + p.getUsername()+ "', '" + p.getEmail()+ "', '" + p.getPassword()+ "', 'ADMIN') ";
         stm = connexion.createStatement();
         stm.executeUpdate(req);
     }
     
-    public void modifier(long id_amodifier, User t) {
+    public void modifier(String email, User t) {
         try {
             PreparedStatement st;
-            st=connexion.prepareStatement("UPDATE `user` SET `password`=?");
+            st=connexion.prepareStatement("UPDATE `user` SET `password`=? WHERE email=?");
             st.setString(1, t.getPassword());
+            st.setString(2, email);
             if (st.executeUpdate()==1){
             System.out.println("user modifier avec success");
             }else {
-                System.out.println("user n'existe pas");
+                // System.out.println("L'utilisateur n'existe pas");
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,9 +84,9 @@ public class UserService implements IUser<User> {
          List<User> users = afficher();
          List<User> resultat=users.stream().filter(user->email.equals(user.getEmail())).collect(Collectors.toList());
          if(resultat.isEmpty()){
-            System.out.println("l utilisateur n existe pas");
+            // System.out.println("L'utilisateur n'existe pas");
         }else{
-            System.out.println("l utilisateur existe");
+            // System.out.println("L'utilisateur existe");
         }
          return resultat;
      }
