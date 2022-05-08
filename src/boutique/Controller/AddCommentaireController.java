@@ -1,7 +1,6 @@
 package boutique.Controller;
 
 import com.jfoenix.controls.JFXButton;
-import gui.commentaires.*;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import entities.Commentaire;
@@ -17,11 +16,13 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -190,6 +191,15 @@ public class AddCommentaireController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(AddCommentaireController.class.getName()).log(Level.SEVERE, null, ex);
         }
+         String content = "Avis envoyé";
+        showSuccessAlert(content);
+    }
+    public static void showSuccessAlert(String content)
+{
+    Platform.runLater(() -> {
+        Alert a = new Alert(Alert.AlertType.INFORMATION, content, ButtonType.OK);
+        a.show();
+    });
 
     }
 

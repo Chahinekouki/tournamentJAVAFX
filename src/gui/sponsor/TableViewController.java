@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gui.sponsor;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -38,8 +43,9 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 /**
+ * FXML Controller class
  *
- * @author Aymen Laroussi
+ * @author user
  */
 public class TableViewController implements Initializable {
 
@@ -60,15 +66,12 @@ public class TableViewController implements Initializable {
     @FXML
     private TableColumn<?, ?> nomCol;
     @FXML
-    private TableColumn<?, ?> prenomCol;
-    @FXML
     private TableColumn<?, ?> numCol;
     @FXML
     private TableColumn<?, ?> budgetCol;
     @FXML
     private TableColumn<?, ?> imageCol;
-    @FXML
-    private TableColumn<?, ?> promoCol;
+    
 
     /**
      * Initializes the controller class.
@@ -76,6 +79,7 @@ public class TableViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
         loadDate();
     }    
     
@@ -116,7 +120,6 @@ public class TableViewController implements Initializable {
                 SponsorList.add(new  Sponsor(
                     resultSet.getInt("id"),//or rst.getInt(1)
                     resultSet.getString("nom"),
-                    resultSet.getString("prenom"),
                     resultSet.getInt("num"),
                     resultSet.getFloat("budget"),
                     resultSet.getString("image")));
@@ -134,17 +137,13 @@ public class TableViewController implements Initializable {
         
     }
 
-    @FXML
-    private void print(MouseEvent event) {
-    }
 
     private void loadDate() {
         
         connection = MyDB.getInstance().getConnexion();
-        
+        refreshTable();
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         numCol.setCellValueFactory(new PropertyValueFactory<>("num"));
         budgetCol.setCellValueFactory(new PropertyValueFactory<>("budget"));
         
@@ -183,11 +182,11 @@ public class TableViewController implements Initializable {
                             ButtonType oui = new ButtonType("NON", ButtonBar.ButtonData.OK_DONE);
                             ButtonType non = new ButtonType("OUI", ButtonBar.ButtonData.CANCEL_CLOSE);
                             Alert alert = new Alert(AlertType.WARNING,
-                                    "The format for dates is year.month.day. ",
+                                    "Etes-vous sur de supprimer cet sponsor? ",
                                     oui,
                                     non);
 
-                            alert.setTitle("Date format warning");
+                            alert.setTitle("Attention !");
                             Optional<ButtonType> result = alert.showAndWait();
                             if (result.orElse(oui) == non) {
                                  try {
@@ -210,10 +209,9 @@ public class TableViewController implements Initializable {
 
                         });
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
-                            
                             sponsors = sponsorsTable.getSelectionModel().getSelectedItem();
                             FXMLLoader loader = new FXMLLoader ();
-                            loader.setLocation(getClass().getResource("/gui/sponsors/addSponsor.fxml"));
+                            loader.setLocation(getClass().getResource("/gui/sponsor/addSponsor.fxml"));
                             try {
                                 loader.load();
                             } catch (IOException ex) {
@@ -224,7 +222,6 @@ public class TableViewController implements Initializable {
                             addSponsorController.setUpdate(true);
                             addSponsorController.setTextField(sponsors.getId(),
                                     sponsors.getNom(),
-                                    sponsors.getPrenom(),
                                     sponsors.getNum(),
                                     sponsors.getBudget(),
                                     sponsors.getImage());
@@ -232,7 +229,7 @@ public class TableViewController implements Initializable {
                             Stage stage = new Stage();
                             stage.setScene(new Scene(parent));
                             stage.initStyle(StageStyle.UTILITY);
-                            stage.show();
+                            stage.show(); 
                             
 
                            

@@ -1,12 +1,10 @@
 package boutique.Controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import boutique.main.Main;
 import boutique.main.MyListener;
 import entities.Produit;
 import java.io.File;
@@ -34,11 +32,13 @@ public class ItemController {
     private MyListener myListener;
     float total;
     String total1;
+    float stq;
 
     public void setData(Produit produit, MyListener myListener) {
         this.produit = produit;
         this.myListener = myListener;
         nameLabel.setText(produit.getTitre());
+        
         float promo=produit.getPromo() ;
         if (promo != 0){
             total = (produit.getPromo()*produit.getPrix())/100;
