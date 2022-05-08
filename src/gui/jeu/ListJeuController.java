@@ -40,6 +40,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -68,8 +69,6 @@ public class ListJeuController implements Initializable {
     private TableColumn<Jeu, Button> updateJeu;
     @FXML
     private TableColumn<Jeu, Button> deleteJeu;
-    @FXML
-    private TableColumn<Jeu, String> createByJeu;
     @FXML
     private Button UpdateJeu;
     @FXML
@@ -203,5 +202,17 @@ public class ListJeuController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();  
     }
+
+    @FXML
+    private void CreateTF(MouseEvent event) throws IOException {
+         FXMLLoader fxmlLoader =new  FXMLLoader(getClass().getResource("jeu.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("ajoutJeu");
+        stage.setScene(new Scene(root1));
+        stage.show();  
+    }
+
+
     
 }

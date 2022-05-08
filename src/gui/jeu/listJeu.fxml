@@ -11,14 +11,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="811.0" prefWidth="1113.0" stylesheets="@../backoffice/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.jeu.ListJeuController">
+<AnchorPane id="AnchorPane" prefHeight="811.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.jeu.ListJeuController">
    <children>
-      <AnchorPane fx:id="manePane" layoutX="1.0" layoutY="182.0" prefHeight="641.0" prefWidth="1113.0" stylesheets="@../backoffice/dark-theme.css">
+      <AnchorPane fx:id="manePane" layoutX="1.0" layoutY="182.0" prefHeight="641.0" prefWidth="1113.0">
          <children>
-            <TableView fx:id="TableJeu" layoutX="92.0" layoutY="8.0" prefHeight="558.0" prefWidth="950.0">
+            <TableView fx:id="TableJeu" layoutX="92.0" layoutY="8.0" prefHeight="601.0" prefWidth="888.0" stylesheets="@../backoffice/dark-theme.css">
                <columns>
                   <TableColumn fx:id="nomJeu" prefWidth="127.0" text="Nom" />
-                  <TableColumn fx:id="createByJeu" prefWidth="100.0" text="Crée par" />
                   <TableColumn fx:id="updateJeu" prefWidth="116.0" text="Update" />
                   <TableColumn fx:id="deleteJeu" prefWidth="107.0" text="Delete" />
                </columns>
@@ -48,7 +47,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="CreateT" layoutX="21.0" layoutY="27.0" mnemonicParsing="false" onAction="#CreateTF" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Refresh" textFill="WHITE">
+            <Button fx:id="CreateT" layoutX="21.0" layoutY="27.0" mnemonicParsing="false" onAction="#CreateTF" onMouseClicked="#CreateTF" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Refresh" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -58,6 +57,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
+            <HBox alignment="CENTER_LEFT" layoutX="257.0" layoutY="9.0" prefHeight="76.0" prefWidth="200.0" />
          </children>
       </Pane>
    </children>
