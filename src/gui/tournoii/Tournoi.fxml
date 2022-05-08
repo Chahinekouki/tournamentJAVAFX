@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="675.0" prefWidth="507.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.tournoii.TournoiController">
+    <stylesheets>
+        <URL value="@tournoi.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutY="-2.0" prefHeight="675.0" prefWidth="549.0">
+         <children>
+            <ImageView fx:id="logo" fitHeight="148.0" fitWidth="288.0" layoutX="131.0" layoutY="30.0" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/logo.png" />
+               </image>
+            </ImageView>
+            <VBox fillWidth="false" layoutX="181.0" layoutY="205.0" prefHeight="338.0" prefWidth="295.0" spacing="15.0">
+               <children>
+                  <TextField fx:id="nomtournoi" prefHeight="32.0" prefWidth="221.0" promptText="nom de tournoi" style="-fx-background-radius: 10; -fx-border-color: #6A2B9C; -fx-border-width: 3px; -fx-border-radius: 10px;" />
+                  <TextField fx:id="nbrequipe" prefHeight="32.0" prefWidth="221.0" promptText="Nombre d'equipes" style="-fx-background-radius: 10; -fx-border-color: #6A2B9C; -fx-border-width: 3px; -fx-border-radius: 10px;" />
+                  <TextField fx:id="nbrjoueur" prefHeight="32.0" prefWidth="221.0" promptText="Nombre de joueur par equipe" style="-fx-background-radius: 10; -fx-border-color: #6A2B9C; -fx-border-width: 3px; -fx-border-radius: 10px;" />
+                  <ComboBox fx:id="jeuCB" prefHeight="31.0" prefWidth="219.0" promptText="jeu" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #6A2B9C; -fx-border-width: 3px; -fx-background-color: white;" />
+                  <TextField fx:id="prix" prefHeight="32.0" prefWidth="221.0" promptText="Prix" style="-fx-background-radius: 10; -fx-border-color: #6A2B9C; -fx-border-width: 3px; -fx-border-radius: 10px;" />
+                  <TextField fx:id="discord" prefHeight="32.0" prefWidth="221.0" promptText="nom de tournoi" style="-fx-background-radius: 10; -fx-border-color: #6A2B9C; -fx-border-width: 3px; -fx-border-radius: 10px;" text="Chaine Discord" />
+                  <DatePicker fx:id="time" onAction="#getDate" showWeekNumbers="true" style="-fx-background-color: white; -fx-border-color: #6A2B9C; -fx-border-width: 3px; -fx-background-radius: 10; -fx-border-radius: 10;" />
+               </children>
+            </VBox>
+            <Button fx:id="BackFromTF" layoutX="25.0" layoutY="622.0" mnemonicParsing="false" onAction="#GoBack" style="-fx-background-radius: 30;" text="&lt;" />
+            <Button fx:id="CreateT" layoutX="234.0" layoutY="622.0" mnemonicParsing="false" onAction="#CreateTF" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #6A2B9C;" text="Create" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="heure" layoutX="186.0" layoutY="566.0" prefHeight="37.0" prefWidth="84.0" promptText="HH" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #6A2B9C; -fx-border-width: 3px; -fx-background-color: white;" />
+            <ComboBox fx:id="minute" layoutX="275.0" layoutY="566.0" prefHeight="37.0" prefWidth="91.0" promptText="MM" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #6A2B9C; -fx-border-width: 3px; -fx-background-color: white;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
