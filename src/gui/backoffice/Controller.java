@@ -160,7 +160,7 @@ public class Controller implements Initializable {
     }
     @FXML
     private void commande(ActionEvent event) {
-        loadUI("/gui/back/Commandee.fxml");
+        loadUI("/gui/commande/Commandee.fxml");
         TITLE.setText("TOURNAMENT LEGACY/ADMIN/COMMANDES");
     }
 

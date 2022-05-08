@@ -3,10 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.front;
-
-
-
+package gui.panier;
 
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
@@ -215,7 +212,7 @@ public class Panier1Controller implements Initializable {
         new FadeInUpBig(vide).play();
         new FadeOut(total).play();
         new FadeOut(subTotal).play();
-        new GlowText(vide, Color.BLACK, Color.WHITE).play();
+        // new GlowText(vide, Color.BLACK, Color.WHITE).play();
       }        
 
         public void showCommandes() {
