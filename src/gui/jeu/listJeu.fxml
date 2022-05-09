@@ -11,11 +11,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="811.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.jeu.ListJeuController">
+<AnchorPane id="AnchorPane" prefHeight="772.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.jeu.ListJeuController">
    <children>
-      <AnchorPane fx:id="manePane" layoutX="1.0" layoutY="182.0" prefHeight="641.0" prefWidth="1113.0">
+      <AnchorPane fx:id="manePane" layoutX="1.0" layoutY="182.0" prefHeight="583.0" prefWidth="958.0">
          <children>
-            <TableView fx:id="TableJeu" layoutX="92.0" layoutY="8.0" prefHeight="601.0" prefWidth="888.0" stylesheets="@../backoffice/dark-theme.css">
+            <TableView fx:id="TableJeu" layoutX="33.0" layoutY="-24.0" prefHeight="601.0" prefWidth="888.0" stylesheets="@../backoffice/dark-theme.css">
                <columns>
                   <TableColumn fx:id="nomJeu" prefWidth="127.0" text="Nom" />
                   <TableColumn fx:id="updateJeu" prefWidth="116.0" text="Update" />
@@ -23,7 +23,7 @@
                </columns>
             </TableView>
          </children></AnchorPane>
-      <Pane layoutY="78.0" prefHeight="9.0" prefWidth="1113.0" style="-fx-background-color: #6A2B9C;" />
+      <Pane layoutY="80.0" prefHeight="7.0" prefWidth="971.0" style="-fx-background-color: #6A2B9C;" />
       <Text fill="#6a2b9c" layoutX="43.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font: white;" styleClass="white-background" text="Jeu" wrappingWidth="77.68701171875">
          <font>
             <Font name="Bauhaus 93" size="44.0" />
@@ -35,14 +35,14 @@
             <Image url="@../../resources/logo.png" />
          </image>
       </ImageView>
-      <Pane layoutY="86.0" prefHeight="91.0" prefWidth="1113.0">
+      <Pane layoutY="86.0" prefHeight="91.0" prefWidth="971.0">
          <children>
-            <Button fx:id="DeleteJeu" layoutX="871.0" layoutY="27.0" mnemonicParsing="false" onAction="#DeleteJeu" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #d01f1f;" text="Delete" textFill="WHITE">
+            <Button fx:id="DeleteJeu" layoutX="726.0" layoutY="29.0" mnemonicParsing="false" onAction="#DeleteJeu" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #d01f1f;" text="Delete" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="UpdateJeu" layoutX="984.0" layoutY="27.0" mnemonicParsing="false" onAction="#UpdateJeu" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #41c12d;" text="Update" textFill="WHITE">
+            <Button fx:id="UpdateJeu" layoutX="848.0" layoutY="29.0" mnemonicParsing="false" onAction="#UpdateJeu" prefHeight="32.0" prefWidth="97.0" style="-fx-background-radius: 10; -fx-background-color: #41c12d;" text="Update" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

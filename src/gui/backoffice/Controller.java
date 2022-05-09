@@ -128,6 +128,8 @@ public class Controller implements Initializable {
 
     @FXML
     private void jeux(ActionEvent event) {
+        loadUI("/gui/jeu/listJeu.fxml");
+        TITLE.setText("TOURNAMENT LEGACY/ADMIN/EVENEMENT");
     }
 
     @FXML
