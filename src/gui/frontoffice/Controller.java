@@ -64,6 +64,10 @@ public class Controller implements Initializable {
         loadUI("/boutique/views/market.fxml");
         
     }
+    @FXML
+    private void tournoi(ActionEvent event) {
+         loadUI("/gui/tournoii/tournois.fxml");       
+    }
     
     private void loadUI(String ui) {
     Parent root = null;
@@ -80,10 +84,7 @@ public class Controller implements Initializable {
 
 
 
-    @FXML
-    private void tournoi(ActionEvent event) {
-         loadUI("/boutique/views/market.fxml");       
-    }
+    
 
     @FXML
     private void evenemet(ActionEvent event) {
