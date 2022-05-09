@@ -7,9 +7,7 @@ package gui.tournoii;
 
 import entities.SessionUser;
 import entities.Tournoi;
-import gui.boutique.main.MyListener;
-import gui.boutique.model.Fruit;
-import gui.main;
+
 import gui.tournoii.TournoiController;
 import java.io.IOException;
 import java.net.URL;

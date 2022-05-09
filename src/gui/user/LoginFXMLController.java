@@ -120,7 +120,16 @@ public class LoginFXMLController implements Initializable {
                                 System.out.println(e);
                               }
                     } else if(roles.equals("USER")) {
-                        System.out.println("user");
+                        try {
+                            Parent root  = FXMLLoader.load(getClass().getResource("/gui/frontoffice/front.fxml"));
+                            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setTitle("Gérer les utilisateurs");
+                            stage.show();
+                            } catch(IOException e) {
+                                System.out.println(e);
+                              }
                     }
                 }
             } else {

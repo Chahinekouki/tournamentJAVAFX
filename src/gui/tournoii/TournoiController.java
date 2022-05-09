@@ -148,8 +148,8 @@ public class TournoiController implements Initializable {
             Tournoi tournoi = new Tournoi(id,nom,nbreq,nbrj,pr,dc,date,jeu);
             TournoiService tournoiService = new TournoiService();
             tournoiService.majTournoi(tournoi);
-             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                stage.close();
+//             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+//                stage.close();
            
             
 
@@ -157,8 +157,8 @@ public class TournoiController implements Initializable {
             Tournoi tournoi = new Tournoi(nom,nbreq,nbrj,pr,dc,date,jeu);
                 TournoiService tournoiService = new TournoiService();
             tournoiService.ajoutert(tournoi,time1,time2);
-             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                stage.close();
+//             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+//                stage.close();
             
         }
         

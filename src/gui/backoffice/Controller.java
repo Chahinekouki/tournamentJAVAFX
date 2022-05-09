@@ -176,7 +176,7 @@ public class Controller implements Initializable {
     private void boutique(ActionEvent event) {
         
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/boutique/views/market.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/gui/frontoffice/front.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
             stage.setScene(scene);

@@ -14,11 +14,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import entities.SessionUser;
 
 /**
  *
@@ -42,9 +44,7 @@ public class Controller implements Initializable {
 
     @Override
     
-    public void initialize(URL location, ResourceBundle resources) {
-      
-        
+    public void initialize(URL location, ResourceBundle resources) {       
         loadUI("/gui/frontoffice/home.fxml");
         
    }
@@ -82,6 +82,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void tournoi(ActionEvent event) {
+         loadUI("/boutique/views/market.fxml");       
     }
 
     @FXML
@@ -90,20 +91,17 @@ public class Controller implements Initializable {
 
     @FXML
     private void connexion(ActionEvent event) {
-        try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/user/LoginPFXML.fxml"));
-            Parent root = (Parent) loader.load();
-
-            Stage stage=new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        try{
+        Parent root  = FXMLLoader.load(getClass().getResource("/gui/user/LoginPFXML.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setTitle("Gérer les utilisateurs");
+                            stage.show();
+                            } catch(IOException e) {
+                                System.out.println(e);
+                              }
     }
-
-
-    
     }
    
 

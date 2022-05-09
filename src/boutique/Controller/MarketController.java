@@ -99,6 +99,8 @@ public class MarketController implements Initializable {
     @FXML
     private GridPane grid1;
     String cat;
+    @FXML
+    private Button AjoutPanier;
     
     
     public MarketController() {
@@ -551,6 +553,21 @@ public class MarketController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void AjoutPanier(ActionEvent event) {
+          try {
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/panier/Panier1.fxml"));
+            Parent root = (Parent) loader.load();
+
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
     
     
