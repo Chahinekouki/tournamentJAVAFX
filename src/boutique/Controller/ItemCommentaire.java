@@ -1,11 +1,14 @@
 package boutique.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import boutique.main.Main;
 import boutique.main.MyListener;
+import entities.Produit;
 import entities.Commentaire;
 import java.io.File;
 import org.controlsfx.control.Rating;
@@ -48,10 +51,10 @@ public class ItemCommentaire {
     
         dateLabel.setText(date);
         messageLabel.setText(commentaire.getMessage());
-             String A = "C:\\Pi\\public\\uploads\\2.png";
-             File F1 = new File(A);
-             Image image = new Image(F1.toURI().toString());
+             String A = "C:\\Pi\\public\\uploads\\1.png";
+                                          File F1 = new File(A);
+                                           Image image = new Image(F1.toURI().toString());
+//        Image image = new Image(getClass().getResourceAsStream(produit.getImgSrc()));
         img.setImage(image);
-        rating.setRating(this.commentaire.getRating());
     }
 }
