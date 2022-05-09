@@ -21,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import entities.SessionUser;
+import javafx.scene.control.Button;
 
 /**
  *
@@ -36,6 +37,8 @@ public class Controller implements Initializable {
     private JFXButton commandesBtn;
     @FXML
     private JFXButton connexion;
+    @FXML
+    private Button deconnexion;
 
    
     
@@ -50,6 +53,9 @@ public class Controller implements Initializable {
         loadUI("/gui/frontoffice/home.fxml");
         if(SessionUser.getInstance().getEmail() != null){
             connexion.setVisible(false);
+        }
+        else{
+            deconnexion.setVisible(false);
         }
         
    }
@@ -107,6 +113,23 @@ public class Controller implements Initializable {
                             } catch(IOException e) {
                                 System.out.println(e);
                               }
+    }
+
+    @FXML
+    private void deconnexion(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/user/LoginPFXML.fxml"));
+        try {
+            Parent root = loader.load();
+            Stage mainStage=new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+            mainStage.setTitle("Connexion");
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     }
    

@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -51,7 +52,14 @@
                               <Font name="Berlin Sans FB Demi Bold" size="20.0" />
                            </font>
                         </JFXButton>
-                        <Pane prefHeight="109.0" prefWidth="189.0" />
+                        <Pane prefHeight="109.0" prefWidth="189.0">
+                           <children>
+                              <Button fx:id="deconnexion" layoutX="186.0" layoutY="40.0" mnemonicParsing="false" onAction="#deconnexion" style="-fx-background-color: red;" text="DECONNEXION" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                           </children></Pane>
                         <JFXButton fx:id="connexion" alignment="CENTER" contentDisplay="CENTER" minHeight="38.0" onAction="#connexion" prefHeight="109.0" prefWidth="195.0" text="CONNEXION" textAlignment="CENTER" textFill="#8d8d8d">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="20.0" />
