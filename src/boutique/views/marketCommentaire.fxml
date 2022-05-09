@@ -14,19 +14,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boutique.Controller.CommentaireController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boutique.Controller.CommentaireController">
    <children>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <VBox prefHeight="810.0" prefWidth="627.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
                      <children>
+                        <Label prefHeight="29.0" prefWidth="88.0" text="language" textFill="#878787">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="29.0" prefWidth="77.0" text="English" textFill="#878787" underline="true">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </Label>
                         <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
-                        <Label prefHeight="62.0" prefWidth="221.0" text="MON COMPTE" textFill="#878787">
+                        <Label prefHeight="62.0" prefWidth="121.0" text="MON COMPTE" textFill="#878787">
                            <font>
                               <Font name="Cambria" size="18.0" />
                            </font>
@@ -41,9 +51,9 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Pane prefHeight="84.0" prefWidth="96.0" />
-                        <Pane prefHeight="100.0" prefWidth="529.0" HBox.hgrow="ALWAYS">
+                        <Pane prefHeight="100.0" prefWidth="646.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-70.0" layoutY="26.0" prefHeight="49.0" prefWidth="594.0" text="AVIS DE NOS CLIENTS" textAlignment="CENTER" textFill="#878787">
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-3.0" layoutY="26.0" prefHeight="49.0" prefWidth="599.0" text="LES AVIS DE NOS CHER CLIENTS" textAlignment="CENTER" textFill="#878787">
                                  <font>
                                     <Font name="Cambria Bold" size="40.0" />
                                  </font>
