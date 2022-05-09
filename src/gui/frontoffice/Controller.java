@@ -77,7 +77,24 @@ public class Controller implements Initializable {
     }
     @FXML
     private void tournoi(ActionEvent event) {
-         loadUI("/gui/tournoii/tournois.fxml");       
+        if (SessionUser.getInstance().getEmail()!=null){
+            loadUI("/gui/tournoii/tournois.fxml");       
+        }else {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/user/LoginPFXML.fxml"));
+        try {
+            Parent root = loader.load();
+            Stage mainStage=new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+            mainStage.setTitle("Connexion");
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        }
+         
     }
     
     private void loadUI(String ui) {

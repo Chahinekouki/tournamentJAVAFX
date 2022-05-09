@@ -90,8 +90,6 @@ public class TournoisController implements Initializable {
     private Button tournoidisponible;
     @FXML
     private Button mestournoi;
-    @FXML
-    private Button Close;
      @FXML
     private void searchact2(KeyEvent event) {
     }
@@ -313,23 +311,26 @@ public class TournoisController implements Initializable {
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent() && result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE) {
           
-                JOptionPane.showMessageDialog(null, "Tournoi Supprimee");
-                System.out.println(tournoi.getId());
+              
+//                System.out.println(tournoi.getId());
                 ts.supprimerTournoi(tournoi.getId());
-               Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                stage.close();
+                  JOptionPane.showMessageDialog(null, "Tournoi Supprimee");
+                  refresh();
+                        
+  }
+//               Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+//                stage.close();
           
        
                     
-          
-  }
-          FXMLLoader fxmlLoader =new  FXMLLoader(getClass().getResource("/gui/tournoii/tournois.fxml"));
-         Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("ajout");
-        stage.setScene(new Scene(root1));
-        stage.show(); 
-        refresh();
+  
+//          FXMLLoader fxmlLoader =new  FXMLLoader(getClass().getResource("/gui/tournoii/tournois.fxml"));
+//         Parent root1 = (Parent) fxmlLoader.load();
+//        Stage stage = new Stage();
+//        stage.setTitle("ajout");
+//        stage.setScene(new Scene(root1));
+//        stage.show(); 
+//        refresh();
   }
   
        else {
@@ -426,11 +427,7 @@ public class TournoisController implements Initializable {
         refresh();
     }
 
-    @FXML
-    private void Close(ActionEvent event) {
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                stage.close();
-    }
+   
   
   
   

@@ -123,7 +123,26 @@ public class TournoiController implements Initializable {
 
     @FXML
     private void CreateTF(ActionEvent event) throws IOException, SQLException, ParseException {
-        String nom =nomtournoi.getText();     
+         if ( nomtournoi.getText().isEmpty() ||
+                 nbrequipe.getText().isEmpty() || nbrjoueur.getText().isEmpty()|| jeuCB.getValue().isEmpty() || time.getValue().toString().isEmpty() 
+                || heure.getValue().isEmpty()|| minute.getValue().isEmpty()) {
+             
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All DATA");
+            alert.showAndWait();
+            
+            
+       
+        
+         
+        
+//        if ( nom.isEmpty() || String.valueOf(nbrj).isEmpty() || String.valueOf(nbreq).isEmpty()|| jeu.isEmpty() || date.isEmpty() 
+//                || time1.isEmpty()|| time2.isEmpty()) {
+//        
+          
+        }else {
+              String nom =nomtournoi.getText();     
         int nbreq =Integer.parseInt(nbrequipe.getText());  
         int nbrj =Integer.parseInt(nbrjoueur.getText());  
         String jeu =jeuCB.getValue(); 
@@ -132,24 +151,12 @@ public class TournoiController implements Initializable {
         String date =time.getValue().toString();
         String time1=heure.getValue();
         String time2=minute.getValue();
-        
-         
-        
-        if ( nom.isEmpty() || String.valueOf(nbrj).isEmpty() || String.valueOf(nbreq).isEmpty()|| jeu.isEmpty() || date.isEmpty() 
-                || time1.isEmpty()|| time2.isEmpty()) {
-        
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Please Fill All DATA");
-            alert.showAndWait();
-        }else {
             if (update == true){
                 
             Tournoi tournoi = new Tournoi(id,nom,nbreq,nbrj,pr,dc,date,jeu);
             TournoiService tournoiService = new TournoiService();
             tournoiService.majTournoi(tournoi);
-//             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-//                stage.close();
+       
            
             
 
@@ -161,7 +168,8 @@ public class TournoiController implements Initializable {
 //                stage.close();
             
         }
-        
+             Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                stage.close();
         }   
         
     }

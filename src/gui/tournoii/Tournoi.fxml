@@ -20,7 +20,7 @@
          <children>
             <ImageView fx:id="logo" fitHeight="148.0" fitWidth="288.0" layoutX="131.0" layoutY="30.0" preserveRatio="true">
                <image>
-                  <Image url="@../resources/logo.png" />
+                  <Image url="@../../resources/logo.png" />
                </image>
             </ImageView>
             <VBox fillWidth="false" layoutX="181.0" layoutY="205.0" prefHeight="338.0" prefWidth="295.0" spacing="15.0">
