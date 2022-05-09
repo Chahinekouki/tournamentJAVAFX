@@ -34,6 +34,8 @@ public class Controller implements Initializable {
     private BorderPane borderpane;
     @FXML
     private JFXButton commandesBtn;
+    @FXML
+    private JFXButton connexion;
 
    
     
@@ -46,6 +48,9 @@ public class Controller implements Initializable {
     
     public void initialize(URL location, ResourceBundle resources) {       
         loadUI("/gui/frontoffice/home.fxml");
+        if(SessionUser.getInstance().getEmail() != null){
+            connexion.setVisible(false);
+        }
         
    }
 

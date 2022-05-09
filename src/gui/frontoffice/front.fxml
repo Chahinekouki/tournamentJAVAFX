@@ -52,7 +52,7 @@
                            </font>
                         </JFXButton>
                         <Pane prefHeight="109.0" prefWidth="189.0" />
-                        <JFXButton alignment="CENTER" contentDisplay="CENTER" minHeight="38.0" onAction="#connexion" prefHeight="109.0" prefWidth="195.0" text="CONNEXION" textAlignment="CENTER" textFill="#8d8d8d">
+                        <JFXButton fx:id="connexion" alignment="CENTER" contentDisplay="CENTER" minHeight="38.0" onAction="#connexion" prefHeight="109.0" prefWidth="195.0" text="CONNEXION" textAlignment="CENTER" textFill="#8d8d8d">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="20.0" />
                            </font>
