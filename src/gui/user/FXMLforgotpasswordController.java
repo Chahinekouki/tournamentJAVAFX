@@ -104,7 +104,7 @@ public class FXMLforgotpasswordController implements Initializable {
         if(us.findByEmail(tfemail_tel.getText()).isEmpty()==false){
             JOptionPane.showMessageDialog(null, "Un email avec le code de récupération vous a été envoyé. Patientez ~20 secondes.");
             u=us.findByEmail(tfemail_tel.getText()).get(0);
-            Mailapi.send("testapimail63@gmail.com", "TESTapimail2022", u.getEmail(), "Mot de passe oublié", "Voici le code pour pouvoir changer votre mot de passe: "+n);
+            Mailapi.send("tournamentlegacyapi@gmail.com", "aymentournament", u.getEmail(), "Mot de passe oublié", "Voici le code pour pouvoir changer votre mot de passe: "+n);
             tfemail_tel.setVisible(false);
             btsearch.setVisible(false);
             btupdate.setVisible(true);
