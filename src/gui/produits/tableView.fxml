@@ -5,13 +5,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="771.0" prefWidth="977.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.produits.TableViewController">
+<AnchorPane id="AnchorPane" prefHeight="771.0" prefWidth="977.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.produits.TableViewController">
     <stylesheets>
         <URL value="@tableview.css" />
     </stylesheets>
@@ -40,11 +42,7 @@
             <Font name="Bauhaus 93" size="32.0" />
          </font>
       </Text>
-      <HBox alignment="CENTER" layoutX="602.0" layoutY="-1.0" prefHeight="36.0" prefWidth="37.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <FontAwesomeIconView glyphName="CLOSE" onMouseClicked="#close" size="20" styleClass="btn" />
-         </children>
-      </HBox>
+      <HBox alignment="CENTER" layoutX="602.0" layoutY="-1.0" prefHeight="36.0" prefWidth="37.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <HBox alignment="CENTER_LEFT" layoutX="34.0" layoutY="73.0" prefHeight="76.0" prefWidth="200.0">
          <children>
             <FontAwesomeIconView fill="#2196f3" glyphName="PLUS" onMouseClicked="#getAddView" size="45" styleClass="btn">
@@ -59,5 +57,10 @@
             </FontAwesomeIconView>
                 </children>
       </HBox>
+      <ImageView fitHeight="52.0" fitWidth="44.0" layoutX="878.0" layoutY="89.0" onMousePressed="#save12" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/4911248.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
