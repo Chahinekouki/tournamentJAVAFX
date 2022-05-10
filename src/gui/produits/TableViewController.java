@@ -233,7 +233,7 @@ public class TableViewController implements Initializable {
                             addProduitController.setTextField(produits.getCategorie(),
                                     produits.getId(),
                                     produits.getTitre(),
-                                    produits.getDescription(),
+                                    produits.getNom(),
                                     produits.getPromo(),
                                     produits.getStock(),
                                     produits.getFlash(),
@@ -246,6 +246,7 @@ public class TableViewController implements Initializable {
                             stage.setScene(new Scene(parent));
                             stage.initStyle(StageStyle.UTILITY);
                             stage.show();
+                            
                             
                         });
 
@@ -303,7 +304,7 @@ public class TableViewController implements Initializable {
             }
         }
 
-        FileOutputStream fileOut = new FileOutputStream("TOURNAMENT LEGACY Fiche de stock.xls");
+        FileOutputStream fileOut = new FileOutputStream("Fiche de stock.xls");
         workbook.write(fileOut);
         fileOut.close();
          String content = "Tableau exporter";

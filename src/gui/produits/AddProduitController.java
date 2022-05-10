@@ -78,13 +78,32 @@ public class AddProduitController implements Initializable {
   @FXML
   private ComboBox categorie;
   String URLImage;
+  String cat;
 
   /**
    * Initializes the controller class.
    */
   int categorieID = 1;
   boolean flash = true;
-
+  
+  public String RechercheCategorie(int id) {
+   
+    try {
+      ResultSet rs, rs1;
+      connection = MyDB.getInstance().getConnexion();
+      rs = connection.createStatement().executeQuery("SELECT nom FROM categories where id=" + id + "");
+      ObservableList data = FXCollections.observableArrayList();
+      while (rs.next()) {
+        data.add(new String(rs.getString(1)));
+      }
+      cat=data.toString();
+      cat =(cat.substring((cat).indexOf("[")+1 ,(cat).indexOf("]")));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+       return cat;
+  }
+  
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     // TODO
@@ -120,14 +139,19 @@ public class AddProduitController implements Initializable {
     String image = ImageFld.getText();
     String longdescription = longFld.getText();
     String prix = prixFld.getText();
-
-    if (titre.isEmpty() || description.isEmpty() || stock.isEmpty() || image.isEmpty() || longdescription.isEmpty() || prix.isEmpty()) {
+    
+    if (titre.isEmpty() || description.isEmpty() || stock.isEmpty() || image.isEmpty() || longdescription.isEmpty() || prix.isEmpty() ) {
       
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setHeaderText(null);
       alert.setContentText("Remplissez les champs!");
       alert.showAndWait();
-     if ((Integer.parseInt(prix)<0)|| (promo!=null)&&(Integer.parseInt(promo)<0)){
+      if (!prix.matches("\\d*")||!stock.matches("\\d*")||!promo.matches("\\d*")){
+          alert.setHeaderText(null);
+        alert.setContentText("champ doit etre du type numerique!");
+        alert.showAndWait();
+      }else
+     if ((Integer.parseInt(prix)<=1)|| (promo!=null)&&(Integer.parseInt(promo)<=1)||(Integer.parseInt(stock)<=1)){
         
         alert.setHeaderText(null);
         alert.setContentText("nombre doit etre positive!");
@@ -165,11 +189,11 @@ public class AddProduitController implements Initializable {
 
     } else {
       query = "UPDATE `produits` SET " +
+        "`categories_id`=?," +
         "`titre`=?," +
         "`description`=?," +
         "`promo`=?," +
         "`stock`=?," +
-        "`promo`=?," +
         "`flash`=?," +
         "`image`=?," +
         "`ref`=?," +
@@ -278,7 +302,7 @@ public static void showSuccessAlert(String content)
         a.show();
     });
         }
-  void setTextField(int categorie, int id, String titre, String description, float promo, float stock, boolean flash, String image, String ref, String longdescription, float prix) {
+  void setTextField(int categorie1, int id, String titre, String description, float promo, float stock, boolean flash, String image, String ref, String longdescription, float prix) {
 
     produitId = id;
     titreFld.setText(titre);
@@ -286,6 +310,14 @@ public static void showSuccessAlert(String content)
     promoFld.setText(Float.toString(promo));
     stockFld.setText(Float.toString(stock));
     ImageFld.setText(image);
+    if (flash==true) {
+        flash1.setValue("OUI");
+    }else{
+    flash1.setValue("NON");
+    }
+    categorie.setValue(RechercheCategorie(categorie1));
+    longFld.setText(longdescription);
+    
     refFld.setText(ref);
     prixFld.setText(Float.toString(prix));
 
@@ -361,8 +393,13 @@ public static void showSuccessAlert(String content)
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("My First Email from Java App");
-            float total=(Float.parseFloat(promo)*Float.parseFloat(prix))/100;
+            message.setSubject("NE RATTEZ PAS NOS PROMOTION!");
+            float total=Float.parseFloat(prix)-((Float.parseFloat(promo)*Float.parseFloat(prix))/100);
+            String total1;
+              if(total == (long) total)
+                    total1=String.format("%d",(long)total);
+                else
+                    total1 =String.format("%s",total);
             String htmlCode = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n" +
 "<head>\n" +

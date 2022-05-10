@@ -50,7 +50,7 @@ public class ItemController {
         nameLabel.setText(produit.getTitre());
         float promo=produit.getPromo() ;
         if (promo != 0){
-            total = ((produit.getPromo()*produit.getPrix())/100)-produit.getPromo();
+            total = ((produit.getPromo()*produit.getPrix())/100);
             if(total == (long) total)
                 total1=String.format("%d",(long)total);
          else

@@ -44,16 +44,12 @@ public class AddCommentaireController implements Initializable {
     Commentaire commentaire = null;
     private boolean update;
     int commentaireId;
-    @FXML
     private ComboBox<?> userFld;
     private ComboBox<?> produitFld;
     @FXML
     private JFXTextArea messageFld;
     private Date date;
-    @FXML
-    private JFXTextField idproduit;
-    @FXML
-    private JFXTextField rate;
+    String idproduit;
     @FXML
     private VBox avisvbox;
     @FXML
@@ -81,7 +77,6 @@ public class AddCommentaireController implements Initializable {
             data.add(new String(rs.getString(1)));
         }
         System.out.println(data);
-        userFld.setItems(data);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -96,7 +91,7 @@ public class AddCommentaireController implements Initializable {
         String message = messageFld.getText();
         
 
-        if (message.isEmpty()||userFld.getSelectionModel().isEmpty() ) {
+        if (message.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Remplisez tous les champs!");
@@ -114,7 +109,6 @@ public class AddCommentaireController implements Initializable {
     @FXML
     private void clean() {
         messageFld.setText(null);
-        userFld.valueProperty().set(null);
         
         
     }
@@ -168,7 +162,7 @@ public class AddCommentaireController implements Initializable {
         
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, user);
-            preparedStatement.setInt(2, Integer.parseInt(idproduit.getText()));
+            preparedStatement.setInt(2, Integer.parseInt(idproduit));
             preparedStatement.setString(3, messageFld.getText());
             preparedStatement.setTimestamp(4,date);
             
@@ -203,8 +197,8 @@ public class AddCommentaireController implements Initializable {
    
     
     public void Rating(double comm,String id,String randomHex ){
-        idproduit.setText(id);
-        rate1=comm;
+         idproduit=id;
+         rate1=comm;
         
         produit=Integer.valueOf(id);
         avisvbox.setStyle("-fx-background-color: #" + randomHex + ";\n" +

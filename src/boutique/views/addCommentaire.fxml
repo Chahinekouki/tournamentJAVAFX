@@ -8,11 +8,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="avisvbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="371.0" style="-fx-background-color: #3a243b;" styleClass="btn" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boutique.Controller.AddCommentaireController">
+<VBox fx:id="avisvbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="371.0" style="-fx-background-color: #3a243b;" styleClass="btn" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="boutique.Controller.AddCommentaireController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="384.0">
          <children>
-            <Text fill="#705d72" strokeType="OUTSIDE" strokeWidth="0.0" text="Laisser un avis">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Laisser un avis">
                <font>
                   <Font name="Bauhaus 93" size="32.0" />
                </font>
@@ -28,9 +28,14 @@
          </VBox.margin>
       </HBox>
       <HBox alignment="CENTER" />
+      <HBox disable="true" layoutX="10.0" layoutY="64.0" opacity="0.0" prefHeight="14.0" prefWidth="355.0">
+         <VBox.margin>
+            <Insets top="17.0" />
+         </VBox.margin>
+      </HBox>
       <HBox alignment="CENTER" prefHeight="350.0" prefWidth="355.0">
          <children>
-            <JFXTextArea fx:id="messageFld" focusColor="RED" prefHeight="148.0" prefWidth="355.0" promptText="Exprimer..." style="-fx-text-fill: white; -fx-background-color: white;" unFocusColor="WHITE">
+            <JFXTextArea fx:id="messageFld" focusColor="#fff8f8" prefHeight="205.0" prefWidth="318.0" promptText="Votre avis est importnat ...." style="-fx-text-fill: white;" unFocusColor="WHITE">
                <font>
                   <Font size="19.0" />
                </font></JFXTextArea>

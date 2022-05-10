@@ -189,7 +189,7 @@ public class TableViewController implements Initializable {
                             
                             categories = categoriesTable.getSelectionModel().getSelectedItem();
                             FXMLLoader loader = new FXMLLoader ();
-                            loader.setLocation(getClass().getResource("/categories/addCategorie.fxml"));
+                            loader.setLocation(getClass().getResource("/gui/categories/addCategorie.fxml"));
                             try {
                                 loader.load();
                             } catch (IOException ex) {

@@ -1,6 +1,7 @@
 package boutique.Controller;
 
 import javafx.fxml.FXML;
+import animatefx.animation.*;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -92,7 +93,6 @@ public class MarketController implements Initializable {
     @FXML
     private Label ProduitRefLable1;
     @FXML
-    private Button recherche;
     private TextField rech;
     @FXML
     private ScrollPane scroll1;
@@ -100,7 +100,9 @@ public class MarketController implements Initializable {
     private GridPane grid1;
     String cat;
     @FXML
-    private Button AjoutPanier;
+    private Label user;
+    @FXML
+    private ImageView pan;
     
     
     public MarketController() {
@@ -226,6 +228,7 @@ public class MarketController implements Initializable {
         
         
             produitid=(Integer.toString(produit.getId()));
+            System.out.println("chaine"+produitid);
             try {
             afficheRating(produit.getId());
             } catch (SQLException ex) {
@@ -236,7 +239,9 @@ public class MarketController implements Initializable {
             ProduitRefLable1.setText("Réf : #"+produit.getRef());
             float promo=produit.getPromo() ;
             if (promo != 0){
-                total = (produit.getPromo()*produit.getPrix())/100;
+                
+                total = produit.getPrix()-((produit.getPromo()*produit.getPrix())/100);
+                
                 if(total == (long) total)
                     total1=String.format("%d",(long)total);
                 else
@@ -252,7 +257,7 @@ public class MarketController implements Initializable {
                 
             }
             fruitPriceLabel.setText( total1+" TND");
-            fruitPromoLabel.setText(produit.getPrix()+"TND");
+            fruitPromoLabel.setText(produit.getPrix()+" TND");
             System.out.println(total+" TND");
             descriptionLable.setText(produit.getDescription());
             
@@ -269,7 +274,17 @@ public class MarketController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+          if (SessionUser.getInstance().getUsername()!=null){
+              user.setText("Salut!, "+SessionUser.getInstance().getUsername());
+              pan.setVisible(true);
+              user.setVisible(true);
+          }
+          else{
+             user.setVisible(true);
+             pan.setVisible(false);
+             
+             
+        }
         try {
             produits.addAll(afficheProduit());
             categories.addAll(afficheCategorie());
@@ -281,6 +296,7 @@ public class MarketController implements Initializable {
             myListener = new MyListener() {
                 @Override
                 public void onClickListener(Produit produit) {
+                    
                     setChosenFruit(produit);
                 }
             };
@@ -366,11 +382,15 @@ public class MarketController implements Initializable {
     }
     
     
+    @FXML
       public void Recherche() {
         
         try {
             produits.removeAll(produits);
             produits.addAll(afficheRecherche());
+            if (produits == null){
+               produits.addAll(afficheProduit());
+            }
         } catch (SQLException ex) {
             Logger.getLogger(MarketController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -379,6 +399,7 @@ public class MarketController implements Initializable {
             myListener = new MyListener() {
                 @Override
                 public void onClickListener(Produit produit) {
+                    
                     setChosenFruit(produit);
                 }
             };
@@ -423,7 +444,6 @@ public class MarketController implements Initializable {
      public void Recherchecat(int id) {
         
         try {
-            System.out.println("test");
             produits.removeAll(produits);
             produits.addAll(triCategorie(id));
         } catch (SQLException ex) {
@@ -483,7 +503,8 @@ public class MarketController implements Initializable {
     @FXML
     private void Commenter(MouseEvent event) {
         
-       refresh();
+      refresh();
+
     }
 
     private void Commenter1(MouseDragEvent event) {
@@ -515,16 +536,15 @@ public class MarketController implements Initializable {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        }
-        else{
+        }}
+              else{
         
                try {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("/boutique/views/addCommentaire.fxml"));
             Parent root = (Parent) loader.load();
 
             AddCommentaireController secController=loader.getController();
-            
+                   System.out.println(produitid);
             secController.Rating(rating.getRating(),produitid,randomHex);
             System.out.println(rating.getRating());
 
@@ -555,20 +575,6 @@ public class MarketController implements Initializable {
         }
     }
 
-    @FXML
-    private void AjoutPanier(ActionEvent event) {
-          try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/gui/panier/Panier1.fxml"));
-            Parent root = (Parent) loader.load();
-
-            Stage stage=new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-    }
     
     
 
