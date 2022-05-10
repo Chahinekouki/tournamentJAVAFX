@@ -1,8 +1,14 @@
 package gui.produits;
 
+import com.gembox.spreadsheet.ExcelFile;
+import com.gembox.spreadsheet.ExcelWorksheet;
+import static com.gembox.spreadsheet.internal.openxml.zzao.Workbook;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Produit;
+import static gui.produits.AddProduitController.showSuccessAlert;
+import java.io.File;
+import java.io.FileOutputStream;
 import utils.MyDB;
 import java.io.IOException;
 import java.net.URL;
@@ -31,11 +37,19 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import org.shaded.apache.poi.hssf.usermodel.HSSFRow;
+import org.shaded.apache.poi.hssf.usermodel.HSSFSheet;
+import org.shaded.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.shaded.apache.poi.ss.usermodel.Row;
+import org.shaded.apache.poi.ss.usermodel.Sheet;
+import org.shaded.apache.poi.ss.usermodel.Workbook;
 
 /**
  *
@@ -137,9 +151,6 @@ public class TableViewController implements Initializable {
         } 
     }
 
-    @FXML
-    private void print(MouseEvent event) {
-    }
 
     private void loadDate() {
         
@@ -222,7 +233,7 @@ public class TableViewController implements Initializable {
                             addProduitController.setTextField(produits.getCategorie(),
                                     produits.getId(),
                                     produits.getTitre(),
-                                    produits.getDescription(),
+                                    produits.getNom(),
                                     produits.getPromo(),
                                     produits.getStock(),
                                     produits.getFlash(),
@@ -235,6 +246,7 @@ public class TableViewController implements Initializable {
                             stage.setScene(new Scene(parent));
                             stage.initStyle(StageStyle.UTILITY);
                             stage.show();
+                            
                             
                         });
 
@@ -258,5 +270,49 @@ public class TableViewController implements Initializable {
     public void refreshTable1() {
         refreshTable();   
         System.out.println("done!");
+    }
+    
+      public void save()  {
+       
+    }
+
+    @FXML
+    private void save1(KeyEvent event)throws IOException {
+        
+    }
+
+    @FXML
+    private void save12(MouseEvent event)throws IOException {
+        Workbook workbook = new HSSFWorkbook();
+        Sheet spreadsheet = workbook.createSheet("sample");
+
+        Row row = spreadsheet.createRow(0);
+
+        for (int j = 0; j < produitsTable.getColumns().size()-1; j++) {
+            row.createCell(j).setCellValue(produitsTable.getColumns().get(j).getText());
+        }
+
+        for (int i = 0; i < produitsTable.getItems().size(); i++) {
+            row = spreadsheet.createRow(i + 1);
+            for (int j = 0; j < produitsTable.getColumns().size(); j++) {
+                if(produitsTable.getColumns().get(j).getCellData(i) != null) { 
+                    row.createCell(j).setCellValue(produitsTable.getColumns().get(j).getCellData(i).toString()); 
+                }
+                else {
+                    row.createCell(j).setCellValue("");
+                }   
+            }
+        }
+
+        FileOutputStream fileOut = new FileOutputStream("Fiche de stock.xls");
+        workbook.write(fileOut);
+        fileOut.close();
+         String content = "Tableau exporter";
+        showSuccessAlert(content);
+
+
+
+
+
     }
 }

@@ -5,6 +5,7 @@ import gui.commentaires.*;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import entities.Commentaire;
+import entities.SessionUser;
 import utils.MyDB;
 import java.net.URL;
 import java.sql.Connection;
@@ -43,16 +44,12 @@ public class AddCommentaireController implements Initializable {
     Commentaire commentaire = null;
     private boolean update;
     int commentaireId;
-    @FXML
     private ComboBox<?> userFld;
     private ComboBox<?> produitFld;
     @FXML
     private JFXTextArea messageFld;
     private Date date;
-    @FXML
-    private JFXTextField idproduit;
-    @FXML
-    private JFXTextField rate;
+    String idproduit;
     @FXML
     private VBox avisvbox;
     @FXML
@@ -69,6 +66,8 @@ public class AddCommentaireController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        int idd= SessionUser.getInstance().getId();
+                 System.out.println(idd);
         try {
             ResultSet rs,rs1;
             connection = MyDB.getInstance().getConnexion();
@@ -78,7 +77,6 @@ public class AddCommentaireController implements Initializable {
             data.add(new String(rs.getString(1)));
         }
         System.out.println(data);
-        userFld.setItems(data);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,7 +91,7 @@ public class AddCommentaireController implements Initializable {
         String message = messageFld.getText();
         
 
-        if (message.isEmpty()||userFld.getSelectionModel().isEmpty() ) {
+        if (message.isEmpty() ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Remplisez tous les champs!");
@@ -111,7 +109,6 @@ public class AddCommentaireController implements Initializable {
     @FXML
     private void clean() {
         messageFld.setText(null);
-        userFld.valueProperty().set(null);
         
         
     }
@@ -142,7 +139,9 @@ public class AddCommentaireController implements Initializable {
         System.out.println(date);
         try {
             preparedStatement = connection.prepareStatement(query);
-            String mail = userFld.getValue().toString();
+            
+            String mail =  SessionUser.getInstance().getEmail();
+                 System.out.println(mail);
              try {
             ResultSet rs1;
             connection = MyDB.getInstance().getConnexion();
@@ -163,7 +162,7 @@ public class AddCommentaireController implements Initializable {
         
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, user);
-            preparedStatement.setInt(2, Integer.parseInt(idproduit.getText()));
+            preparedStatement.setInt(2, Integer.parseInt(idproduit));
             preparedStatement.setString(3, messageFld.getText());
             preparedStatement.setTimestamp(4,date);
             
@@ -198,8 +197,8 @@ public class AddCommentaireController implements Initializable {
    
     
     public void Rating(double comm,String id,String randomHex ){
-        idproduit.setText(id);
-        rate1=comm;
+         idproduit=id;
+         rate1=comm;
         
         produit=Integer.valueOf(id);
         avisvbox.setStyle("-fx-background-color: #" + randomHex + ";\n" +

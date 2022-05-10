@@ -2,6 +2,7 @@ package gui.categories;
 
 import com.jfoenix.controls.JFXTextField;
 import entities.Categories;
+import static gui.produits.AddProduitController.showSuccessAlert;
 import utils.MyDB;
 import java.net.URL;
 import java.sql.Connection;
@@ -92,7 +93,8 @@ public class AddCategorieController implements Initializable {
             preparedStatement.setString(1, nameFld.getText());
             
             preparedStatement.execute();
-
+ String content = "Categorie insérer!";
+        showSuccessAlert(content);
         } catch (SQLException ex) {
             Logger.getLogger(AddCategorieController.class.getName()).log(Level.SEVERE, null, ex);
         }

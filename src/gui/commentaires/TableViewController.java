@@ -183,7 +183,7 @@ public class TableViewController implements Initializable {
               if (result.orElse(oui) == non) {
                 try {
                   commentaires = commentairesTable.getSelectionModel().getSelectedItem();
-                  query = "DELETE FROM `produits` WHERE id  =" + commentaires.getId();
+                  query = "DELETE FROM `commentaires` WHERE id  =" + commentaires.getId();
                   connection = MyDB.getInstance().getConnexion();
                   preparedStatement = connection.prepareStatement(query);
                   preparedStatement.execute();

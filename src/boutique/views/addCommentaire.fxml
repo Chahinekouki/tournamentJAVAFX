@@ -2,9 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -14,7 +12,7 @@
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="384.0">
          <children>
-            <Text fill="#705d72" strokeType="OUTSIDE" strokeWidth="0.0" text="Laisser un avis">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Laisser un avis">
                <font>
                   <Font name="Bauhaus 93" size="32.0" />
                </font>
@@ -29,33 +27,15 @@
             <Insets top="17.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER">
-         <children>
-            <Text fill="WHITE" fontSmoothingType="LCD" lineSpacing="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilisateur" wrappingWidth="102.13671875">
-               <font>
-                  <Font name="Century Gothic Bold" size="21.0" />
-               </font>
-            </Text>
-            <ComboBox fx:id="userFld" prefHeight="31.0" prefWidth="251.0" />
-         </children>
-      </HBox>
+      <HBox alignment="CENTER" />
       <HBox disable="true" layoutX="10.0" layoutY="64.0" opacity="0.0" prefHeight="14.0" prefWidth="355.0">
          <VBox.margin>
             <Insets top="17.0" />
          </VBox.margin>
-         <children>
-            <JFXTextField fx:id="idproduit" opacity="0.0" />
-            <JFXTextField fx:id="rate" opacity="0.0" />
-         </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="350.0" prefWidth="355.0">
          <children>
-            <Text fill="WHITE" fontSmoothingType="LCD" lineSpacing="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message" wrappingWidth="102.13671875">
-               <font>
-                  <Font name="Century Gothic Bold" size="21.0" />
-               </font>
-            </Text>
-            <JFXTextArea fx:id="messageFld" prefHeight="223.0" prefWidth="252.0" promptText="Entrez votre message içi..." style="-fx-text-fill: white;" unFocusColor="WHITE">
+            <JFXTextArea fx:id="messageFld" focusColor="#fff8f8" prefHeight="205.0" prefWidth="318.0" promptText="Votre avis est importnat ...." style="-fx-text-fill: white;" unFocusColor="WHITE">
                <font>
                   <Font size="19.0" />
                </font></JFXTextArea>
