@@ -7,23 +7,8 @@ package entities;
 public class Produit {
     
     private int id;
-     private int categorie;
-     private String nom;
-
-    public Produit(int id, int categorie, String nom, String titre, String description, float promo, float stock, boolean flash, String image, String ref, String longdescription, float prix) {
-        this.id = id;
-        this.categorie = categorie;
-        this.nom = nom;
-        this.titre = titre;
-        this.description = description;
-        this.promo = promo;
-        this.stock = stock;
-        this.flash = flash;
-        this.image = image;
-        this.ref = ref;
-        this.longdescription = longdescription;
-        this.prix = prix;
-    }
+    private int categorie;
+    private String nom;
     private String titre;
     private String description;
     private float promo;
@@ -33,6 +18,12 @@ public class Produit {
     private String ref;
     private String longdescription;
     private float prix;
+
+
+    public Produit( float stock,int id) {
+        this.id = id;
+        this.stock = stock;
+    }
 
     public String getNom() {
         return nom;
@@ -172,6 +163,21 @@ public class Produit {
 
     public Produit(int categorie, String titre, String description, float promo, float stock, boolean flash, String image, String ref, String longdescription, float prix) {
         this.categorie = categorie;
+        this.titre = titre;
+        this.description = description;
+        this.promo = promo;
+        this.stock = stock;
+        this.flash = flash;
+        this.image = image;
+        this.ref = ref;
+        this.longdescription = longdescription;
+        this.prix = prix;
+    }
+    
+    public Produit(int id, int categorie, String nom, String titre, String description, float promo, float stock, boolean flash, String image, String ref, String longdescription, float prix) {
+        this.id = id;
+        this.categorie = categorie;
+        this.nom = nom;
         this.titre = titre;
         this.description = description;
         this.promo = promo;

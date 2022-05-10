@@ -240,7 +240,7 @@ public class MarketController implements Initializable {
             float promo=produit.getPromo() ;
             if (promo != 0){
                 
-                total = produit.getPrix()-(produit.getPromo()*produit.getPrix())/100-(produit.getPromo());
+                total = produit.getPrix()-((produit.getPromo()*produit.getPrix())/100);
                 
                 if(total == (long) total)
                     total1=String.format("%d",(long)total);

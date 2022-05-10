@@ -15,7 +15,7 @@ public class Main extends Application {
     double x,y = 0;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Backoffice.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/frontoffice/front.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
         root.setOnMousePressed(event -> {
@@ -28,7 +28,7 @@ public class Main extends Application {
             primaryStage.setY(event.getScreenY() - y);
         });
 
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
