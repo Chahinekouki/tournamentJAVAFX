@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -143,11 +144,7 @@
                   <Font name="Century Gothic" size="21.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="imageFld" prefHeight="25.0" prefWidth="358.0" text="image.png">
-               <font>
-                  <Font name="Century Gothic" size="20.0" />
-               </font>
-            </JFXTextField>
+            <Button fx:id="imageFld" mnemonicParsing="false" onAction="#upload" prefHeight="34.0" prefWidth="341.0" text="Upload " />
          </children>
          <VBox.margin>
             <Insets />

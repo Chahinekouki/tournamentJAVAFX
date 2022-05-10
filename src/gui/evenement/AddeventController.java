@@ -7,6 +7,8 @@ package gui.evenement;
 
 import com.jfoenix.controls.JFXTextField;
 import entities.Evenement;
+import java.io.File;
+import java.io.IOException;
 import utils.MyDB;
 import java.net.URL;
 import java.sql.Connection;
@@ -16,10 +18,14 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import org.apache.commons.io.FileUtils;
 
 
 /**
@@ -54,13 +60,14 @@ public class AddeventController implements Initializable {
     private JFXTextField nbrFld;
     
     @FXML
-    private JFXTextField imageFld;
+    private Button imageFld;
     @FXML
     private JFXTextField descFld;
     @FXML
     private JFXTextField latFld;
     @FXML
     private JFXTextField longiFld;
+    String URLImage;
    
 
     /**
@@ -111,6 +118,8 @@ public class AddeventController implements Initializable {
         }
 
     }
+
+        
 
     @FXML
     private void clean() {
@@ -201,6 +210,33 @@ public class AddeventController implements Initializable {
         this.update = b;
 
     }
+
+    @FXML
+    private void upload(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        File selectedFile = fc.showOpenDialog(null);
+        if (selectedFile != null){
+             URLImage = selectedFile.getPath();
+            String eventImage= selectedFile.getName();
+           // Image i = new Image(new FileInputStream("C:\\Users\\ACER\\OneDrive\\Bureau\\PI-DEV\\public\\front\\images\\"+productImage)); 
+            //imgview.setImage(i);
+            imageFld.setText(eventImage);
+            System.out.println(URLImage);
+            }else {
+            System.out.println("File is not valid");
+        } 
+
+        File srcFile = new File(URLImage);
+        File destDir = new File("C:\\Pi\\public\\uploads");
+        try {
+            FileUtils.copyFileToDirectory(srcFile, destDir);
+        } catch (IOException e) {
+    }
+         
+        
+    
+    }
+    
 
 }
 

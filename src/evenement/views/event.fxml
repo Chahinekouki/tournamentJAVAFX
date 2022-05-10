@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="AnchorPane" prefHeight="810.0" prefWidth="1315.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.EventViewController">
+ 
+<stylesheets>
+        <URL value="@restoview.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutX="439.0" layoutY="14.0" prefHeight="620.0" prefWidth="442.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;">
+         <children>
+            <Label fx:id="testlaba" layoutX="16.0" layoutY="121.0" prefHeight="51.0" prefWidth="241.0" text="Label">
+               <font>
+                  <Font name="Candara Light" size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="101.0" layoutY="14.0" text="Information " textAlignment="CENTER">
+               <font>
+                  <Font name="Bodoni MT Bold Italic" size="41.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="88.0" prefHeight="45.0" prefWidth="336.0" text="Nom" textFill="#da0ab4">
+               <font>
+                  <Font name="Bell MT Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="330.0" textFill="#da0ab4">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="testlaba1" layoutX="10.0" layoutY="198.0" prefHeight="57.0" prefWidth="216.0" text="Label">
+               <font>
+                  <Font name="Candara Light" size="23.0" />
+               </font>
+            </Label>
+            <Button layoutX="16.0" layoutY="581.0" mnemonicParsing="false" onAction="#infobtn" style="-fx-background-radius: 70;" text="?" />
+            <Label fx:id="lieu" layoutX="23.0" layoutY="164.0" prefHeight="45.0" prefWidth="336.0" text="Lieu" textFill="#da0ab4">
+               <font>
+                  <Font name="Bell MT Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="testlaba11" layoutX="10.0" layoutY="240.0" prefHeight="45.0" prefWidth="336.0" text="Date Debut" textFill="#da0ab4">
+               <font>
+                  <Font name="Bell MT Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="testlaba12" layoutX="16.0" layoutY="381.0" prefHeight="45.0" prefWidth="336.0" text="Description" textFill="#da0ab4">
+               <font>
+                  <Font name="Bell MT Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="269.0" layoutY="254.0" prefHeight="45.0" prefWidth="336.0" text="Heure " textFill="#da0ab4">
+               <font>
+                  <Font name="Bell MT Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="testlaba2" layoutX="265.0" layoutY="300.0" prefHeight="45.0" prefWidth="154.0" text="Label">
+               <font>
+                  <Font name="Candara Light" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="testlaba3" layoutX="14.0" layoutY="277.0" prefHeight="45.0" prefWidth="189.0" text="Label">
+               <font>
+                  <Font name="Candara Light" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="local" layoutX="16.0" layoutY="426.0" prefHeight="157.0" prefWidth="421.0" text="Label">
+               <font>
+                  <Font name="Candara Light" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="testlaba111" layoutX="14.0" layoutY="308.0" prefHeight="45.0" prefWidth="216.0" text="Date Fin" textFill="#da0ab4">
+               <font>
+                  <Font name="Bell MT Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="testlaba31" layoutX="14.0" layoutY="344.0" prefHeight="45.0" prefWidth="205.0" text="Label">
+               <font>
+                  <Font name="Candara Light" size="23.0" />
+               </font>
+            </Label>
+            <WebView fx:id="infopage" layoutX="11.0" layoutY="21.0" prefHeight="556.0" prefWidth="421.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="910.0" layoutY="413.0" prefHeight="244.0" prefWidth="386.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;">
+         <children>
+            <VBox prefHeight="246.0" prefWidth="386.0">
+               <children>
+                  <WebView fx:id="mapview" prefHeight="245.0" prefWidth="353.0" />
+               </children>
+            </VBox>
+         </children></Pane>
+      <Pane layoutX="910.0" layoutY="26.0" prefHeight="362.0" prefWidth="377.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;">
+         <children>
+            <VBox alignment="CENTER" layoutX="2.0" layoutY="1.0" prefHeight="355.0" prefWidth="359.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="391.0" text="scanner le QRcode">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgqrcode" fitHeight="246.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="3.0" top="3.0" />
+                     </VBox.margin>
+                     <image>
+                        <Image url="@../img/ic_stopwatch.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children></Pane>
+      <Pane layoutX="11.0" layoutY="667.0" prefHeight="129.0" prefWidth="1297.0" style="-fx-background-color: #da0ab4; -fx-background-radius: 10;">
+         <children>
+            <TextArea layoutX="14.0" layoutY="12.0" prefHeight="101.0" prefWidth="1273.0" text="                                                       Facebook : Tournemant Legacy &#10;                                                           Site web : &#10;                                                                                                                                                                                                                  Phone number : &#10;                                                                                                                                                                                                                       Instagram : ">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </TextArea>
+         </children></Pane>
+      <ImageView fx:id="image" fitHeight="329.0" fitWidth="409.0" layoutX="11.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
